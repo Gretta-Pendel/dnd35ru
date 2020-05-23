@@ -27,29 +27,51 @@
             <span class="sp" v-if="shops.weapon.sp > 0"></span>{{shops.weapon.sp}}
             <span class="cp" v-if="shops.weapon.cp > 0"></span>{{shops.weapon.cp}}</p>
         <p><b>Вес:</b> {{shops.weapon.weight}} <input type="button" @click="createPDF('weapon')" value="⇩ PDF"/></p>
+        <h5>Броня</h5>
+        <p><b>Сумма:</b> <span class="gp" v-if="shops.armor.gp > 0"></span>{{shops.armor.gp}}
+            <span class="sp" v-if="shops.armor.sp > 0"></span>{{shops.armor.sp}}
+            <span class="cp" v-if="shops.armor.cp > 0"></span>{{shops.armor.cp}}</p>
+        <p><b>Вес:</b> {{shops.armor.weight}} <input type="button" @click="createPDF('armor')" value="⇩ PDF"/></p>
         <h5>Снаряжение</h5>
         <p><b>Сумма:</b> <span class="gp" v-if="shops.gear.gp > 0"></span>{{shops.gear.gp}}
             <span class="sp" v-if="shops.gear.sp > 0"></span>{{shops.gear.sp}}
             <span class="cp" v-if="shops.gear.cp > 0"></span>{{shops.gear.cp}}</p>
         <p><b>Вес:</b> {{shops.gear.weight}} <input type="button" @click="createPDF('gear')" value="⇩ PDF"/></p>
-        <h5>Животные и Снаряжение</h5>
-        <p><b>Сумма:</b> <span class="gp" v-if="shops.mounts.gp > 0"></span>{{shops.mounts.gp}}
-            <span class="sp" v-if="shops.mounts.sp > 0"></span>{{shops.mounts.sp}}
-            <span class="cp" v-if="shops.mounts.cp > 0"></span>{{shops.mounts.cp}}</p>
-        <p><b>Вес:</b> {{shops.mounts.weight}} <input type="button" @click="createPDF('mounts')" value="⇩ PDF"/></p>
-
         <h5>Специальные Смеси и Предметы</h5>
         <p><b>Сумма:</b> <span class="gp" v-if="shops.substances_items.gp > 0"></span>{{shops.substances_items.gp}}
             <span class="sp" v-if="shops.substances_items.sp > 0"></span>{{shops.substances_items.sp}}
             <span class="cp" v-if="shops.substances_items.cp > 0"></span>{{shops.substances_items.cp}}</p>
         <p><b>Вес:</b> {{shops.substances_items.weight}} <input type="button" @click="createPDF('substances_items')" value="⇩ PDF"/></p>
-
         <h5>Инструменты и Наборы для Умений</h5>
         <p><b>Сумма:</b> <span class="gp" v-if="shops.tools_kits.gp > 0"></span>{{shops.tools_kits.gp}}
             <span class="sp" v-if="shops.tools_kits.sp > 0"></span>{{shops.tools_kits.sp}}
             <span class="cp" v-if="shops.tools_kits.cp > 0"></span>{{shops.tools_kits.cp}}</p>
         <p><b>Вес:</b> {{shops.tools_kits.weight}} <input type="button" @click="createPDF('tools_kits')" value="⇩ PDF"/></p>
-
+        <h5>Одежда</h5>
+        <p><b>Сумма:</b> <span class="gp" v-if="shops.clothing.gp > 0"></span>{{shops.clothing.gp}}
+            <span class="sp" v-if="shops.clothing.sp > 0"></span>{{shops.clothing.sp}}
+            <span class="cp" v-if="shops.clothing.cp > 0"></span>{{shops.clothing.cp}}</p>
+        <p><b>Вес:</b> {{shops.clothing.weight}} <input type="button" @click="createPDF('clothing')" value="⇩ PDF"/></p>
+        <h5>Еда, Питье и Постой</h5>
+        <p><b>Сумма:</b> <span class="gp" v-if="shops.food_lodging.gp > 0"></span>{{shops.food_lodging.gp}}
+            <span class="sp" v-if="shops.food_lodging.sp > 0"></span>{{shops.food_lodging.sp}}
+            <span class="cp" v-if="shops.food_lodging.cp > 0"></span>{{shops.food_lodging.cp}}</p>
+        <p><b>Вес:</b> {{shops.food_lodging.weight}} <input type="button" @click="createPDF('food_lodging')" value="⇩ PDF"/></p>
+        <h5>Животные и Снаряжение</h5>
+        <p><b>Сумма:</b> <span class="gp" v-if="shops.mounts.gp > 0"></span>{{shops.mounts.gp}}
+            <span class="sp" v-if="shops.mounts.sp > 0"></span>{{shops.mounts.sp}}
+            <span class="cp" v-if="shops.mounts.cp > 0"></span>{{shops.mounts.cp}}</p>
+        <p><b>Вес:</b> {{shops.mounts.weight}} <input type="button" @click="createPDF('mounts')" value="⇩ PDF"/></p>
+        <h5>Транспорт</h5>
+        <p><b>Сумма:</b> <span class="gp" v-if="shops.transport.gp > 0"></span>{{shops.transport.gp}}
+            <span class="sp" v-if="shops.transport.sp > 0"></span>{{shops.transport.sp}}
+            <span class="cp" v-if="shops.transport.cp > 0"></span>{{shops.transport.cp}}</p>
+        <p><b>Вес:</b> {{shops.transport.weight}} <input type="button" @click="createPDF('transport')" value="⇩ PDF"/></p>
+        <h5>Заклинания и Услуги</h5>
+        <p><b>Сумма:</b> <span class="gp" v-if="shops.spellcasting_services.gp > 0"></span>{{shops.spellcasting_services.gp}}
+            <span class="sp" v-if="shops.spellcasting_services.sp > 0"></span>{{shops.spellcasting_services.sp}}
+            <span class="cp" v-if="shops.spellcasting_services.cp > 0"></span>{{shops.spellcasting_services.cp}}</p>
+        <p><b>Вес:</b> {{shops.spellcasting_services.weight}} <input type="button" @click="createPDF('spellcasting_services')" value="⇩ PDF"/></p>
 
         <h5>Итого</h5>
         <p><b>Сумма:</b>
@@ -180,9 +202,33 @@
     </div>
     <div id="clothing" class="shop">
         <h2>Clothing</h2>
+        <table class="odd">
+            <tr><th colspan="2">Количество</th><th>Предмет</th><th>Цена</th><th>Вес</th></tr>
+            <tr v-for="item in shops.clothing.stock">
+                <td><input type="checkbox" :name="item.id" @change="oncheck($event,'clothing')"></td>
+                <td><input type="number" :disabled="!item.checked"
+                           :value="item.number" :name="item.id"
+                           @change="oninput($event,'clothing')"></td>
+                <td>{{item.name}}</td>
+                <td>{{toCoins(item.cost)}}</td>
+                <td>{{item.weight}}</td>
+            </tr>
+        </table>
     </div>
     <div id="food_drink_and_lodging" class="shop">
         <h2>Food, Drink, And Lodging</h2>
+        <table class="odd">
+            <tr><th colspan="2">Количество</th><th>Предмет</th><th>Цена</th><th>Вес</th></tr>
+            <tr v-for="item in shops.food_lodging.stock">
+                <td><input type="checkbox" :name="item.id" @change="oncheck($event,'food_lodging')"></td>
+                <td><input type="number" :disabled="!item.checked"
+                           :value="item.number" :name="item.id"
+                           @change="oninput($event,'food_lodging')"></td>
+                <td>{{item.name}}</td>
+                <td>{{toCoins(item.cost)}}</td>
+                <td>{{item.weight}}</td>
+            </tr>
+        </table>
     </div>
     <div id="mounts_and_related_gear" class="shop">
         <h2>Mounts And Related Gear</h2>
@@ -201,12 +247,33 @@
     </div>
     <div id="transport" class="shop">
         <h2>Transport</h2>
+        <table class="odd">
+            <tr><th colspan="2">Количество</th><th>Предмет</th><th>Цена</th><th>Вес</th></tr>
+            <tr v-for="item in shops.transport.stock">
+                <td><input type="checkbox" :name="item.id" @change="oncheck($event,'transport')"></td>
+                <td><input type="number" :disabled="!item.checked"
+                           :value="item.number" :name="item.id"
+                           @change="oninput($event,'transport')"></td>
+                <td>{{item.name}}</td>
+                <td>{{toCoins(item.cost)}}</td>
+                <td>{{item.weight}}</td>
+            </tr>
+        </table>
     </div>
     <div id="spellcasting_and_services" class="shop">
         <h2>Spellcasting And Services</h2>
-    </div>
-    <div id="special_materials" class="shop">
-        <h2>Special Materials</h2>
+        <table class="odd">
+            <tr><th colspan="2">Количество</th><th>Предмет</th><th>Цена</th><th>Вес</th></tr>
+            <tr v-for="item in shops.spellcasting_services.stock">
+                <td><input type="checkbox" :name="item.id" @change="oncheck($event,'spellcasting_services')"></td>
+                <td><input type="number" :disabled="!item.checked"
+                           :value="item.number" :name="item.id"
+                           @change="oninput($event,'spellcasting_services')"></td>
+                <td>{{item.name}}</td>
+                <td>{{toCoins(item.cost)}}</td>
+                <td>{{item.weight}}</td>
+            </tr>
+        </table>
     </div>
 </div>
 
@@ -221,12 +288,16 @@ var shop = new Vue({
     el: '#shop',
     data: {
         shops: {
-            gear: {stock: _gear, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
             weapon: {stock: _weapon, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
-            mounts: {stock:_mounts, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            armor: {stock:_armor, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            gear: {stock: _gear, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
             substances_items: {stock:_substances_items, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
             tools_kits: {stock:_tools_kits, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
-            armor: {stock:_armor, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []}
+            clothing: {stock: _clothing, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            food_lodging: {stock: _food_lodging, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            mounts: {stock:_mounts, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            transport: {stock: _transport, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            spellcasting_services: {stock: _spellcasting_services, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []}
         },
         weapons: {
             types: ['Простое','Воинское','Экзотическое'],

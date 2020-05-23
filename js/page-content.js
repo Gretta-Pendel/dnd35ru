@@ -1,6 +1,6 @@
 // Main Contents
 let page_path = location.pathname.split("/");
-let page_root = location.protocol.indexOf('http') > -1 ? page_path[1] : 'dnd3.5';
+let page_root = location.protocol.indexOf('http') > -1 ? page_path[1] : 'dnd35ru';
 let page_rootLevel = page_path.indexOf(page_root);
 let page_pathlen = page_path.length - 1;
 let page_delta = page_pathlen - page_rootLevel;

@@ -1488,8 +1488,6 @@ let _substances_items = [
     {name:'Мешок, алхимическая липучка',en:'Tanglefoot bag',id:'tanglefoot_bag',cost:50,weight:4},
     {name:'Камень-громовик',en:'Thunderstone',id:'thunderstone',cost:30,weight:1},
     {name:'Трутовица',en:'Tindertwig',id:'tindertwig',cost:1,weight:0},
-    // <tr><td></td><td> зм</td><td>1 фн</td></tr>
-    // <tr><td></td><td>1 зм</td><td>––</td></tr>
 
 ];
 
@@ -1519,47 +1517,38 @@ let _tools_kits = [
 
 //Одежда
 let _clothing = [
-    //<tr><th colspan="3">Одежда</th></tr>
-    // <tr><th>Предмет</th><th>Цена</th><th>Вес</th></tr>
-    // <tr><td>Одежда ремесленника</td><td>1 зм</td><td>4 фн</td></tr>
-    // <tr><td>Облачение клирика</td><td>5 зм</td><td>6 фн</td></tr>
-    // <tr><td>Зимняя одежда</td><td>8 зм</td><td>7 фн</td></tr>
-    // <tr><td>Костюм придворного</td><td>30 зм</td><td>6 фн</td></tr>
-    // <tr><td>Костюм артиста</td><td>3 зм</td><td>4 фн</td></tr>
-    // <tr><td>Одежда исследователя</td><td>10 зм</td><td>8 фн</td></tr>
-    // <tr><td>Одеяние монаха</td><td>5 зм</td><td>2 фн</td></tr>
-    // <tr><td>Костюм дворянина</td><td>75 зм</td><td>10 фн</td></tr>
-    // <tr><td>Лохмотья крестьянина</td><td>1 см</td><td>2 фн</td></tr>
-    // <tr><td>Королевское одеяние</td><td>200 зм</td><td>15 фн</td></tr>
-    // <tr><td>Одежда ученого</td><td>5 зм</td><td>6 фн</td></tr>
-    // <tr><td>Одежда путешественника</td><td>1 зм</td><td>5 фн</td></tr>
+    {name:'Одежда ремесленника',en:'Artisan’s outfit',id:'artisans_outfit',cost:1,weight:4},
+    {name:'Облачение клирика',en:'Cleric’s vestments',id:'clerics_vestments',cost:5,weight:6},
+    {name:'Зимняя одежда',en:'Cold weather outfit',id:'cold_weather_outfit',cost:8,weight:7},
+    {name:'Костюм придворного',en:'Courtier’s outfit',id:'courtiers_outfit',cost:30,weight:6},
+    {name:'Костюм артиста',en:'Entertainer’s outfit',id:'entertainers_outfit',cost:3,weight:4},
+    {name:'Одежда исследователя',en:'Explorer’s outfit',id:'explorers_outfit',cost:10,weight:8},
+    {name:'Одеяние монаха',en:'Monk’s outfit',id:'monks_outfit',cost:5,weight:2},
+    {name:'Костюм дворянина',en:'Noble’s outfit',id:'nobles_outfit',cost:75,weight:10},
+    {name:'Лохмотья крестьянина',en:'Peasant’s outfit',id:'peasants_outfit',cost:0.01,weight:2},
+    {name:'Королевское одеяние',en:'Royal outfit',id:'royal_outfit',cost:200,weight:15},
+    {name:'Одежда ученого',en:'Scholar’s outfit',id:'scholars_outfit',cost:5,weight:6},
+    {name:'Одежда путешественника',en:'Traveler’s outfit',id:'travelers_outfit',cost:1,weight:5},
 ];
 
 //Еда, Питье и Постой
 let _food_lodging = [
-    //<tr><th colspan="3">Еда, Питье и Постой</th></tr>
-    // <tr><th>Предмет</th><th>Цена</th><th>Вес</th></tr>
-    // <tr><td colspan="3">Эль</td></tr>
-    // <tr><td>галлон</td><td>2 см</td><td>8 фн</td></tr>
-    // <tr><td>кружка</td><td>4 мм</td><td>1 фн</td></tr>
-    // <tr><td>Банкет (на одну персону)</td><td>10 зм</td><td>––</td></tr>
-    // <tr><td>Хлеб, один кусок</td><td>2 мм</td><td>0,5 фн</td></tr>
-    // <tr><td>Сыр, один ломоть</td><td>1 см</td><td>0,5 фн</td></tr>
-    // <tr><td colspan="3">Гостиница (за один день)</td></tr>
-    // <tr><td>хорошая</td><td>2 зм</td><td>––</td></tr>
-    // <tr><td>средняя</td><td>5 см</td><td>––</td></tr>
-    // <tr><td>паршивая</td><td>2 см</td><td>––</td></tr>
-    // <tr><td colspan="3">Пропитание (за один день)</td></tr>
-    // <tr><td>хорошее</td><td>5 см</td><td>––</td></tr>
-    // <tr><td>среднее</td><td>3 см</td><td>––</td></tr>
-    // <tr><td>паршивое</td><td>1 см</td><td>––</td></tr>
-    // <tr><td>Мясо, один ломоть</td><td>3 см</td><td>0,5 фн</td></tr>
-    // <tr><td colspan="3">Вино</td></tr>
-    // <tr><td>среднее (бокал)</td><td>2 см</td><td>6 фн</td></tr>
-    // <tr><td>превосходное (бутылка)</td><td>10 зм</td><td>1,5 фн</td></tr>
+    {name:'Эль, галлон',en:'Ale Gallon',id:'ale_gallon',cost:0.02,weight:8},
+    {name:'Эль, кружка',en:'Ale Mug',id:'ale_mug',cost:0.0004,weight:1},
+    {name:'Банкет (на одну персону)',en:'Banquet (per person)',id:'banquet_per_person',cost:10,weight:0},
+    {name:'Хлеб, один кусок',en:'Bread, per loaf',id:'bread_per_loaf',cost:0.0002,weight:0.5},
+    {name:'Сыр, один ломоть',en:'Cheese, hunk of',id:'cheese_hunk_of',cost:0.01,weight:0.5},
+    {name:'Гостиница (за один день) хорошая',en:'Inn stay (per day) Good',id:'inn_stay_per_day_good',cost:2,weight:0},
+    {name:'Гостиница (за один день) средняя',en:'Inn stay (per day) Common',id:'inn_stay_per_day_common',cost:0.05,weight:0},
+    {name:'Гостиница (за один день) паршивая',en:'Inn stay (per day) Poor',id:'inn_stay_per_day_poor',cost:0.02,weight:0},
+    {name:'Пропитание (за один день) хорошее',en:'Meals (per day) Good',id:'meals_per_day_good',cost:0.05,weight:0},
+    {name:'Пропитание (за один день) среднее',en:'Meals (per day) Common',id:'meals_per_day_common',cost:0.03,weight:0},
+    {name:'Пропитание (за один день) паршивое',en:'Meals (per day) Poor',id:'meals_per_day_poor',cost:0.01,weight:0},
+    {name:'Мясо, один ломоть',en:'Meat, chunk of',id:'meat_chunk_of',cost:0.03,weight:0.5},
+    {name:'Вино среднее (кувшин)',en:'Wine Common (pitcher)',id:'wine_common_pitcher',cost:0.02,weight:6},
+    {name:'Вино превосходное (бутылка)',en:'Wine Fine (bottle)',id:'wine_fine_bottle',cost:10,weight:1.5}
 ];
 
-//------------- мм=cp=0.0001  см=sp=0.01 -------------- //
 //Верховые Животные и Снаряжение
 let _mounts = [
     {name:'Доспех для Среднего существа (цена *2, вес *1)',en:'Barding Medium creature',id:'barding_medium_creature',cost:0,weight:0},
@@ -1587,43 +1576,37 @@ let _mounts = [
 
 //Транспорт
 let _transport = [
-    //<tr><th colspan="3">Транспорт</th></tr>
-    // <tr><th>Предмет</th><th>Цена</th><th>Вес</th></tr>
-    // <tr><td>Карета</td><td>100 зм</td><td>600 фн</td></tr>
-    // <tr><td>Двуколка</td><td>15 зм</td><td>200 фн</td></tr>
-    // <tr><td>Галлера</td><td>30,000 зм</td><td>––</td></tr>
-    // <tr><td>Корабль, плоскодонный</td><td>3,000 зм</td><td>––</td></tr>
-    // <tr><td>Корабль, длинный</td><td>10,000 зм</td><td>––</td></tr>
-    // <tr><td>Шлюпка</td><td>50 зм</td><td>100 фн</td></tr>
-    // <tr><td>весло</td><td>2 зм</td><td>10 фн</td></tr>
-    // <tr><td>Парусник</td><td>10,000 зм</td><td>––</td></tr>
-    // <tr><td>Сани</td><td>20 зм</td><td>300 фн</td></tr>
-    // <tr><td>Телега</td><td>35 зм</td><td>400 фн</td></tr>
-    // <tr><td>Корабль, военный</td><td>25,000 зм</td><td>––</td></tr>
+    {name:'Карета',en:'Carriage',id:'carriage',cost:100,weight:600},
+    {name:'Двуколка',en:'Cart',id:'cart',cost:15,weight:200},
+    {name:'Галлера',en:'Galley',id:'galley',cost:30000,weight:0},
+    {name:'Корабль, плоскодонный',en:'Keelboat',id:'keelboat',cost:3000,weight:0},
+    {name:'Корабль, длинный',en:'Longship',id:'longship',cost:10000,weight:0},
+    {name:'Шлюпка',en:'Rowboat',id:'rowboat',cost:50,weight:100},
+    {name:'весло',en:'Oar',id:'oar',cost:2,weight:10},
+    {name:'Парусник',en:'Sailing ship',id:'sailing_ship',cost:10000,weight:0},
+    {name:'Сани',en:'Sled',id:'sled',cost:20,weight:300},
+    {name:'Телега',en:'Wagon',id:'wagon',cost:35,weight:400},
+    {name:'Корабль, военный',en:'Warship',id:'warship',cost:25000,weight:0}
 ];
+//------------- мм=cp=0.0001  см=sp=0.01 -------------- //
 
 //Заклинания и Услуги
 let _spellcasting_services = [
-    //<tr><th colspan="2">Заклинания и Услуги</th></tr>
-    // <tr><th>Предмет</th><th>Цена</th></tr>
-    // <tr><td>Извозчик</td><td>3 мм за 1 милю</td></tr>
-    // <tr><td>Наемник, тренированый</td><td>3 см в день</td></tr>
-    // <tr><td>Наемник, нетренированый</td><td>1 см в день</td></tr>
-    // <tr><td>Посыльный</td><td>2 мм за 1 милю</td></tr>
-    // <tr><td>Проход (по дороге или через ворота)</td><td>1 мм</td></tr>
-    // <tr><td>Место на корабле</td><td>1 см за 1 милю</td></tr>
-    // <tr><td>Заклинание, 0-й уровень</td><td>Уровень заклинателя х 5 зм **</td></tr>
-    // <tr><td>Заклинание, 1-й уровень</td><td>Уровень заклинателя х 10 зм **</td></tr>
-    // <tr><td>Заклинание, 2-й уровень</td><td>Уровень заклинателя х 20 зм **</td></tr>
-    // <tr><td>Заклинание, 4-й уровень</td><td>Уровень заклинателя х 40 зм **</td></tr>
-    // <tr><td>Заклинание, 5-й уровень</td><td>Уровень заклинателя х 50 зм **</td></tr>
-    // <tr><td>Заклинание, 6-й уровень</td><td>Уровень заклинателя х 60 зм **</td></tr>
-    // <tr><td>Заклинание, 7-й уровень</td><td>Уровень заклинателя х 70 зм **</td></tr>
-    // <tr><td>Заклинание, 8-й уровень</td><td>Уровень заклинателя х 80 зм **</td></tr>
-    // <tr><td>Заклинание, 9-й уровень</td><td>Уровень заклинателя х 90 зм **</td></tr>
-    //<p><small>** См. описание заклинания. Если итоговая стои-мость превысила 3,000 зм, то такое заклинание не-возможно приобрести, только по разрешению ДМа</small></p>
+    {name:'Извозчик (за милю)',en:'Coach cab (per mile)',id:'coach_cab_per_mile',cost:0.0003,weight:0},
+    {name:'Наемник, тренированый (в день)',en:'Hireling, trained (per day)',id:'hireling_trained_per_day_',cost:0.03,weight:0},
+    {name:'Наемник, нетренированый (в день)',en:'Hireling, untrained (per day)',id:'hireling_untrained_per_day',cost:0.01,weight:0},
+    {name:'Посыльный (за милю)',en:'Messenger (per mile)',id:'messenger_per_mile',cost:0.0002,weight:0},
+    {name:'Проход (по дороге или через ворота)',en:'Road or gate toll',id:'road_or_gate_toll',cost:0.0001,weight:0},
+    {name:'Место на корабле(за милю)',en:'Ship’s passage (per mile)',id:'ships_passage_per_mile',cost:0.01,weight:0},
+    {name:'Заклинание, 0-й уровень (x Уровень заклинателя)',en:'Spell, 0-level (x Caster level)',id:'spell_0_level_x_caster_level)',cost:5,weight:0},
+    {name:'Заклинание, 1-й уровень (x Уровень заклинателя)',en:'Spell, 1-level (x Caster level)',id:'spell_1_level_x_caster_level',cost:10,weight:0},
+    {name:'Заклинание, 2-й уровень (x Уровень заклинателя)',en:'Spell, 2-level (x Caster level)',id:'spell_2_level_x_caster_level',cost:20,weight:0},
+    {name:'Заклинание, 3-й уровень (x Уровень заклинателя)',en:'Spell, 3-level (x Caster level)',id:'spell_3_level_x_caster_level',cost:30,weight:0},
+    {name:'Заклинание, 4-й уровень (x Уровень заклинателя)',en:'Spell, 4-level (x Caster level)',id:'spell_4_level_x_caster_level',cost:40,weight:0},
+    {name:'Заклинание, 5-й уровень (x Уровень заклинателя)',en:'Spell, 5-level (x Caster level)',id:'spell_5_level_x_caster_level',cost:50,weight:0},
+    {name:'Заклинание, 6-й уровень (x Уровень заклинателя)',en:'Spell, 6-level (x Caster level)',id:'spell_6_level_x_caster_level',cost:60,weight:0},
+    {name:'Заклинание, 7-й уровень (x Уровень заклинателя)',en:'Spell, 7-level (x Caster level)',id:'spell_7_level_x_caster_level',cost:70,weight:0},
+    {name:'Заклинание, 8-й уровень (x Уровень заклинателя)',en:'Spell, 8-level (x Caster level)',id:'spell_8_level_x_caster_level',cost:80,weight:0},
+    {name:'Заклинание, 9-й уровень (x Уровень заклинателя)',en:'Spell, 9-level (x Caster level)',id:'spell_9_level_x_caster_level',cost:90,weight:0},
 ];
-
-//Специальные Смеси и Предметы
-let _materials = [];
 
