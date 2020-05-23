@@ -8875,7 +8875,7 @@ _spells = [
 },
 ];
 
-module.exports = _spells
+//module.exports = _spells
 
 /*{
     id: "charm-monster-mass",
