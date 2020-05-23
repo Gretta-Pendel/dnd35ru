@@ -49,4 +49,3 @@ if (headers.length > 1) {
 }
 
 let s = window.location.hash;
-console.log(s)

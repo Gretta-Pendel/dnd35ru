@@ -1,4 +1,4 @@
-let _dmgcontents = [
+const _dmgcontents = [
 	{
 		title: "1: Ведение игры",
 		entitle:"1: Running the Game",
@@ -759,7 +759,7 @@ let _dmgcontents = [
         ]
     },
 ];
-var _contents = [
+const _contents = [
     {
         title: "Введение",
         entitle: "Introduction",
@@ -1016,7 +1016,7 @@ var _contents = [
         ]
     },
     {
-        title: "10: Магия",
+        title: "10: Магия 🔥",
         entitle:"10: Magic",
         level2: [
             { title: "Магия. Вступление",

@@ -26,6 +26,7 @@ div {margin:0;padding:0;}
 
 #contents {padding:0 1em}
 #contents p {margin:0}
+#contents p a {font-size:var(--h4-font-size)}
 #contents > div {display: flex;	flex-direction: column;	flex-wrap: wrap;height: 700px;}
 #contents > div > div {padding: 1em; width: 20%;}
 #contents > div > div > div > div {padding: 0 0 0 1em;}
