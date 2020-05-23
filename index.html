@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DnD 3.5 PHB</title>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="js/vendor/vue.js"></script>
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+    <script src="js/contents.js"></script>
+</head>
+<body class="home">
+
+<div id="contents">
+    <div>
+        <div v-for="lvl1 in contents">
+            <h4>
+                <!-- <a v-if="lvl1.url" :href="'page.html?' + lvl1.url">{{lvl1.title}}</a>-->
+                <a v-if="lvl1.url" :href="'contents/' + lvl1.url">{{lvl1.title}}</a>
+                <template v-else>{{lvl1.title}}</template>
+            </h4>
+            <div v-for="lvl2 in lvl1.level2">
+                <p>
+                    <a v-if="lvl2.url" :href="'contents/' + lvl2.url">{{lvl2.title}}</a>
+                    <template v-else>{{lvl2.title}}</template>
+                </p>
+               <div v-for="lvl3 in lvl2.level3">
+                    <a v-if="lvl3.url" :href="'contents/' + lvl3.url">{{lvl3.title}}</a>
+                    <template v-else>{{lvl3.title}}</template>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div v-for="lvl1 in dmgcontents">
+            <h4>
+                <!-- <a v-if="lvl1.url" :href="'page.html?' + lvl1.url">{{lvl1.title}}</a>-->
+                <a v-if="lvl1.url" :href="'contents/' + lvl1.url">{{lvl1.title}}</a>
+                <template v-else>{{lvl1.title}}</template>
+            </h4>
+            <div v-for="lvl2 in lvl1.level2">
+                <p>
+                    <a v-if="lvl2.url" :href="'contents/' + lvl2.url">{{lvl2.title}}</a>
+                    <template v-else>{{lvl2.title}}</template>
+                </p>
+                <div v-for="lvl3 in lvl2.level3">
+                    <a v-if="lvl3.url" :href="'contents/' + lvl3.url">{{lvl3.title}}</a>
+                    <template v-else>{{lvl3.title}}</template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var contents = new Vue({
+        el: '#contents',
+        data: {
+            contents: _contents,
+            dmgcontents: _dmgcontents,
+        }
+    });
+</script>
+<script src="js/contents.js"></script>
+<script src="js/page-content.js"></script>
+<script src="js/frames-height.js"></script>
+
+</body>
+</html>
