@@ -79,6 +79,7 @@
             <span class="sp"></span>{{sp}}
             <span class="cp"></span>{{cp}}
         <p><b>Вес:</b> {{weight}}</p>
+        <p><input type="button" @click="createSumPDF()" value="⇩ PDF (all in one)"/></p>
     </div>
 
     <div class="shop-contents">
@@ -288,16 +289,16 @@ var shop = new Vue({
     el: '#shop',
     data: {
         shops: {
-            weapon: {stock: _weapon, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
-            armor: {stock:_armor, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
-            gear: {stock: _gear, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
-            substances_items: {stock:_substances_items, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
-            tools_kits: {stock:_tools_kits, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
-            clothing: {stock: _clothing, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
-            food_lodging: {stock: _food_lodging, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
-            mounts: {stock:_mounts, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
-            transport: {stock: _transport, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
-            spellcasting_services: {stock: _spellcasting_services, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []}
+            weapon: {name:'Оружие', stock: _weapon, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            armor: {name:'Броня', stock:_armor, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            gear: {name:'Снаряжение Путешественника', stock: _gear, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            substances_items: {name:'Специальные Смеси и Предметы', stock:_substances_items, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            tools_kits: {name:'Инструменты и Наборы для Умений', stock:_tools_kits, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            clothing: {name:'Одежда', stock: _clothing, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            food_lodging: {name:'Еда, Питье и Постой', stock: _food_lodging, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            mounts: {name:'Верховые Животные и Снаряжение', stock:_mounts, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            transport: {name:'Транспорт', stock: _transport, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            spellcasting_services: {name:'Заклинания и Услуги', stock: _spellcasting_services, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []}
         },
         weapons: {
             types: ['Простое','Воинское','Экзотическое'],
@@ -349,7 +350,15 @@ var shop = new Vue({
         createPDF: function (shop) {
             console.log(this.shops[shop].cart);
             renderTables(shop, this.shops[shop].cart, this.shops[shop].gp, this.shops[shop].sp, this.shops[shop].cp, this.shops[shop].weight);
-
+        },
+        createSumPDF:function () {
+            var obj = {};
+            for(let s in this.shops) {
+                if(this.shops[s].cart.length) {
+                    obj[s] = this.shops[s];
+                }
+            }
+            renderSumTables(obj);
         }
     }
 });
@@ -365,6 +374,71 @@ function toCoins(value) {
 }
 
 let w = ['*', 100, '*', 100 ];
+
+function renderSumTables(obj){
+    bodies = [];
+    let gp = 0, sp = 0, cp = 0, weight = 0, sum = 0;
+    for (let o in obj) {
+        bodies.push([{text: obj[o].name, colSpan: 4, style: 'subheader'}, {}, {}, {}]);
+        bodies.push([{text: 'Предмет'},{text: 'Количество'},{text: 'Стоимость'},{text: 'Вес'}]);
+        let cart = obj[o].cart;
+        for(let i in cart) {
+            let itemCost = cart[i].cost * cart[i].number;
+            let itemWeight = cart[i].weight * cart[i].number;
+            bodies.push([{text:cart[i].name},{text:cart[i].number},{text:toCoins(itemCost)},{text:itemWeight}])
+        }
+        bodies.push([
+            {text:'Итого:', style: 'total'},{},
+            {text: obj[o].gp + ' зм, ' + obj[o].sp + ' см, ' + obj[o].cp + ' мм', italics: true, bold: true},
+            {text: obj[o].weight + ' (фунты)', italics: true, bold: true}
+            ]);
+        sum += obj[o].gp + obj[o].sp / 100 + obj[o].cp / 10000;
+        weight += obj[o].weight;
+    }
+    gp = Math.floor(sum);
+    sp = Math.floor((sum - gp).toFixed(4) * 100);
+    cp = Math.floor((((sum - gp).toFixed(4) * 100) - sp).toFixed(4) * 100);
+    bodies.push([{text: 'Сумма', style: 'header', colSpan: 2},{},{text: gp + ' зм, ' + sp + ' см, ' + cp + ' мм', style: 'header'},{text: weight + ' (фунты)', style: 'header'}]);
+
+    let docDefinition = {
+        //pageOrientation: 'landscape',
+        pageMargins: [ 20, 120, 20, 20 ],
+        content: [
+            {
+                table: {
+                    widths: w,
+                    headerRows: 1,
+                    body: bodies
+                },
+                layout: 'shoppingListLayout'
+            },
+            {text: '', fontSize: 1, pageBreak: 'before'},
+        ],
+        styles: {
+            header: {
+                fontSize: 14,
+                bold: true,
+                alignment: 'center',
+                margin: [0, 5, 0, 0]
+            },
+            subheader: {
+                fontSize: 14,
+                bold: true,
+                alignment: 'center',
+                border: [false, true, false, true],
+                margin: [0, 5, 0, 0]
+            },
+            total: {
+                italics: true,
+                decoration: 'underline',
+                bold: true
+            }
+        },
+    };
+    var now = new Date();
+    pdfMake.createPdf(docDefinition).download("shopping-list-all.pdf");
+    console.log(new Date() - now);
+}
 
 function renderTables(name,obj,gp,sp,cp,weight) {
     bodies = [];
@@ -399,13 +473,13 @@ function renderTables(name,obj,gp,sp,cp,weight) {
 pdfMake.tableLayouts = {
     shoppingListLayout: {
         hLineWidth: function (i, node) {
-            return (i === node.table.headerRows || i === node.table.body.length - 1 || i === node.table.body.length) ? 1 : 0.5;
+            return (i === node.table.body.length - 1 || i === node.table.body.length) ? 1 : 0.5;
         },
         vLineWidth: function (i, node) {
             return 0;
         },
         hLineColor: function (i, node) {
-            return i === 1 || i === node.table.body.length - 1 || i === node.table.body.length ? 'black' : '#999';
+            return i === node.table.body.length - 1 || i === node.table.body.length ? 'black' : '#999';
         },
         vLineColor: function (i) {
             return '#999';
@@ -423,7 +497,7 @@ pdfMake.tableLayouts = {
             return 2;
         },
         fillColor: function (rowIndex, node, columnIndex) {
-            return (rowIndex % 2 === 0) ? '#eee' : null;
+            return rowIndex === node.table.body.length - 1 ? '#ccc' : (rowIndex % 2 === 0) ? '#eee' : null;
         }
     }
 };
