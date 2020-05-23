@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Домены клирика < Глава 11: Заклинания</title>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="../js/vendor/vue.js"></script>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="../js/vendor/vue.js"></script>
+    <link href="../css/index.css" type="text/css" rel="stylesheet">
+    <script src="../js/dictionaries.js"></script>
+    <script src="../js/magic.js"></script>
+    <script src="../js/spells.js"></script>
+</head>
+<body class="frame">
+
+<h1>Домены клирика</h1>
+
+<div id="class-spell-list">
+    <div v-for="k,domen in domens">
+        <div><h2>{{getDomen(domen)}}</h2>
+            <div><b>Божества:</b> {{domens[domen][1]}}</div>
+            <div><b>Дарованные Силы:</b> {{domens[domen][2]}}</div>
+            <div v-for="level in levels">
+                <span>{{level}}</span>
+                <span v-for="spell in list(level,domen)">
+                    <b><a :href="'../spell.html?' + spell.id" target="_blank">{{spell.name}} ({{spell.en}})</a></b> {{spell.text}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var spell_list = new Vue({
+        el: '#class-spell-list',
+        data: {
+            spells: _spells,
+            levels: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            schools: schools,
+            domens: domens,
+            cls: 'clr'
+        },
+        methods: {
+            list: function (lvl,dom) {
+                let self = this;
+                console.log(dom)
+                return _spells.filter(function (spell) {
+                    let f_dom = dom === '' || spell.hasOwnProperty('domen') && dom in spell.domen && spell.domen[dom] === lvl;
+                    return f_dom
+                })
+            },
+            getDomen: function(str) { return domens[str] ? domens[str][0] : null}
+        }
+    })
+</script>
+
+<script src="../js/contents.js"></script>
+<script src="../js/page-content.js"></script>
+<script src="../js/main-content.js"></script>
+<script src="../js/frames-height.js"></script>
+</body>
+</html>

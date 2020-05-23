@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заклинания колдуна и мага < Глава 11: Заклинания</title>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="../js/vendor/vue.js"></script>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="../js/vendor/vue.js"></script>
+    <link href="../css/index.css" type="text/css" rel="stylesheet">
+    <script src="../js/dictionaries.js"></script>
+    <script src="../js/magic.js"></script>
+    <script src="../js/spells.js"></script>
+</head>
+<body class="frame">
+
+<h1>Заклинания колдуна и мага</h1>
+
+<div id="class-spell-list">
+    <div v-for="level in levels">
+        <h2 :id="'level' + level">Заклинания {{level}} уровня</h2>
+        <div v-for="k,school in schools">
+            <div><h4>{{getSchool(school)}}</h4>
+                <div v-for="spell in list(level,school)">
+                    <div><b><a :href="'../spell.html?' + spell.id" target="_blank">{{spell.name}} ({{spell.en}})</a></b> {{spell.text}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var spell_list = new Vue({
+        el: '#class-spell-list',
+        data: {
+            spells: _spells,
+            levels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+            schools: schools,
+            domens: domens,
+            cls: 'wiz',
+            dom: ''
+        },
+        methods: {
+            list: function (lvl,sch) {
+                let self = this;
+                return _spells.filter(function (spell) {
+                    let f_cls = self.cls === '' || spell.hasOwnProperty('level') && self.cls in spell.level && spell.level[self.cls] === lvl;
+                    let f_sch = sch === '' || spell.hasOwnProperty('school') && spell.school === sch;
+                    return f_cls && f_sch
+                })
+            },
+            getSchool: function(str) { return schools[str] ? schools[str][1] : null}
+        }
+    })
+</script>
+
+<script src="../js/contents.js"></script>
+<script src="../js/page-content.js"></script>
+<script src="../js/main-content.js"></script>
+<script src="../js/frames-height.js"></script>
+</body>
+</html>

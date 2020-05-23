@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Умения < Таблицы</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link href="./css/index.css" type="text/css" rel="stylesheet">
+    <script src="./js/skills.js"></script>
+</head>
+<body>
+
+
+<h3>Таблица 4-2: Умения</h3>
+<table class="odd td1-left" id="skills_table">
+    <tr>
+        <th>Умение</th>
+        <th>Врв</th><th>Брд</th><th>Клр</th><th>Дрд</th><th>Вои</th><th>Мон</th><th>Пал</th>
+        <th>Слп</th><th>Плт</th><th>Клд</th><th>Маг</th><th>Без Тренир.</th><th>Хар-ка</th>
+    </tr>
+    <tr v-for="skill in skills">
+        <td><a :href="'skills/' + skill.id + '.html'">{{skill.name}}</a></td>
+        <template v-for="cls in classes">
+            <td :class="skill.classes.includes(cls) ? 'class-skill' : ''">{{skill.classes.includes(cls) ? "&#10004;" : "•"}}</td>
+        </template>
+        <td>{{skill.untrained ? "Да" : "Нет"}}</td>
+        <td>{{skill.ability}}<sup v-if="skill.ac_penalty > 0">{{skill.ac_penalty}}</sup></td>
+    </tr>
+</table>
+
+<script>
+    var contents = new Vue({
+        el: '#skills_table',
+        data: {
+            skills: _skills,
+            classes: ["bbn", "brd", "clr", "drd", "ftr", "mnk", "pal", "rgr", "rog", "sor", "wiz"]
+        }
+    });
+</script>
+<p><small>+ Классовое умение.</small></p>
+<p><small>• Внеклассовое умение.</small></p>
+<p><small><sup>1</sup> Должен учитываться штраф за доспех, если надет.</small></p>
+<p><small><sup>2</sup> Должен учитываться двойной штраф за доспех, если надет.</small></p>
+<p><small><b>Без Тренировки: <i>Да:</i></b> Это умение можно использовать без тренировки. То есть, персонаж может иметь ранг
+    0 в этом умении, но, тем не менее, он может проверять это умение как обычно. <b><i>Нет:</i></b> Вы не можете
+    использовать это умение до тех пор, пока у вас в нем нет по крайней мере 1 ранга.</small></p>
+</body>
+</html>

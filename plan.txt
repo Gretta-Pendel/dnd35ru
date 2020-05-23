@@ -1,0 +1,24 @@
+Races (7)
+Classes (11)
+Skills (45)
+Feats (108)
+Equipment (nn)
+Spell Lists (7)
+Spells (nnn)
+
+Tables
+Index
+Glossary
+
+Pages (Intro Races,
+        Intro Classes,
+        ...
+        Combat,
+        Intro Skills,
+        ...
+        )
+
+Tooltip:
+    Name : from Index
+    Description : from Glossary
+    Link : to Page?name=

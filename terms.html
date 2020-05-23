@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DnD 3.5 PHB</title>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="js/vendor/vue.js"></script>
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+    <script src="js/index.js"></script>
+</head>
+<body class="page">
+
+<div id="index">
+    <div style="padding: 100px 0 20px">
+        <button @click="toRus">sort RUS</button>
+        <button @click="toEng">sort ENG</button>
+    </div>
+    <div v-for="i in index">
+        <div><a :href="i.link">{{i.name}} ({{i.en}})</a></div>
+    </div>
+</div>
+<script>
+    var contents = new Vue({
+        el: '#index',
+        data: {
+            index: _index
+        },
+        beforeMount: function () {
+            this.index = this.sorting(this.index,"name");
+        },
+        methods: {
+            sorting: function (obj, prop) {
+                return obj.length > 1 && prop !=="" ? obj.sort(function (a, b) {
+                    if (a[prop] > b[prop]) {
+                        return 1;
+                    }
+                    if (a[prop] < b[prop]) {
+                        return -1;
+                    }
+                    return 0;
+                }) : obj;
+            },
+            toRus: function () {
+                this.index = this.sorting(this.index,"name");
+            },
+            toEng: function () {
+                this.index = this.sorting(this.index,"en");
+            }
+        }
+    });
+</script>
+<script src="js/contents.js"></script>
+<script src="js/page-content.js"></script>
+<script src="js/frames-height.js"></script>
+
+</body>
+</html>

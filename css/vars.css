@@ -1,0 +1,31 @@
+:root {
+    --font-family:"Segoe UI", Verdana, sans-serif;
+    --body-bg-color: #fefefe;
+    --font-color: #2e3234;
+    --light-bg-color: #e7e7e7;
+    --mid-bg-color: #dedede;
+    --light-border-color: #cdcdcd;
+    --dark-border-color: #666;
+    --note-bg-color: #cceecc;
+    --error-font-color: #ee3366;
+    --link-color: #003399; /*#5500EE;*/ /*#00188B;*/
+    --link-visited-color: #003399; /*#5500EE;*/ /*#551A8B;*/ /*#660099;*/
+    --focus-border-color: #e3e7e3; /*#E3E3E3*/
+
+    --border-width:1px;
+
+    --top-menu-height: 30px;
+    --top-filter-height: 30px;
+    --left-menu-width: 175px;
+    ---top-menu-height: -30px;
+    --contents-width: 220px;
+
+    --body-font-size:1em;
+    --h1-font-size:1.5em;
+    --h2-font-size:1.3em;
+    --h3-font-size:1.1em;
+    --h4-font-size:1em;
+    --smaller-font-size:.85em;
+    --small-font-size:.75em;
+
+}

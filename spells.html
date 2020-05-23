@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все заклинания < DnD 3.5 PHB</title>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="js/vendor/vue.js"></script>
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+    <script src="js/dictionaries.js"></script>
+    <script src="js/magic.js"></script>
+    <script src="js/spells.js"></script>
+</head>
+<body class="page filters">
+<div id="all-spells">
+
+    <div id="spellFilter">
+        <select id="filterByClass" v-model="cls" @change="filterSpells();addParamToUrl('class',cls)">
+            <option value="">Классы</option>
+            <option v-for="(v,k) in classes" :value="k">{{v[1]}}</option>
+        </select>
+        <select v-show="cls != '' || dom != ''" id="filterByLevel" v-model="lvl" @change="filterSpells();addParamToUrl('level',lvl)">
+            <option value="">Уровни</option>
+            <option v-for="level in levels" :value="level">{{level}}</option>
+        </select>
+        <select id="filterBySchool" v-model="sch" @change="filterSpells();addParamToUrl('school',sch)">
+            <option value="">Школы</option>
+            <option v-for="(v,k) in schools" :value="k">{{v[1]}} ({{k}})</option>
+        </select>
+        <select id="filterByDomen" v-model="dom" @change="filterSpells();addParamToUrl('domen',dom)">
+            <option value="">Домены</option>
+            <option v-for="(v,k) in domens" :value="k">{{v[0]}} ({{k}})</option>
+        </select>
+        <div class="values">
+            <b v-if="cls !== ''">- {{classes[cls][1]}} -</b>
+            <b v-if="lvl !== ''">- {{lvl}} -</b>
+            <b v-if="sch !== ''">- {{schools[sch][1]}} -</b>
+            <b v-if="dom !== ''">- {{domens[dom][0]}} -</b>
+        </div>
+    </div>
+
+    <div id="mainContents">
+        <div v-for="spell in filteredSpells">
+            <p><a :href="'#' + spell.id.replace(/-/g,'_')" :title="spell.en">{{spell.en}}</a></p>
+        </div>
+    </div>
+
+    <div id="spells">
+        <article v-for="spell in filteredSpells" :id="spell.id.replace(/-/g,'_')">
+    <!--        href="../../table.html?table-2-1"-->
+    <!--        <h3><a :href="'spells/' + spell.id + '.html'">{{spell.name}} ({{spell.en}})</a></h3>-->
+           <h3><a :href="'spell.html?' + spell.id" target="_blank">{{spell.name}} ({{spell.en}})</a></h3>
+           <div><b>Школа:</b> {{getSchool(spell.school)}}
+                <template v-if="spell.subschool">({{getSubschool(spell.subschool)}})</template>
+                <template v-if="spell.descriptor">
+                    <template v-if="Array.isArray(spell.descriptor)">[<template v-for="(item, index) in spell.descriptor">{{getDescriptor(item)}}{{index < spell.descriptor.length - 1 ? ', ' : ''}}</template>]</template>
+                    <template v-else="">[{{getDescriptor(spell.descriptor)}}]</template>
+                </template>
+            </div>
+            <div v-if="spell.level"><b>Уровень:</b> <template v-for="(value, name) in spell.level">{{classes[name][1]}} {{value}}, </template></div>
+            <div v-if="spell.domen"><b>Домен:</b> <template v-for="(value, name) in spell.domen">{{domens[name][0]}} {{value}}, </template></div>
+            <div v-if="spell.components"><b>Компоненты:</b> {{spell.components}}</div>
+            <div v-if="spell.casting_time"><b>Время Сотворения:</b> {{spell.casting_time}}</div>
+            <div v-if="spell.range"><b>Расстояние:</b> {{spell.range}}</div>
+            <div v-if="spell.area"><b>Область воздействия:</b> {{spell.area}}</div>
+            <div v-if="spell.target_or_area"><b>Цель или область:</b> {{spell.target_or_area}}</div>
+            <div v-if="spell.target_or_effect"><b>Цель или эффект:</b> {{spell.target_or_effect}}</div>
+            <div v-if="spell.target_or_effect_or_area"><b>Цель или эффект или область:</b> {{spell.target_or_effect_or_area}}</div>
+            <div v-if="spell.effect"><b>Эффект:</b> {{spell.effect}}</div>
+            <div v-if="spell.target"><b>Цель:</b> {{spell.target}}</div>
+            <div v-if="spell.duration"><b>Длительность:</b> {{spell.duration}}</div>
+            <div v-if="spell.savings"><b>Спасброски:</b> {{spell.savings}}</div>
+            <div v-if="spell.resistance"><b>Сопротивляемость:</b> {{spell.resistance}}</div>
+            <div v-if="spell.text"><b>Кратко:</b> {{spell.text}}</div>
+        </article>
+    </div>
+</div>
+<script>
+var filters = new Vue({
+    el: '#all-spells',
+    data: {
+        spells: _spells,
+        classes: magic_classes,
+        levels: [0,1,2,3,4,5,6,7,8,9],
+        schools: schools,
+        domens: domens,
+        cls:'', lvl:'',sch:'', dom:'',
+        filteredSpells: []
+    },
+    beforeMount: function(){
+        this.getParamFromUrl();
+        this.filterSpells();
+        const params = new URL(location.href).searchParams;
+    },
+    methods: {
+        filterSpells: function() {
+            let self = this;
+            let f_spells = [];
+            let _cls = this.cls, _lvl = this.lvl.toString(), _sch = this.sch, _dom = this.dom;
+            if(_cls === "" && _lvl === "" && _sch === "" && _dom === "")
+                f_spells = _spells;
+            else {
+                f_spells = _spells.filter(function(spell) {
+                    let f_cls = _cls === "" || _lvl === "" && spell.hasOwnProperty('level') && _cls in spell.level
+                        || spell.hasOwnProperty('level') && _cls in spell.level && spell.level[_cls].toString() === _lvl;
+                    let f_sch = _sch === "" || _sch === spell.school;
+                    let f_dom = _dom === "" || _lvl === "" && spell.hasOwnProperty('domen') && _dom in spell.domen
+                        || spell.hasOwnProperty('domen') && _dom in spell.domen && spell.domen[_dom].toString() === _lvl;
+                    return f_sch && f_cls && f_dom
+                });
+            }
+            self.filteredSpells = f_spells;
+        },
+        getSchool: function(str) { return schools[str] ? schools[str][1] : null},
+        getSubschool: function (str) { return subschools[str] || null},
+        getDescriptor: function (str) { return descriptors[str] || null},
+        getClass: function (str) { return classes[str] || null},
+
+        addParamToUrl: function (param, value) {
+            const params = new URL(location.href).searchParams;
+            params.set(param,value);
+            var newUrl = window.location.protocol + "//" + window.location.host
+                + window.location.pathname + '?' + params.toString();
+            window.history.pushState({path: newUrl}, '', newUrl);
+
+        },
+        getParamFromUrl: function () {
+            const params = new URL(location.href).searchParams;
+            if(params.toString().length > 0) {
+                this.cls = params.has('class') ? params.get('class') : '';
+                this.lvl = params.has('level') ? params.get('level') : '';
+                this.sch = params.has('school') ? params.get('school') : '';
+                this.dom = params.has('domen') ? params.get('domen') : '';
+            }
+        }
+    }
+});
+// for (s in _spells) {
+//     console.log(_spells[s]);
+// }
+
+</script>
+<script src="js/frames-height.js"></script>
+<script src="js/page-content.js"></script>
+
+</body>
+</html>

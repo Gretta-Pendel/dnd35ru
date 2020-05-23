@@ -1,0 +1,19 @@
+{
+  "name": "dnd35-app",
+  "version": "1.0.0",
+  "description": "desc",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/Gretta-Pendel/dnd35",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^7.0.0"
+  },
+  "dependencies": {
+    "node-static": "^0.7.11"
+  }
+}

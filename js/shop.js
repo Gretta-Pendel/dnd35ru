@@ -1,0 +1,1629 @@
+/* {
+    name:'',en:'',id:'',cost:'', // gp
+    type: '', // Простое оружие/martial/exotic
+    subtype: '', // Безоружная атака/Легкое/Одноручное/Двуручное/Дистанционное
+    dmgS: '',
+    dmgM: '',
+    crit: '',
+    range: '', // ft
+    weight: '', //lb
+    dmgType: '' // slashing/piercing/bludgeoning
+}, */
+// {name:'',en:'',id:'',cost:,weight:},
+
+//Оружие
+let _weapon = [
+    {
+        name:'Рукавица латная',
+        en: 'Gauntlet',
+        id: 'gauntlet',
+        cost: 2,
+        type: 'Простое',
+        subtype: 'Безоружная атака',
+        dmgS: '1d2',
+        dmgM: '1d3',
+        crit: 'x2',
+        range: 0,
+        weight: 1,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Безоружный удар (3)',
+        en: 'Unarmed strike',
+        id: 'unarmed_strike',
+        cost: 0,
+        type: 'Простое',
+        subtype: 'Безоружная атака',
+        dmgS: '1d2',
+        dmgM: '1d3',
+        crit: 'x2',
+        range: 0,
+        weight: 0,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Кинжал',
+        en: 'Dagger',
+        id: 'dagger',
+        cost: 2,
+        type: 'Простое',
+        subtype: 'Легкое',
+        dmgS: '1d3',
+        dmgM: '1d4',
+        crit: '19-20/x2',
+        range: 10,
+        weight: 1,
+        dmgType: 'Колющее или Режущее'
+    },
+    {
+        name:'Катар',
+        en: 'Dagger, punching',
+        id: 'dagger_punching',
+        cost: 2,
+        type: 'Простое',
+        subtype: 'Легкое',
+        dmgS: '1d3',
+        dmgM: '1d4',
+        crit: 'x3',
+        range: 0,
+        weight: 1,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Рукавица с шипами',
+        en: 'Gauntlet, spiked',
+        id: 'gauntlet_spiked',
+        cost: 5,
+        type: 'Простое',
+        subtype: 'Легкое',
+        dmgS: '1d3',
+        dmgM: '1d4',
+        crit: 'x2',
+        range: 0,
+        weight: 1,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Булава, легкая',
+        en: 'Mace, light',
+        id: 'mace_light',
+        cost: 5,
+        type: 'Простое',
+        subtype: 'Легкое',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: 'x2',
+        range: 0,
+        weight: 4,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Серп',
+        en: 'Sickle',
+        id: 'sickle',
+        cost: 6,
+        type: 'Простое',
+        subtype: 'Легкое',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: 'x2',
+        range: 0,
+        weight: '2',
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Дубинка',
+        en: 'Club',
+        id: 'club',
+        cost: 0,
+        type: 'Простое',
+        subtype: 'Одноручное',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: 'x2',
+        range: 0,
+        weight: 10,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Булава, тяжелая',
+        en: 'Mace, heavy',
+        id: 'mace_heavy',
+        cost: 12,
+        type: 'Простое',
+        subtype: 'Одноручное',
+        dmgS: '1d6',
+        dmgM: '1d8',
+        crit: 'x2',
+        range: 0,
+        weight: 8,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Моргенштерн',
+        en: 'Morningstar',
+        id: 'morningstar',
+        cost: 8,
+        type: 'Простое',
+        subtype: 'Одноручное',
+        dmgS: '1d6',
+        dmgM: '1d8',
+        crit: 'x2',
+        range: 0,
+        weight: 6,
+        dmgType: 'Ударное и Колющее'
+    },
+    {
+        name:'Копье, короткое',
+        en: 'Shortspear',
+        id: 'shortspear',
+        cost: 1,
+        type: 'Простое',
+        subtype: 'Одноручное',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: 'x2',
+        range: 20,
+        weight: 3,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Копье, длинное (4)',
+        en: 'Longspear',
+        id: 'longspear',
+        cost: 5,
+        type: 'Простое',
+        subtype: 'Двуручное',
+        dmgS: '1d6',
+        dmgM: '1d8',
+        crit: 'x3',
+        range: 0,
+        weight: 9,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Посох (5)',
+        en: 'Quarterstaff',
+        id: 'quarterstaff',
+        cost: 0,
+        type: 'Простое',
+        subtype: 'Двуручное',
+        dmgS: '1d4/1d4',
+        dmgM: '1d6/1d6',
+        crit: 'x2',
+        range: 0,
+        weight: 4,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Копье',
+        en: 'Spear',
+        id: 'spear',
+        cost: 2,
+        type: 'Простое',
+        subtype: 'Двуручное',
+        dmgS: '1d6',
+        dmgM: '1d8',
+        crit: 'x3',
+        range: 20,
+        weight: 6,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Арбалет, тяжелый',
+        en: 'Crossbow, heavy',
+        id: 'crossbow_heavy',
+        cost: 50,
+        type: 'Простое',
+        subtype: 'Дистанционное',
+        dmgS: '1d8',
+        dmgM: '1d10',
+        crit: '19-20/x2',
+        range: 120,
+        weight: 8,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Болты для Арбалета x10',
+        en: 'Bolts, crossbow',
+        id: 'bolts_crossbow',
+        cost: 1,
+        type: 'Простое',
+        subtype: 'Амуниция',
+        dmgS: '',
+        dmgM: '',
+        crit: '',
+        range: 0,
+        weight: 1,
+        dmgType: ''
+    },
+    {
+        name:'Арбалет, легкий',
+        en: 'Crossbow, light',
+        id: 'crossbow_light',
+        cost: 35,
+        type: 'Простое',
+        subtype: 'Дистанционное',
+        dmgS: '1d6',
+        dmgM: '1d8',
+        crit: '19-20/x2',
+        range: 80,
+        weight: 4,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Дротик',
+        en: 'Dart',
+        id: 'dart',
+        cost: 0.05,
+        type: 'Простое',
+        subtype: 'Дистанционное',
+        dmgS: '1d3',
+        dmgM: '1d4',
+        crit: 'x2',
+        range: 20,
+        weight: 0.5,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Сулица',
+        en: 'Javelin',
+        id: 'javelin',
+        cost: 1,
+        type: 'Простое',
+        subtype: 'Дистанционное',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: 'x2',
+        range: 30,
+        weight: 2,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Праща',
+        en: 'Sling',
+        id: 'sling',
+        cost: 0,
+        type: 'Простое',
+        subtype: 'Дистанционное',
+        dmgS: '1d3',
+        dmgM: '1d4',
+        crit: 'x2',
+        range: 50,
+        weight: 0,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Пули для Пращи x10',
+        en: 'Bullets, sling',
+        id: 'bullets_sling',
+        cost: 0.01,
+        type: 'Простое',
+        subtype: 'Амуниция',
+        dmgS: '',
+        dmgM: '',
+        crit: '',
+        range: 0,
+        weight: 5,
+        dmgType: ''
+    },
+    {
+        name:'Топорик, метательный',
+        en: 'Axe, throwing',
+        id: 'axe_throwing',
+        cost: 8,
+        type: 'Воинское',
+        subtype: 'Легкое',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: 'x2',
+        range: 10,
+        weight: 2,
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Молот, легкий',
+        en: 'Hammer, light',
+        id: 'hammer_light',
+        cost: 1,
+        type: 'Воинское',
+        subtype: 'Легкое',
+        dmgS: '1d3',
+        dmgM: '1d4',
+        crit: 'x2',
+        range: 20,
+        weight: 2,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Топор, ручной',
+        en: 'Handaxe',
+        id: 'handaxe',
+        cost: 6,
+        type: 'Воинское',
+        subtype: 'Легкое',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: 'x3',
+        range: 0,
+        weight: 3,
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Кукри',
+        en: 'Kukri',
+        id: 'kukri',
+        cost: 8,
+        type: 'Воинское',
+        subtype: 'Легкое',
+        dmgS: '1d3',
+        dmgM: '1d4',
+        crit: '18-20/x2',
+        range: 0,
+        weight: 2,
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Чекан, легкий',
+        en: 'Pick, light',
+        id: 'pick_light',
+        cost: 4,
+        type: 'Воинское',
+        subtype: 'Легкое',
+        dmgS: '1d3',
+        dmgM: '1d4',
+        crit: 'x4',
+        range: 0,
+        weight: 3,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Гирька (3)',
+        en: 'Sap',
+        id: 'sap',
+        cost: 1,
+        type: 'Воинское',
+        subtype: 'Легкое',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: 'x2',
+        range: 0,
+        weight: 2,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Щит, легкий (см. Броню)',
+        en: 'Shield, light',
+        id: 'shield_light',
+        cost: 0,
+        type: 'Воинское',
+        subtype: 'Легкое',
+        dmgS: '1d2',
+        dmgM: '1d3',
+        crit: 'x2',
+        range: 0,
+        weight: 0,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Доспех с шипами (см. Броню)',
+        en: 'Spiked armor',
+        id: 'spiked_armor',
+        cost: 0,
+        type: 'Воинское',
+        subtype: 'Легкое',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: 'x2',
+        range: 0,
+        weight: 0,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Щит с шипами, легкий (см. Броню)',
+        en: 'Spiked shield, light',
+        id: 'spiked_shield_light',
+        cost: 0,
+        type: 'Воинское',
+        subtype: 'Легкое',
+        dmgS: '1d3',
+        dmgM: '1d4',
+        crit: 'x2',
+        range: 0,
+        weight: 0,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Меч, короткий',
+        en: 'Sword, short',
+        id: 'sword_short',
+        cost: 10,
+        type: 'Воинское',
+        subtype: 'Легкое',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: '19-20/x2',
+        range: 0,
+        weight: 2,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Секира',
+        en: 'Battleaxe',
+        id: 'battleaxe',
+        cost: 10,
+        type: 'Воинское',
+        subtype: 'Одноручное',
+        dmgS: '1d6',
+        dmgM: '1d8',
+        crit: 'x3',
+        range: 0,
+        weight: 6,
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Цеп',
+        en: 'Flail',
+        id: 'flail',
+        cost: 8,
+        type: 'Воинское',
+        subtype: 'Одноручное',
+        dmgS: '1d6',
+        dmgM: '1d8',
+        crit: 'x2',
+        range: 0,
+        weight: 5,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Меч, длинный',
+        en: 'Longsword',
+        id: 'longsword',
+        cost: 15,
+        type: 'Воинское',
+        subtype: 'Одноручное',
+        dmgS: '1d6',
+        dmgM: '1d8',
+        crit: '19-20/x2',
+        range: 0,
+        weight: 4,
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Чекан, тяжелый',
+        en: 'Pick, heavy',
+        id: 'pick_heavy',
+        cost: 8,
+        type: 'Воинское',
+        subtype: 'Одноручное',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: 'x4',
+        range: 0,
+        weight: 6,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Рапира',
+        en: 'Rapier',
+        id: 'rapier',
+        cost: 20,
+        type: 'Воинское',
+        subtype: 'Одноручное',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: '18-20/x2',
+        range: 0,
+        weight: 2,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Сабля',
+        en: 'Scimitar',
+        id: 'scimitar',
+        cost: 15,
+        type: 'Воинское',
+        subtype: 'Одноручное',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: '18-20/x2',
+        range: 0,
+        weight: 4,
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Щит, тяжелый',
+        en: 'Shield, heavy',
+        id: 'shield_heavy',
+        cost: 0,
+        type: 'Воинское',
+        subtype: 'Одноручное',
+        dmgS: '1d3',
+        dmgM: '1d4',
+        crit: 'x2',
+        range: 0,
+        weight: 0,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Щит с шипами, тяжелый',
+        en: 'Spiked shield, heavy',
+        id: 'spiked_shield_heavy',
+        cost: 0,
+        type: 'Воинское',
+        subtype: 'Одноручное',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: 'x2',
+        range: 0,
+        weight: 0,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Трезубец',
+        en: 'Trident',
+        id: 'trident',
+        cost: 15,
+        type: 'Воинское',
+        subtype: 'Одноручное',
+        dmgS: '1d6',
+        dmgM: '1d8',
+        crit: 'x2',
+        range: 10,
+        weight: 4,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Молот, боевой',
+        en: 'Warhammer',
+        id: 'warhammer',
+        cost: 12,
+        type: 'Воинское',
+        subtype: 'Одноручное',
+        dmgS: '1d6',
+        dmgM: '1d8',
+        crit: 'x3',
+        range: 0,
+        weight: 5,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Фальшион',
+        en: 'Falchion',
+        id: 'falchion',
+        cost: 75,
+        type: 'Воинское',
+        subtype: 'Двуручное',
+        dmgS: '1d6',
+        dmgM: '2d4',
+        crit: '18-20/x2',
+        range: 0,
+        weight: 8,
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Глефа (4)',
+        en: 'Glaive',
+        id: 'glaive',
+        cost: 8,
+        type: 'Воинское',
+        subtype: 'Двуручное',
+        dmgS: '1d8',
+        dmgM: '1d10',
+        crit: 'x3',
+        range: 0,
+        weight: 10,
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Секира',
+        en: 'Greataxe',
+        id: 'greataxe',
+        cost: 20,
+        type: 'Воинское',
+        subtype: 'Двуручное',
+        dmgS: '1d10',
+        dmgM: '1d12',
+        crit: 'x3',
+        range: 0,
+        weight: 12,
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Палица',
+        en: 'Greatclub',
+        id: 'greatclub',
+        cost: 5,
+        type: 'Воинское',
+        subtype: 'Двуручное',
+        dmgS: '1d8',
+        dmgM: '1d10',
+        crit: 'x2',
+        range: 0,
+        weight: 8,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Цеп, тяжелый',
+        en: 'Flail, heavy',
+        id: 'flail_heavy',
+        cost: 15,
+        type: 'Воинское',
+        subtype: 'Двуручное',
+        dmgS: '1d8',
+        dmgM: '1d10',
+        crit: '19-20/x2',
+        range: 0,
+        weight: 10,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Меч, двуручный',
+        en: 'Greatsword',
+        id: 'greatsword',
+        cost: 50,
+        type: 'Воинское',
+        subtype: 'Двуручное',
+        dmgS: '1d10',
+        dmgM: '2d6',
+        crit: '19-20/x2',
+        range: 0,
+        weight: 8,
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Гизарма (4)',
+        en: 'Guisarme',
+        id: 'guisarme',
+        cost: 9,
+        type: 'Воинское',
+        subtype: 'Двуручное',
+        dmgS: '1d6',
+        dmgM: '2d4',
+        crit: 'x3',
+        range: 0,
+        weight: 12,
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Алебарда',
+        en: 'Halberd',
+        id: 'halberd',
+        cost: 10,
+        type: 'Воинское',
+        subtype: 'Двуручное',
+        dmgS: '1d8',
+        dmgM: '1d10',
+        crit: 'x3',
+        range: 0,
+        weight: 12,
+        dmgType: 'Колющее или Ударное'
+    },
+    {
+        name:'Копье, рыцарское (4)',
+        en: 'Lance',
+        id: 'lance',
+        cost: 10,
+        type: 'Воинское',
+        subtype: 'Двуручное',
+        dmgS: '1d6',
+        dmgM: '1d8',
+        crit: 'x3',
+        range: 0,
+        weight: 10,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Рансор (4)',
+        en: 'Ranseur',
+        id: 'ranseur',
+        cost: 10,
+        type: 'Воинское',
+        subtype: 'Двуручное',
+        dmgS: '1d6',
+        dmgM: '2d4',
+        crit: 'x3',
+        range: 0,
+        weight: 12,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Коса, боевая',
+        en: 'Scythe',
+        id: 'scythe',
+        cost: 18,
+        type: 'Воинское',
+        subtype: 'Двуручное',
+        dmgS: '1d6',
+        dmgM: '2d4',
+        crit: 'x4',
+        range: 0,
+        weight: 10,
+        dmgType: 'Колющее или Рубящее'
+    },
+    {
+        name:'Лук, длинный',
+        en: 'Longbow',
+        id: 'longbow',
+        cost: 75,
+        type: 'Воинское',
+        subtype: 'Дистанционное',
+        dmgS: '1d6',
+        dmgM: '1d8',
+        crit: 'x3',
+        range: 100,
+        weight: 3,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Стрелы для Лука x20',
+        en: 'Arrows',
+        id: 'arrows_longbow',
+        cost: 1,
+        type: 'Воинское',
+        subtype: 'Амуниция',
+        dmgS: '',
+        dmgM: '',
+        crit: '',
+        range: 0,
+        weight: 3,
+        dmgType: ''
+    },
+    {
+        name:'Лук, длинный, составной',
+        en: 'Longbow, composite',
+        id: 'longbow_composite',
+        cost: 100,
+        type: 'Воинское',
+        subtype: 'Дистанционное',
+        dmgS: '1d6',
+        dmgM: '1d8',
+        crit: 'x3',
+        range: 110,
+        weight: 3,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Лук, короткий',
+        en: 'Shortbow',
+        id: 'shortbow',
+        cost: 30,
+        type: 'Воинское',
+        subtype: 'Дистанционное',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: 'x3',
+        range: 60,
+        weight: 2,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Лук, короткий составной',
+        en: 'Shortbow, composite',
+        id: 'shortbow_composite',
+        cost: 75,
+        type: 'Воинское',
+        subtype: 'Дистанционное',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: 'x3',
+        range: 70,
+        weight: 2,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Кама',
+        en: 'Kama',
+        id: 'kama',
+        cost: 2,
+        type: 'Экзотическое',
+        subtype: 'Легкое',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: 'x2',
+        range: 0,
+        weight: 2,
+        dmgType: 'Рубящее'
+        },
+    {
+        name:'Нунчаки',
+        en: 'Nunchaku',
+        id: 'nunchaku',
+        cost: 2,
+        type: 'Экзотическое',
+        subtype: 'Легкое',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: 'x2',
+        range: 0,
+        weight: 2,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Сай',
+        en: 'Sai',
+        id: 'sai',
+        cost: 1,
+        type: 'Экзотическое',
+        subtype: 'Легкое',
+        dmgS: '1d3',
+        dmgM: '1d4',
+        crit: 'x2',
+        range: 10,
+        weight: 1,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Сиангам',
+        en: 'Siangham',
+        id: 'siangham',
+        cost: 3,
+        type: 'Экзотическое',
+        subtype: 'Легкое',
+        dmgS: '1d4',
+        dmgM: '1d6',
+        crit: 'x2',
+        range: 0,
+        weight: 1,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Меч, полуторный',
+        en: 'Sword, bastard',
+        id: 'sword_bastard',
+        cost: 35,
+        type: 'Экзотическое',
+        subtype: 'Одноручное',
+        dmgS: '1d8',
+        dmgM: '1d10',
+        crit: '19-20/x2',
+        range: 0,
+        weight: 6,
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Топор, боевой дварфийский',
+        en: 'Waraxe, dwarven',
+        id: 'waraxe_dwarven',
+        cost: 30,
+        type: 'Экзотическое',
+        subtype: 'Одноручное',
+        dmgS: '1d8',
+        dmgM: '1d10',
+        crit: 'x3',
+        range: 0,
+        weight: 8,
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Плеть, боевая (3,4)',
+        en: 'Whip',
+        id: 'whip',
+        cost: 1,
+        type: 'Экзотическое',
+        subtype: 'Одноручное',
+        dmgS: '1d2',
+        dmgM: '1d3',
+        crit: 'x2',
+        range: 0,
+        weight: 2,
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Топор, двойной орочий (5)',
+        en: 'Axe, orc double',
+        id: 'axe_orc_double',
+        cost: 60,
+        type: 'Экзотическое',
+        subtype: 'Двуручное',
+        dmgS: '1d6/1d6',
+        dmgM: '1d8/1d8',
+        crit: 'x3',
+        range: 0,
+        weight: 15,
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Цепь с шипами (4)',
+        en: 'Chain, spiked',
+        id: 'chain_spiked',
+        cost: 25,
+        type: 'Экзотическое',
+        subtype: 'Двуручное',
+        dmgS: '1d6',
+        dmgM: '2d4',
+        crit: 'x2',
+        range: 0,
+        weight: 10,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Цеп, двойной (5)',
+        en: 'Flail, dire',
+        id: 'flail_dire',
+        cost: 90,
+        type: 'Экзотическое',
+        subtype: 'Двуручное',
+        dmgS: '1d6/1d6',
+        dmgM: '1d8/1d8',
+        crit: 'x2',
+        range: 0,
+        weight: 10,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Клевец, гномий (3)',
+        en: 'Hammer, gnome hooked',
+        id: 'hammer_gnome_hooked',
+        cost: 20,
+        type: 'Экзотическое',
+        subtype: 'Двуручное',
+        dmgS: '1d6/1d4',
+        dmgM: '1d8/1d6',
+        crit: 'x3/x4',
+        range: 0,
+        weight: 6,
+        dmgType: 'Ударное и Колющее'
+    },
+    {
+        name:'Меч, двухлезвийный (5)',
+        en: 'Sword, two-bladed',
+        id: 'sword_two_bladed',
+        cost: 100,
+        type: 'Экзотическое',
+        subtype: 'Двуручное',
+        dmgS: '1d6/1d6',
+        dmgM: '1d8/1d8',
+        crit: '19-20/x2',
+        range: 0,
+        weight: 10,
+        dmgType: 'Рубящее'
+    },
+    {
+        name:'Ургрош, дварфийский (5)',
+        en: 'Urgrosh, dwarven',
+        id: 'urgrosh_dwarven',
+        cost: 50,
+        type: 'Экзотическое',
+        subtype: 'Двуручное',
+        dmgS: '1d6/1d4',
+        dmgM: '1d8/1d6',
+        crit: 'x3',
+        range: 0,
+        weight: 12,
+        dmgType: 'Рубящее или Колющее'
+    },
+    {
+        name:'Боло (3)',
+        en: 'Bolas',
+        id: 'bolas',
+        cost: 5,
+        type: 'Экзотическое',
+        subtype: 'Дистанционное',
+        dmgS: '1d3',
+        dmgM: '1d4',
+        crit: 'x2',
+        range: 10,
+        weight: 2,
+        dmgType: 'Ударное'
+    },
+    {
+        name:'Арбалет, ручной',
+        en: 'Crossbow, hand',
+        id: 'crossbow_hand',
+        cost: 100,
+        type: 'Экзотическое',
+        subtype: 'Дистанционное',
+        dmgS: '1d3',
+        dmgM: '1d4',
+        crit: '19-20/x2',
+        range: 30,
+        weight: 2,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Болты для Арбалета ручного x10',
+        en: 'Bolts',
+        id: 'bolts',
+        cost: 1,
+        type: 'Экзотическое',
+        subtype: 'Дистанционное',
+        dmgS: '',
+        dmgM: '',
+        crit: '',
+        range: 0,
+        weight: 1,
+        dmgType: ''
+    },
+    {
+        name:'Арбалет, многозарядный тяжелый',
+        en: 'Crossbow, repeating heavy',
+        id: 'crossbow_repeating_heavy',
+        cost: 400,
+        type: 'Экзотическое',
+        subtype: 'Дистанционное',
+        dmgS: '1d8',
+        dmgM: '1d10',
+        crit: '19-20/x2',
+        range: 120,
+        weight: 12,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Болты для Арбалета многозарядного x5',
+        en: 'Bolts',
+        id: 'bolts',
+        cost: 1,
+        type: 'Экзотическое',
+        subtype: 'Дистанционное',
+        dmgS: '',
+        dmgM: '',
+        crit: '',
+        range: 0,
+        weight: 1,
+        dmgType: ''
+    },
+    {
+        name:'Арбалет, многозарядный легкий',
+        en: 'Crossbow, repeating light',
+        id: 'crossbow_repeating_light',
+        cost: 250,
+        type: 'Экзотическое',
+        subtype: 'Дистанционное',
+        dmgS: '1d6',
+        dmgM: '1d8',
+        crit: '19-20/x2',
+        range: 80,
+        weight: 6,
+        dmgType: 'Колющее'
+    },
+    {
+        name:'Сеть',
+        en: 'Net',
+        id: 'net',
+        cost: 20,
+        type: 'Экзотическое',
+        subtype: 'Дистанционное',
+        dmgS: '',
+        dmgM: '',
+        crit: '',
+        range: 10,
+        weight: 6,
+        dmgType: ''
+    },
+    {
+        name:'Сюрикен x5',
+        en: 'Shuriken',
+        id: 'shuriken',
+        cost: 1,
+        type: 'Экзотическое',
+        subtype: 'Дистанционное',
+        dmgS: '1',
+        dmgM: '1d2',
+        crit: 'x2',
+        range: 10,
+        weight: 0.5,
+        dmgType: 'Колющее'
+    }
+];
+
+//Броня
+let _armor = [
+    {
+        name:'Стеганый',
+        en: 'Padded',
+        id: 'padded',
+        cost: 5,
+        type: 'Легкий',
+        armor_shield_bonus: '1',
+        max_dex_bonus: '8',
+        armor_check_penalty: '0',
+        arcane_spell_failure_chance: '5%',
+        speed30:30,
+        speed20:20,
+        weight: 10
+    },
+    {
+        name:'Кожаный',
+        en: 'Leather',
+        id: 'leather',
+        cost:10,
+        type: 'Легкий',
+        armor_shield_bonus: '2',
+        max_dex_bonus: '6',
+        armor_check_penalty: '0',
+        arcane_spell_failure_chance: '10%',
+        speed30:30,
+        speed20:20,
+        weight:15
+    },
+    {
+        name:'Клепаный кожаный',
+        en: 'Studded leather',
+        id: 'studded_leather',
+        cost:25,
+        type: 'Легкий',
+        armor_shield_bonus: '3',
+        max_dex_bonus: '5',
+        armor_check_penalty: '-1',
+        arcane_spell_failure_chance: '15%',
+        speed30:30,
+        speed20:20,
+        weight:20
+    },
+    {
+        name:'Кольчужная рубаха',
+        en: 'Chain shirt',
+        id: 'chain_shirt',
+        cost:100,
+        type: 'Легкий',
+        armor_shield_bonus: '4',
+        max_dex_bonus: '4',
+        armor_check_penalty: '-2',
+        arcane_spell_failure_chance: '20%',
+        speed30:30,
+        speed20:20,
+        weight:25
+    },
+    {
+        name:'Шкуры',
+        en: 'Hide',
+        id: 'hide',
+        cost:15,
+        type: 'Средний',
+        armor_shield_bonus: '3',
+        max_dex_bonus: '4',
+        armor_check_penalty: '-3',
+        arcane_spell_failure_chance: '20%',
+        speed30:20,
+        speed20:15,
+        weight:25
+    },
+    {
+        name:'Чешуйчатый',
+        en: 'Scale mail',
+        id: 'scale_mail',
+        cost:50,
+        type: 'Средний',
+        armor_shield_bonus: '4',
+        max_dex_bonus: '3',
+        armor_check_penalty: '-4',
+        arcane_spell_failure_chance: '25%',
+        speed30:20,
+        speed20:15,
+        weight:30
+    },
+    {
+        name:'Кольчуга',
+        en: 'Chainmail',
+        id: 'chainmail',
+        cost:150,
+        type: 'Средний',
+        armor_shield_bonus: '5',
+        max_dex_bonus: '2',
+        armor_check_penalty: '-5',
+        arcane_spell_failure_chance: '30%',
+        speed30:20,
+        speed20:15,
+        weight:40
+    },
+    {
+        name:'Панцирь',
+        en: 'Breastplate',
+        id: 'breastplate',
+        cost:200,
+        type: 'Средний',
+        armor_shield_bonus: '5',
+        max_dex_bonus: '3',
+        armor_check_penalty: '-4',
+        arcane_spell_failure_chance: '25%',
+        speed30:20,
+        speed20:15,
+        weight:30
+    },
+    {
+        name:'Бригантина',
+        en: 'Splint mail',
+        id: 'splint_mail',
+        cost:200,
+        type: 'Тяжелый',
+        armor_shield_bonus: '6',
+        max_dex_bonus: '0',
+        armor_check_penalty: '-7',
+        arcane_spell_failure_chance: '40%',
+        speed30:20,
+        speed20:15,
+        weight:45
+    },
+    {
+        name:'Пластинчатый',
+        en: 'Banded mail',
+        id: 'banded_mail',
+        cost:250,
+        type: 'Тяжелый',
+        armor_shield_bonus: '6',
+        max_dex_bonus: '1',
+        armor_check_penalty: '-6',
+        arcane_spell_failure_chance: '35%',
+        speed30:20,
+        speed20:15,
+        weight:35
+    },
+    {
+        name:'Полу-латы',
+        en: 'Half-plate',
+        id: 'half_plate',
+        cost:600,
+        type: 'Тяжелый',
+        armor_shield_bonus: '7',
+        max_dex_bonus: '0',
+        armor_check_penalty: '-7',
+        arcane_spell_failure_chance: '40%',
+        speed30:20,
+        speed20:15,
+        weight:50
+    },
+    {
+        name:'Полные латы',
+        en: 'Full plate',
+        id: 'full_plate',
+        cost:1500,
+        type: 'Тяжелый',
+        armor_shield_bonus: '8',
+        max_dex_bonus: '1',
+        armor_check_penalty: '-6',
+        arcane_spell_failure_chance: '35%',
+        speed30:20,
+        speed20:15,
+        weight:50
+    },
+    {
+        name:'Баклер',
+        en: 'Buckler',
+        id: 'buckler',
+        cost:15,
+        type: 'Щит',
+        armor_shield_bonus: '1',
+        max_dex_bonus: '-',
+        armor_check_penalty: '-1',
+        arcane_spell_failure_chance: '5%',
+        speed30:0,
+        speed20:0,
+        weight:5
+    },
+    {
+        name:'Щит, легкий дерев.',
+        en: 'Shield, light wooden',
+        id: 'shield_light_wooden',
+        cost:3,
+        type: 'Щит',
+        armor_shield_bonus: '1',
+        max_dex_bonus: '-',
+        armor_check_penalty: '-1',
+        arcane_spell_failure_chance: '5%',
+        speed30:0,
+        speed20:0,
+        weight:5
+    },
+    {
+        name:'Щит, легкий стал.',
+        en: 'Shield, light steel',
+        id: 'shield_light_steel',
+        cost:9,
+        type: 'Щит',
+        armor_shield_bonus: '1',
+        max_dex_bonus: '-',
+        armor_check_penalty: '-1',
+        arcane_spell_failure_chance: '5%',
+        speed30:0,
+        speed20:0,
+        weight:6
+    },
+    {
+        name:'Щит, тяжелый дерев.',
+        en: 'Shield, heavy wooden',
+        id: 'shield_heavy_wooden',
+        cost:7,
+        type: 'Щит',
+        armor_shield_bonus: '2',
+        max_dex_bonus: '-',
+        armor_check_penalty: '-2',
+        arcane_spell_failure_chance: '15%',
+        speed30:0,
+        speed20:0,
+        weight:10
+    },
+    {
+        name:'Щит, тяжелый стал.',
+        en: 'Shield, heavy steel',
+        id: 'shield_heavy_steel',
+        cost:20,
+        type: 'Щит',
+        armor_shield_bonus: '2',
+        max_dex_bonus: '-',
+        armor_check_penalty: '-2',
+        arcane_spell_failure_chance: '15%',
+        speed30:0,
+        speed20:0,
+        weight:15
+    },
+    {
+        name:'Щит, башенный',
+        en: 'Shield, tower',
+        id: 'shield_tower',
+        cost:30,
+        type: 'Щит',
+        armor_shield_bonus: '4',
+        max_dex_bonus: '2',
+        armor_check_penalty: '-10',
+        arcane_spell_failure_chance: '50%',
+        speed30:0,
+        speed20:0,
+        weight:45
+    },
+    {
+        name:'Шипы доспешные +50 зм +10 фн',
+        en: 'Armor spikes',
+        id: 'armor_spikes',
+        cost: 0,
+        type: 'Дополнения',
+        armor_shield_bonus: '',
+        max_dex_bonus: '',
+        armor_check_penalty: '',
+        arcane_spell_failure_chance: '%',
+        speed30:'',
+        speed20:'',
+        weight:0
+    },
+    {
+        name:'Шипы щитовые +10 зм +5 фн',
+        en: 'Shield spikes',
+        id: 'shield_spikes',
+        cost: 0,
+        type: 'Дополнения',
+        armor_shield_bonus: '',
+        max_dex_bonus: '',
+        armor_check_penalty: '',
+        arcane_spell_failure_chance: '%',
+        speed30:'',
+        speed20:'',
+        weight:0
+    },
+    {
+        name:'Рукавица латная закр. +5 фн',
+        en: 'Gauntlet, locked',
+        id: 'gauntlet_locked',
+        cost: 8,
+        type: 'Дополнения',
+        armor_shield_bonus: '',
+        max_dex_bonus: '',
+        armor_check_penalty: 'спец.',
+        arcane_spell_failure_chance: 'Нельзя с соматическим компонентом.',
+        speed30:'',
+        speed20:'',
+        weight:0
+    }
+];
+
+//Снаряжение Путешественника
+let _gear = [
+    {name:'Рюкзак (пустой) *',en:'Backpack (empty)',id:'backpack',cost:2,weight:2},
+    {name:'Бочка (пустая)',en:'Barrel (empty)',id:'barrel',cost:2,weight:30},
+    {name:'Корзина (пустая)',en:'Basket (empty)',id:'basket',cost:0.04,weight:1},
+    {name:'Постель *',en:'Bedroll',id:'bedroll',cost:0.01,weight:5},
+    {name:'Колокол',en:'Bell',id:'bell',cost:1,weight:0},
+    {name:'Одеяло зимнее *',en:'Blanket, winter',id:'blanket_winter',cost:0.05,weight:3},
+    {name:'Блок и снасть',en:'Block and tackle',id:'block_tackle',cost:5,weight:5},
+    {name:'Бутыль с вином, стекло',en:'Bottle, wine, glass',id:'bottle_wine_glass',cost:2,weight:0},
+    {name:'Ведро (пустое)',en:'Bucket (empty)',id:'bucket',cost:0.05,weight:2},
+    {name:'"Ежики"',en:'Caltrops',id:'caltrops',cost:1,weight:2},
+    {name:'Свеча',en:'Candle',id:'candle',cost:0.0001,weight:0},
+    {name:'Брезент (кв. ярд)',en:'Canvas (sq. yd.)',id:'canvas',cost:0.01,weight:1},
+    {name:'Тубус',en:'Case, map or scroll',id:'case',cost:1,weight:0.5},
+    {name:'Цепь (10 ф)',en:'Chain (10 ft.)',id:'chain',cost:30,weight:2},
+    {name:'Мел, 1 кусочек',en:'Chalk, 1 piece',id:'chalk',cost:0.0001,weight:0},
+    {name:'Сундук (пустой)',en:'Chest (empty)',id:'chest',cost:2,weight:25},
+    {name:'Лом',en:'Crowbar',id:'crowbar',cost:2,weight:5},
+    {name:'Дрова, на 1 день',en:'Firewood (per day)',id:'firewood',cost:0.0001,weight:20},
+    {name:'Крючок, рыболовный',en:'Fishhook',id:'fishhook',cost:0.01,weight:0},
+    {name:'Сеть, рыболовная, 25 кв.ф.',en:'Fishing net, 25 sq. ft.',id:'fishing_net',cost:4,weight:5},
+    {name:'Фляга (пустая)',en:'Flask (empty)',id:'flask',cost:0.0003,weight:1.5},
+    {name:'Кремень и огниво',en:'Flint and steel',id:'flint_steel',cost:1,weight:0},
+    {name:'"Кошка"',en:'Grappling hook',id:'grappling_hook',cost:1,weight:4},
+    {name:'Молоток',en:'Hammer',id:'hammer',cost:0.05,weight:2},
+    {name:'Чернила (пузырек, 1 унция)',en:'Ink (1 oz. vial)',id:'ink',cost:8,weight:0},
+    {name:'Ручка, перьевая',en:'Inkpen',id:'inkpen',cost:0.01,weight:0},
+    {name:'Кувшин, глиняный',en:'Jug, clay',id:'jug_clay',cost:0.0003,weight:9},
+    {name:'Лестница, 10 ф',en:'Ladder, 10-foot',id:'ladder',cost:0.0005,weight:20},
+    {name:'Лампа, обычная',en:'Lamp, common',id:'lamp_common',cost:0.01,weight:1},
+
+    {name:'Фонарь, "бычий глаз"',en:'Lantern, bullseye',id:'lantern_bullseye',cost:12,weight:3},
+    {name:'Фонарь, закрытый',en:'Lantern, hooded',id:'lantern_hooded',cost:7,weight:2},
+    {name:'Замок Очень простой',en:'Lock (very simple)',id:'lock_very_simple)',cost:20,weight:1},
+    {name:'Замок Средний',en:'Lock (average)',id:'lock_average',cost:40,weight:1},
+    {name:'Замок Хороший',en:'Lock (good)',id:'lock_good',cost:80,weight:1},
+    {name:'Замок Удивительный',en:'Lock (amazing)',id:'lock_amazing',cost:150,weight:1},
+    {name:'Наручники',en:'Manacles',id:'manacles',cost:15,weight:2},
+    {name:'Наручники, шедевр',en:'Manacles, masterwork',id:'manacles_masterwork',cost:50,weight:2},
+    {name:'Зеркало, маленькое',en:'Mirror, small steel',id:'mirror_small_steel',cost:10,weight:0.5},
+    {name:'Кружка, глиняная',en:'Mug/Tankard, clay',id:'mug_tankard_clay',cost:0.0002,weight:1},
+    {name:'Масло (фляжка, 1 пинта)',en:'Oil (1-pint flask)',id:'oil',cost:0.01,weight:1},
+    {name:'Бумага (лист)',en:'Paper (sheet)',id:'paper',cost:0.04,weight:0},
+    {name:'Пергамент (лист)',en:'Parchment (sheet)',id:'parchment',cost:0.02,weight:0},
+    {name:'Кирка, шахтерская',en:'Pick, miner’s',id:'pick_miners',cost:3,weight:10},
+    {name:'Кувшинчик, глиняный',en:'Pitcher, clay',id:'pitcher_clay',cost:0.0002,weight:5},
+    {name:'Крюк, скалолазный',en:'Piton',id:'piton',cost:0.01,weight:0.5},
+    {name:'Палка, 10 ф',en:'Pole, 10-foot',id:'pole',cost:0.02,weight:8},
+    {name:'Чайник, железный',en:'Pot, iron',id:'pot_iron',cost:0.05,weight:10},
+    {name:'Кошель, ременной (пустой) *',en:'Pouch, belt (empty)',id:'pouch_belt',cost:1,weight:0.5},
+    {name:'Таран, портативный',en:'Ram, portable',id:'ram_portable',cost:10,weight:20},
+    {name:'Паек, сухой, 1-дневный *',en:'Rations, trail (per day)',id:'rations_trail',cost:0.05,weight:1},
+    {name:'Веревка, пеньковая, 50 ф',en:'Rope, hempen (50 ft.)',id:'rope_hempen',cost:1,weight:10},
+    {name:'Веревка, шелковая, 50 ф',en:'Rope, silk (50 ft.)',id:'rope_silk',cost:10,weight:5},
+    {name:'Мешок (пустой) *',en:'Sack (empty)',id:'sack',cost:0.01,weight:0.5},
+    {name:'Воск, уплотнительный',en:'Sealing wax',id:'sealing_wax',cost:1,weight:1},
+    {name:'Игла, для шитья',en:'Sewing needle',id:'sewing_needle',cost:0.05,weight:0},
+    {name:'Свисток, сигнальный',en:'Signal whistle',id:'signal_whistle',cost:8,weight:0},
+    {name:'Кольцо, с печаткой',en:'Signet ring',id:'signet_ring',cost:5,weight:0},
+    {name:'Кувалда',en:'Sledge',id:'sledge',cost:1,weight:10},
+    {name:'Мыло, кусок',en:'Soap (per lb.)',id:'soap',cost:5,weight:1},
+    {name:'Лопата',en:'Spade or shovel',id:'spade_or_shovel',cost:2,weight:8},
+    {name:'Труба, подзорная',en:'Spyglass',id:'spyglass',cost:1000,weight:1},
+    {name:'Палатка *',en:'Tent',id:'tent',cost:10,weight:20},
+    {name:'Факел',en:'Torch',id:'torch',cost:0.0001,weight:1},
+    {name:'Пузырек',en:'Vial, ink or potion',id:'vial_ink_or_potion',cost:1,weight:0.1},
+    {name:'Мех, для воды *',en:'Waterskin',id:'waterskin',cost:1,weight:4},
+    {name:'Камень, точильный',en:'Whetstone',id:'whetstone',cost:0.0002,weight:1}
+];
+
+//Специальные Смеси и Предметы
+let _substances_items = [
+    {name:'Кислота (фляга)',en:'Acid (flask)',id:'acid',cost:10,weight:1},
+    {name:'Огонь, алхимический (фляга)',en:'Alchemist’s fire (flask)',id:'alchemists_fire',cost:20,weight:1},
+    {name:'Противоядие (пузырек)',en:'Antitoxin (vial)',id:'antitoxin',cost:50,weight:0},
+    {name:'Факел, вечногорящий',en:'Everburning torch',id:'everburning_torch',cost:110,weight:1},
+    {name:'Вода, святая (фляга)',en:'Holy water (flask)',id:'holy_water',cost:25,weight:1},
+    {name:'Шашка, дымовая',en:'Smokestick',id:'smokestick',cost:20,weight:0.5},
+    {name:'Жезл, солнечный',en:'Sunrod',id:'sunrod',cost:2,weight:1},
+    {name:'Мешок, алхимическая липучка',en:'Tanglefoot bag',id:'tanglefoot_bag',cost:50,weight:4},
+    {name:'Камень-громовик',en:'Thunderstone',id:'thunderstone',cost:30,weight:1},
+    {name:'Трутовица',en:'Tindertwig',id:'tindertwig',cost:1,weight:0},
+    // <tr><td></td><td> зм</td><td>1 фн</td></tr>
+    // <tr><td></td><td>1 зм</td><td>––</td></tr>
+
+];
+
+//Инструменты и Наборы для Умений
+let _tools_kits = [
+    {name:'Алхимическая лаборатория',en:'Alchemist’s lab',id:'alchemists_lab',cost:500,weight:40},
+    {name:'Инструменты ремесленника',en:'Artisan’s tools',id:'artisans_tools',cost:5,weight:5},
+    {name:'Инструменты ремесленника, шедевр',en:'Artisan’s tools, masterwork',id:'artisans_tools_masterwork',cost:55,weight:5},
+    {name:'Снаряжение скалолаза *',en:'Climber’s kit',id:'climbers_kit',cost:80,weight:5},
+    {name:'Набор для гримировки *',en:'Disguise kit',id:'disguise_kit',cost:50,weight:8},
+    {name:'Набор лекаря',en:'Healer’s kit',id:'healers_kit',cost:50,weight:1},
+    {name:'Падуб и омела',en:'Holly and mistletoe',id:'holly_mistletoe',cost:0,weight:0},
+    {name:'Святой символ, дерево',en:'Holy symbol, wooden',id:'holy_symbol_wooden',cost:1,weight:0},
+    {name:'Святой символ, серебро',en:'Holy symbol, silver',id:'holy_symbol_silver',cost:25,weight:1},
+    {name:'Песочные часы',en:'Hourglass',id:'hourglass',cost:25,weight:1},
+    {name:'Увеличительное стекло',en:'Magnifying glass',id:'magnifying_glass',cost:100,weight:0},
+    {name:'Музыкальные инструменты *',en:'Musical instrument',id:'musical_instrument',cost:5,weight:3},
+    {name:'Музыкальные инструменты, шедевр *',en:'Musical instrument, masterwork',id:'musical_instrument_masterwork',cost:100,weight:3},
+    {name:'Весы торговые',en:'Scale, merchant’s',id:'scale_merchants',cost:2,weight:1},
+    {name:'Сумка с материальными компонентами',en:'Spell component pouch',id:'spell_component_pouch',cost:5,weight:2},
+    {name:'Книга заклинаний, для мага, пустая',en:'Spellbook, wizard’s (blank)',id:'spellbook_wizards',cost:15,weight:3},
+    {name:'Воровской набор',en:'Thieves’ tools',id:'thieves_tools',cost:30,weight:1},
+    {name:'Воровской набор, шедевр',en:'Thieves’ tools, masterwork',id:'thieves_tools_masterwork',cost:100,weight:2},
+    {name:'Инструменты, шедевр',en:'Tool, masterwork',id:'tool_masterwork',cost:50,weight:1},
+    {name:'Клепсидра',en:'Water clock',id:'water_clock',cost:1000,weight:200}
+];
+
+//Одежда
+let _clothing = [
+    //<tr><th colspan="3">Одежда</th></tr>
+    // <tr><th>Предмет</th><th>Цена</th><th>Вес</th></tr>
+    // <tr><td>Одежда ремесленника</td><td>1 зм</td><td>4 фн</td></tr>
+    // <tr><td>Облачение клирика</td><td>5 зм</td><td>6 фн</td></tr>
+    // <tr><td>Зимняя одежда</td><td>8 зм</td><td>7 фн</td></tr>
+    // <tr><td>Костюм придворного</td><td>30 зм</td><td>6 фн</td></tr>
+    // <tr><td>Костюм артиста</td><td>3 зм</td><td>4 фн</td></tr>
+    // <tr><td>Одежда исследователя</td><td>10 зм</td><td>8 фн</td></tr>
+    // <tr><td>Одеяние монаха</td><td>5 зм</td><td>2 фн</td></tr>
+    // <tr><td>Костюм дворянина</td><td>75 зм</td><td>10 фн</td></tr>
+    // <tr><td>Лохмотья крестьянина</td><td>1 см</td><td>2 фн</td></tr>
+    // <tr><td>Королевское одеяние</td><td>200 зм</td><td>15 фн</td></tr>
+    // <tr><td>Одежда ученого</td><td>5 зм</td><td>6 фн</td></tr>
+    // <tr><td>Одежда путешественника</td><td>1 зм</td><td>5 фн</td></tr>
+];
+
+//Еда, Питье и Постой
+let _food_lodging = [
+    //<tr><th colspan="3">Еда, Питье и Постой</th></tr>
+    // <tr><th>Предмет</th><th>Цена</th><th>Вес</th></tr>
+    // <tr><td colspan="3">Эль</td></tr>
+    // <tr><td>галлон</td><td>2 см</td><td>8 фн</td></tr>
+    // <tr><td>кружка</td><td>4 мм</td><td>1 фн</td></tr>
+    // <tr><td>Банкет (на одну персону)</td><td>10 зм</td><td>––</td></tr>
+    // <tr><td>Хлеб, один кусок</td><td>2 мм</td><td>0,5 фн</td></tr>
+    // <tr><td>Сыр, один ломоть</td><td>1 см</td><td>0,5 фн</td></tr>
+    // <tr><td colspan="3">Гостиница (за один день)</td></tr>
+    // <tr><td>хорошая</td><td>2 зм</td><td>––</td></tr>
+    // <tr><td>средняя</td><td>5 см</td><td>––</td></tr>
+    // <tr><td>паршивая</td><td>2 см</td><td>––</td></tr>
+    // <tr><td colspan="3">Пропитание (за один день)</td></tr>
+    // <tr><td>хорошее</td><td>5 см</td><td>––</td></tr>
+    // <tr><td>среднее</td><td>3 см</td><td>––</td></tr>
+    // <tr><td>паршивое</td><td>1 см</td><td>––</td></tr>
+    // <tr><td>Мясо, один ломоть</td><td>3 см</td><td>0,5 фн</td></tr>
+    // <tr><td colspan="3">Вино</td></tr>
+    // <tr><td>среднее (бокал)</td><td>2 см</td><td>6 фн</td></tr>
+    // <tr><td>превосходное (бутылка)</td><td>10 зм</td><td>1,5 фн</td></tr>
+];
+
+//------------- мм=cp=0.0001  см=sp=0.01 -------------- //
+//Верховые Животные и Снаряжение
+let _mounts = [
+    {name:'Доспех для Среднего существа (цена *2, вес *1)',en:'Barding Medium creature',id:'barding_medium_creature',cost:0,weight:0},
+    {name:'Доспех для Большого существа (цена *4, вес *2)',en:'Barding Large creature',id:'barding_large_creature',cost:0,weight:0},
+    {name:'Уздечка и поводья',en:'Bit and bridle',id:'bit_and_bridle',cost:2,weight:1},
+    {name:'Собака, сторожевая',en:'Dog, guard',id:'dog_guard',cost:25,weight:0},
+    {name:'Собака, верховая',en:'Dog, riding',id:'dog_riding',cost:150,weight:0},
+    {name:'Осел или мул',en:'Donkey or mule',id:'donkey_mule',cost:8,weight:0},
+    {name:'Корм (на один день)',en:'Feed (per day)',id:'feed',cost:0.0005,weight:10},
+    {name:'Лошадь тяжелая',en:'Horse, heavy',id:'horse_heavy',cost:200,weight:0},
+    {name:'Лошадь легкая',en:'Horse, light',id:'horse_light',cost:75,weight:0},
+    {name:'Лошадь боевая, тяжелая',en:'Warhorse, heavy',id:'warhorse_heavy',cost:400,weight:0},
+    {name:'Лошадь боевая, легкая',en:'Warhorse, light',id:'warhorse_light',cost:150,weight:0},
+    {name:'Пони',en:'Pony',id:'pony',cost:30,weight:0},
+    {name:'Боевой пони',en:'Warpony',id:'warpony',cost:100,weight:0},
+    {name:'Седло боевое',en:'Saddle Military',id:'saddle_military',cost:20,weight:30},
+    {name:'Седло грузовое',en:'Saddle Pack',id:'saddle_pack',cost:5,weight:15},
+    {name:'Седло верховое',en:'Saddle Riding',id:'saddle_Riding',cost:10,weight:25},
+    {name:'Седло, экзотическое боевое',en:'Saddle, Exotic Military',id:'saddle_exotic_military',cost:60,weight:40},
+    {name:'Седло, экзотическое грузовое',en:'Saddle, Exotic Pack',id:'addle_exotic_pack',cost:15,weight:20},
+    {name:'Седло, экзотическое верховое',en:'Saddle, Exotic Riding',id:'addle_exotic_riding',cost:30,weight:30},
+    {name:'Сумка, седельная',en:'Saddlebags',id:'saddlebags',cost:4,weight:8},
+    {name:'Стойло (на один день)',en:'Stabling (per day)',id:'stabling',cost:0.05,weight:0}
+];
+
+//Транспорт
+let _transport = [
+    //<tr><th colspan="3">Транспорт</th></tr>
+    // <tr><th>Предмет</th><th>Цена</th><th>Вес</th></tr>
+    // <tr><td>Карета</td><td>100 зм</td><td>600 фн</td></tr>
+    // <tr><td>Двуколка</td><td>15 зм</td><td>200 фн</td></tr>
+    // <tr><td>Галлера</td><td>30,000 зм</td><td>––</td></tr>
+    // <tr><td>Корабль, плоскодонный</td><td>3,000 зм</td><td>––</td></tr>
+    // <tr><td>Корабль, длинный</td><td>10,000 зм</td><td>––</td></tr>
+    // <tr><td>Шлюпка</td><td>50 зм</td><td>100 фн</td></tr>
+    // <tr><td>весло</td><td>2 зм</td><td>10 фн</td></tr>
+    // <tr><td>Парусник</td><td>10,000 зм</td><td>––</td></tr>
+    // <tr><td>Сани</td><td>20 зм</td><td>300 фн</td></tr>
+    // <tr><td>Телега</td><td>35 зм</td><td>400 фн</td></tr>
+    // <tr><td>Корабль, военный</td><td>25,000 зм</td><td>––</td></tr>
+];
+
+//Заклинания и Услуги
+let _spellcasting_services = [
+    //<tr><th colspan="2">Заклинания и Услуги</th></tr>
+    // <tr><th>Предмет</th><th>Цена</th></tr>
+    // <tr><td>Извозчик</td><td>3 мм за 1 милю</td></tr>
+    // <tr><td>Наемник, тренированый</td><td>3 см в день</td></tr>
+    // <tr><td>Наемник, нетренированый</td><td>1 см в день</td></tr>
+    // <tr><td>Посыльный</td><td>2 мм за 1 милю</td></tr>
+    // <tr><td>Проход (по дороге или через ворота)</td><td>1 мм</td></tr>
+    // <tr><td>Место на корабле</td><td>1 см за 1 милю</td></tr>
+    // <tr><td>Заклинание, 0-й уровень</td><td>Уровень заклинателя х 5 зм **</td></tr>
+    // <tr><td>Заклинание, 1-й уровень</td><td>Уровень заклинателя х 10 зм **</td></tr>
+    // <tr><td>Заклинание, 2-й уровень</td><td>Уровень заклинателя х 20 зм **</td></tr>
+    // <tr><td>Заклинание, 4-й уровень</td><td>Уровень заклинателя х 40 зм **</td></tr>
+    // <tr><td>Заклинание, 5-й уровень</td><td>Уровень заклинателя х 50 зм **</td></tr>
+    // <tr><td>Заклинание, 6-й уровень</td><td>Уровень заклинателя х 60 зм **</td></tr>
+    // <tr><td>Заклинание, 7-й уровень</td><td>Уровень заклинателя х 70 зм **</td></tr>
+    // <tr><td>Заклинание, 8-й уровень</td><td>Уровень заклинателя х 80 зм **</td></tr>
+    // <tr><td>Заклинание, 9-й уровень</td><td>Уровень заклинателя х 90 зм **</td></tr>
+    //<p><small>** См. описание заклинания. Если итоговая стои-мость превысила 3,000 зм, то такое заклинание не-возможно приобрести, только по разрешению ДМа</small></p>
+];
+
+//Специальные Смеси и Предметы
+let _materials = [];
+

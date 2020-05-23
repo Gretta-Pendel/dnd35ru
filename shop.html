@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DnD 3.5 PHB</title>
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="js/vendor/vue.js"></script>
+    <script src="js/vendor/pdfmake.js"></script>
+    <script src="js/vendor/vfs_fonts.js"></script>
+</head>
+<style>
+    #shop {padding:50px 15px;}
+    .shop-contents {font-size: .85em;}
+    .cart {position: fixed; top:45px; right: 15px; border:1px solid #000;
+        padding:10px;width:200px;}
+    .cart p {margin:0;font-size: .85em;}
+    .cart h5 {border-bottom:1px solid #000;margin:0;}
+    .cart p + h5 {margin-top:1em;}
+    .cart input {float: right;font-weight: 600}
+</style>
+<body class="frame">
+<div id="shop">
+    <div class="cart">
+        <h5>Оружие</h5>
+        <p><b>Сумма:</b> <span class="gp" v-if="shops.weapon.gp > 0"></span>{{shops.weapon.gp}}
+            <span class="sp" v-if="shops.weapon.sp > 0"></span>{{shops.weapon.sp}}
+            <span class="cp" v-if="shops.weapon.cp > 0"></span>{{shops.weapon.cp}}</p>
+        <p><b>Вес:</b> {{shops.weapon.weight}} <input type="button" @click="createPDF('weapon')" value="⇩ PDF"/></p>
+        <h5>Снаряжение</h5>
+        <p><b>Сумма:</b> <span class="gp" v-if="shops.gear.gp > 0"></span>{{shops.gear.gp}}
+            <span class="sp" v-if="shops.gear.sp > 0"></span>{{shops.gear.sp}}
+            <span class="cp" v-if="shops.gear.cp > 0"></span>{{shops.gear.cp}}</p>
+        <p><b>Вес:</b> {{shops.gear.weight}} <input type="button" @click="createPDF('gear')" value="⇩ PDF"/></p>
+        <h5>Животные и Снаряжение</h5>
+        <p><b>Сумма:</b> <span class="gp" v-if="shops.mounts.gp > 0"></span>{{shops.mounts.gp}}
+            <span class="sp" v-if="shops.mounts.sp > 0"></span>{{shops.mounts.sp}}
+            <span class="cp" v-if="shops.mounts.cp > 0"></span>{{shops.mounts.cp}}</p>
+        <p><b>Вес:</b> {{shops.mounts.weight}} <input type="button" @click="createPDF('mounts')" value="⇩ PDF"/></p>
+
+        <h5>Специальные Смеси и Предметы</h5>
+        <p><b>Сумма:</b> <span class="gp" v-if="shops.substances_items.gp > 0"></span>{{shops.substances_items.gp}}
+            <span class="sp" v-if="shops.substances_items.sp > 0"></span>{{shops.substances_items.sp}}
+            <span class="cp" v-if="shops.substances_items.cp > 0"></span>{{shops.substances_items.cp}}</p>
+        <p><b>Вес:</b> {{shops.substances_items.weight}} <input type="button" @click="createPDF('substances_items')" value="⇩ PDF"/></p>
+
+        <h5>Инструменты и Наборы для Умений</h5>
+        <p><b>Сумма:</b> <span class="gp" v-if="shops.tools_kits.gp > 0"></span>{{shops.tools_kits.gp}}
+            <span class="sp" v-if="shops.tools_kits.sp > 0"></span>{{shops.tools_kits.sp}}
+            <span class="cp" v-if="shops.tools_kits.cp > 0"></span>{{shops.tools_kits.cp}}</p>
+        <p><b>Вес:</b> {{shops.tools_kits.weight}} <input type="button" @click="createPDF('tools_kits')" value="⇩ PDF"/></p>
+
+
+        <h5>Итого</h5>
+        <p><b>Сумма:</b>
+            <span class="gp"></span>{{gp}}
+            <span class="sp"></span>{{sp}}
+            <span class="cp"></span>{{cp}}
+        <p><b>Вес:</b> {{weight}}</p>
+    </div>
+
+    <div class="shop-contents">
+        <a href="#weapons"><b>Weapons</b></a>, <a href="#armor"><b>Armor</b></a>,<br>
+        <a href="#goods_and_services"><b>Goods And Services</b></a>: <a href="#adventuring_gear">Adventuring Gear</a>; <a href="#special_substances_and_items">Special Substances And Items</a>;
+        <a href="#tools_and_skill_kits">Tools And Skill Kits</a>; <a href="#clothing">Clothing</a>; <a href="#food_drink_and_lodging">Food, Drink, And Lodging</a>; <a
+            href="#mounts_and_related_gear">Mounts And Related Gear</a>; <a href="#transport">Transport</a>; <a href="#spellcasting_and_services">Spellcasting And Services</a><br>
+        <a href="#special_materials"><b>Special Materials</b></a>
+    </div>
+
+    <div id="weapons" class="shop">
+        <h2>Weapons</h2>
+        <table class="odd">
+            <template v-for="(type,typekey) in weapons.types">
+                <tr>
+                    <th colspan="2">{{type}}</th><th>Предмет</th><th>Цена</th>
+                    <th>Урон S</th><th>Урон М</th>
+                    <th>Крит</th><th>Дальность</th><th>Тип урона</th><th>Вес</th>
+                </tr>
+                <template v-for="(subtype,subtypekey) in weapons.subtypes">
+                    <template v-if="shops.weapon.stock.filter(i => i.type == type && i.subtype == subtype).length > 0">
+                        <tr><td colspan="10" class="subheader"><b>{{subtype}}</b></td></tr>
+                        <tr v-for="item in shops.weapon.stock.filter(i => i.type == type && i.subtype == subtype)">
+                            <td><input type="checkbox" :name="item.id" @change="oncheck($event,'weapon')"></td>
+                            <td><input type="number" :disabled="!item.checked"
+                                       :value="item.number" :name="item.id"
+                                       @change="oninput($event,'weapon')"></td>
+                            <td>{{item.name}} {{item.en}}</td>
+                            <td>{{toCoins(item.cost)}}</td>
+                            <td>{{item.dmgS}}</td>
+                            <td>{{item.dmgM}}</td>
+                            <td>{{item.crit}}</td>
+                            <td>{{item.range}}</td>
+                            <td>{{item.dmgType}}</td>
+                            <td>{{item.weight}}</td>
+                        </tr>
+                    </template>
+                </template>
+            </template>
+
+        </table>
+    </div>
+    <div id="armor" class="shop">
+        <h2>Armor</h2>
+        <table class="odd">
+            <tr>
+                <th colspan="3" rowspan="2">Броня</th><th rowspan="2">Цена</th>
+                <th rowspan="2">Бонус Щита/<br/>Доспеха</th><th rowspan="2">Макс.<br/>Бонус Лов</th>
+                <th rowspan="2">Штраф за<br/>Доспех</th><th rowspan="2">Шанс на Провал<br/>Заклинания</th>
+                <th colspan="2">Скорость</th><th rowspan="2">Вес</th>
+            </tr>
+            <tr><th>(30 ф)</th><th>(20 ф)</th></tr>
+            <template v-for="(type,typekey) in armors.types">
+                <template v-if="shops.armor.stock.filter(i => i.type == type).length > 0">
+                    <tr><td colspan="11" class="subheader"><b>{{type}}</b></td></tr>
+                    <tr v-for="item in shops.armor.stock.filter(i => i.type == type)">
+                        <td><input type="checkbox" :name="item.id" @change="oncheck($event,'armor')"></td>
+                        <td><input type="number" :disabled="!item.checked"
+                                   :value="item.number" :name="item.id"
+                                   @change="oninput($event,'armor')"></td>
+                        <td>{{item.name}} {{item.en}}</td>
+                        <td>{{toCoins(item.cost)}}</td>
+                        <td>{{item.armor_shield_bonus}}</td>
+                        <td>{{item.max_dex_bonus}}</td>
+                        <td>{{item.armor_check_penalty}}</td>
+                        <td>{{item.arcane_spell_failure_chance}}</td>
+                        <td>{{item.speed30}}</td>
+                        <td>{{item.speed20}}</td>
+                        <td>{{item.weight}}</td>
+                    </tr>
+                </template>
+            </template>
+
+        </table>
+    </div>
+    <h2 id="goods_and_services">Goods And Services</h2>
+    <div id="adventuring_gear" class="shop">
+        <h2>Adventuring Gear</h2>
+        <table class="odd">
+            <tr><th colspan="2">Количество</th><th>Предмет</th><th>Цена</th><th>Вес</th></tr>
+            <tr v-for="item in shops.gear.stock">
+                <td><input type="checkbox" :name="item.id" @change="oncheck($event,'gear')"></td>
+                <td><input type="number" :disabled="!item.checked"
+                           :value="item.number" :name="item.id"
+                           @change="oninput($event,'gear')"></td>
+                <td>{{item.name}}</td>
+                <td>{{toCoins(item.cost)}}</td>
+                <td>{{item.weight}}</td>
+            </tr>
+        </table>
+    </div>
+    <div id="special_substances_and_items" class="shop">
+        <h2>Special Substances And Items</h2>
+        <table class="odd">
+            <tr><th colspan="2">Количество</th><th>Предмет</th><th>Цена</th><th>Вес</th></tr>
+            <tr v-for="item in shops.substances_items.stock">
+                <td><input type="checkbox" :name="item.id" @change="oncheck($event,'substances_items')"></td>
+                <td><input type="number" :disabled="!item.checked"
+                           :value="item.number" :name="item.id"
+                           @change="oninput($event,'substances_items')"></td>
+                <td>{{item.name}}</td>
+                <td>{{toCoins(item.cost)}}</td>
+                <td>{{item.weight}}</td>
+            </tr>
+        </table>
+    </div>
+    <div id="tools_and_skill_kits" class="shop">
+        <h2>Tools And Skill Kits</h2>
+        <table class="odd">
+            <tr><th colspan="2">Количество</th><th>Предмет</th><th>Цена</th><th>Вес</th></tr>
+            <tr v-for="item in shops.tools_kits.stock">
+                <td><input type="checkbox" :name="item.id" @change="oncheck($event,'tools_kits')"></td>
+                <td><input type="number" :disabled="!item.checked"
+                           :value="item.number" :name="item.id"
+                           @change="oninput($event,'tools_kits')"></td>
+                <td>{{item.name}}</td>
+                <td>{{toCoins(item.cost)}}</td>
+                <td>{{item.weight}}</td>
+            </tr>
+        </table>
+    </div>
+    <div id="clothing" class="shop">
+        <h2>Clothing</h2>
+    </div>
+    <div id="food_drink_and_lodging" class="shop">
+        <h2>Food, Drink, And Lodging</h2>
+    </div>
+    <div id="mounts_and_related_gear" class="shop">
+        <h2>Mounts And Related Gear</h2>
+        <table class="odd">
+            <tr><th colspan="2">Количество</th><th>Предмет</th><th>Цена</th><th>Вес</th></tr>
+            <tr v-for="item in shops.mounts.stock">
+                <td><input type="checkbox" :name="item.id" @change="oncheck($event,'mounts')"></td>
+                <td><input type="number" :disabled="!item.checked"
+                           :value="item.number" :name="item.id"
+                           @change="oninput($event,'mounts')"></td>
+                <td>{{item.name}}</td>
+                <td>{{toCoins(item.cost)}}</td>
+                <td>{{item.weight}}</td>
+            </tr>
+        </table>
+    </div>
+    <div id="transport" class="shop">
+        <h2>Transport</h2>
+    </div>
+    <div id="spellcasting_and_services" class="shop">
+        <h2>Spellcasting And Services</h2>
+    </div>
+    <div id="special_materials" class="shop">
+        <h2>Special Materials</h2>
+    </div>
+</div>
+
+<script src="js/shop.js"></script>
+<script src="js/contents.js"></script>
+<script src="js/page-content.js"></script>
+<script src="js/main-content.js"></script>
+<script src="js/frames-height.js"></script>
+
+<script>
+var shop = new Vue({
+    el: '#shop',
+    data: {
+        shops: {
+            gear: {stock: _gear, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            weapon: {stock: _weapon, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            mounts: {stock:_mounts, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            substances_items: {stock:_substances_items, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            tools_kits: {stock:_tools_kits, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []},
+            armor: {stock:_armor, sum: 0, weight:0, gp:0, sp:0, cp:0, cart: []}
+        },
+        weapons: {
+            types: ['Простое','Воинское','Экзотическое'],
+            subtypes: ['Безоружная атака','Легкое','Одноручное','Двуручное','Дистанционное','Амуниция']
+        },
+        armors: {
+          types: ['Легкий','Средний','Тяжелый','Щит','Дополнения']
+        },
+        weight:0, gp:0, sp:0, cp:0
+    }, // TODO слить все в один PDF
+    methods: {
+        toCoins: function(value) {
+            return toCoins(value);
+        },
+        oncheck: function(e, shop) {
+            this.shops[shop].stock.filter(item => item.id ===e.target.name)[0].checked = e.target.checked;
+            this.shops[shop].stock.filter(item => item.id ===e.target.name)[0].number = e.target.checked ? 1 : 0;
+            this.getSum(shop);
+        },
+        oninput: function(e, shop){
+            this.shops[shop].stock.filter(item => item.id ===e.target.name)[0].number = e.target.value;
+            this.getSum(shop);
+        },
+        getSum: function (shop) {
+            this.shops[shop].sum = 0;
+            this.shops[shop].weight = 0;
+            this.shops[shop].cart = [];
+            for (let g in this.shops[shop].stock) {
+                if (this.shops[shop].stock[g].checked) {
+                    this.shops[shop].sum += this.shops[shop].stock[g].cost * this.shops[shop].stock[g].number;
+                    this.shops[shop].weight += this.shops[shop].stock[g].weight * this.shops[shop].stock[g].number;
+                    this.shops[shop].cart.push(this.shops[shop].stock[g]);
+                }
+                this.shops[shop].gp = Math.floor(this.shops[shop].sum);
+                this.shops[shop].sp = Math.floor((this.shops[shop].sum - this.shops[shop].gp).toFixed(4) * 100);
+                this.shops[shop].cp = Math.floor((((this.shops[shop].sum - this.shops[shop].gp).toFixed(4) * 100) - this.shops[shop].sp).toFixed(4) * 100);
+            }
+            this.weight=0;
+            this.gp=0;
+            this.sp=0;
+            this.cp=0;
+            for (let s in this.shops) {
+                this.weight += this.shops[s].weight;
+                this.gp += this.shops[s].gp;
+                this.sp += this.shops[s].sp;
+                this.cp += this.shops[s].cp;
+            }
+        },
+        createPDF: function (shop) {
+            console.log(this.shops[shop].cart);
+            renderTables(shop, this.shops[shop].cart, this.shops[shop].gp, this.shops[shop].sp, this.shops[shop].cp, this.shops[shop].weight);
+
+        }
+    }
+});
+
+function toCoins(value) {
+    let _gp = Math.floor(value);
+    let _sp = Math.floor((value - _gp).toFixed(4) * 100);
+    let _cp = Math.floor((((value - _gp).toFixed(4) * 100) - _sp).toFixed(4) * 100);
+    let cost = _gp > 0 ? _gp + " зм " : "";
+    cost += _sp > 0 ? _sp + " см " : "";
+    cost += _cp > 0 ? _cp + " мм " : "";
+    return cost;
+}
+
+let w = ['*', 100, '*', 100 ];
+
+function renderTables(name,obj,gp,sp,cp,weight) {
+    bodies = [];
+    bodies.push([{text: 'Предмет'},{text: 'Количество'},{text: 'Стоимость'},{text: 'Вес'}]);
+    for (let i in obj) {
+        let itemCost = obj[i].cost * obj[i].number;
+        let itemWeight = obj[i].weight * obj[i].number;
+        bodies.push([{text:obj[i].name},{text:obj[i].number},{text:toCoins(itemCost)},{text:itemWeight}])
+    }
+    bodies.push([{text:'Итого:'},{},{text: gp + ' зм, ' + sp + ' см, ' + cp + ' мм'},{text: weight + ' (фунты)'}]);
+
+    let docDefinition = {
+        //pageOrientation: 'landscape',
+        pageMargins: [ 20, 120, 20, 20 ],
+        content: [
+            {
+                table: {
+                    widths: w,
+                    headerRows: 1,
+                    body: bodies
+                },
+                layout: 'shoppingListLayout'
+            },
+            {text: '', fontSize: 1, pageBreak: 'before'},
+        ],
+    };
+    var now = new Date();
+    pdfMake.createPdf(docDefinition).download("shopping-list-"+name+".pdf");
+    console.log(new Date() - now);
+}
+
+pdfMake.tableLayouts = {
+    shoppingListLayout: {
+        hLineWidth: function (i, node) {
+            return (i === node.table.headerRows || i === node.table.body.length - 1 || i === node.table.body.length) ? 1 : 0.5;
+        },
+        vLineWidth: function (i, node) {
+            return 0;
+        },
+        hLineColor: function (i, node) {
+            return i === 1 || i === node.table.body.length - 1 || i === node.table.body.length ? 'black' : '#999';
+        },
+        vLineColor: function (i) {
+            return '#999';
+        },
+        paddingLeft: function (i) {
+            return i === 0 ? 1 : 2;
+        },
+        paddingRight: function (i, node) {
+            return (i === node.table.widths.length - 1) ? 1 : 2;
+        },
+        paddingTop: function(i) {
+            return 2;
+        },
+        paddingBottom: function(i) {
+            return 2;
+        },
+        fillColor: function (rowIndex, node, columnIndex) {
+            return (rowIndex % 2 === 0) ? '#eee' : null;
+        }
+    }
+};
+</script>
+</body>
+</html>

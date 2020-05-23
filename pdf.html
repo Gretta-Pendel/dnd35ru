@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DnD 3.5 PHB</title>
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="js/vendor/vue.js"></script>
+    <script src="js/vendor/pdfmake.js"></script>
+    <script src="js/vendor/vfs_fonts.js"></script>
+    <script src="js/dictionaries.js"></script>
+    <script src="js/magic.js"></script>
+    <script src="js/spells.js"></script>
+</head>
+<body class="page">
+<div id="all-spells" style="padding:50px">
+    <select id="filterByClass" v-model="cls">
+        <option value="">Класс персонажа</option>
+        <option v-for="(v,k) in classes" :value="k">{{v[1]}}</option>
+    </select>
+    <select id="classLevel" v-model="clvl">
+        <option value="">Уровень персонажа</option>
+        <option v-for="l in 20" :value="l">{{l}}</option>
+    </select>
+    <select v-if="cls == 'wiz' || cls == 'sor' || cls == 'brd'" id="filterBySchool" v-model="sch">
+        <option value="">Школы</option>
+        <option v-for="(v,k) in schools" :value="k">{{v[1]}} ({{k}})</option>
+    </select>
+    <select v-if="cls == 'clr'" id="filterByDomen" v-model="dom">
+        <option value="">Домены</option>
+        <option v-for="(v,k) in domens" :value="k">{{v[0]}} ({{k}})</option>
+    </select>
+    <br><br>
+    <div>
+        <template v-show="cls != '' || dom != ''" v-for="level in levels">
+            <input :id="'level' + level" :name="'level' + level" type="checkbox" :value="level" v-model="lvl">
+            <label :for="'level' + level">{{level}}</label>
+        </template>
+    </div>
+    <br><br>
+    <button @click="createPDF">Создать PDF с заклинаниями</button>
+
+    <div class="values">
+        <b v-if="cls !== ''">- {{classes[cls][1]}} -</b>
+        <b v-if="cls !== '' && clvl !== ''">- {{spellLevel[cls][clvl-1]}} -</b>
+<!--        <b v-if="lvl !== ''">- {{lvl}} -</b>-->
+        <b v-if="sch !== ''">- {{schools[sch][1]}} -</b>
+        <b v-if="dom !== ''">- {{domens[dom][0]}} -</b>
+    </div>
+</div>
+
+    <script>
+        var filters = new Vue({
+            el: '#all-spells',
+            data: {
+                spells: _spells,
+                classes: {
+                    brd: ["", "бард", "Брд"],
+                    clr: ["", "клирик", "Клк"],
+                    drd: ["", "друид", "Дрд"],
+                    pal: ["", "паладин", "Пал"],
+                    rgr: ["", "следопыт", "Слп"],
+                    sor: ["", "колдун", "Клд"],
+                    wiz: ["", "маг", "Маг"]
+                },
+                levels: [0,1,2,3,4,5,6,7,8,9],
+                spellLevel: spellLevel,
+                schools: schools,
+                domens: domens,
+                clvl:'', cls:'', lvl:[],sch:'', dom:''
+                //filteredSpells: []
+            },
+            methods: {
+                getSchool: function(str) { return schools[str] ? schools[str][1] : null},
+                getClass: function (str) { return classes[str] ? classes[str][1] : null},
+                createPDF: function () {
+                    let self = this;
+                    //renderTables(self.getClass(self.cls),self.cls,self.lvl);
+                    renderTables(self.getClass(self.cls),self.cls,self.clvl);
+                }
+            }
+        });
+
+        function renderTables(className,cls,lvl) {
+            let bodies = [];
+            for (let i = 0; i < lvl; i ++) {
+                bodies.push(
+                    {
+                        table: {
+                            widths: w,
+                            headerRows: 1,
+                            body: getSpells(className,cls,i)
+                        },
+                        layout: 'spellListLayout'
+                    },
+                    {text: '', fontSize: 1, pageBreak: 'before'},
+                )
+            }
+            console.log(cls);
+            console.log(lvl);
+            console.log(bodies);
+
+            let docDefinition = {
+                //pageOrientation: 'landscape',
+                pageMargins: [ 20, 120, 20, 20 ],
+                content: [
+                    bodies
+                ],
+            };
+            var now = new Date();
+            pdfMake.createPdf(docDefinition).download("cleric-spell-list.pdf");
+            console.log(new Date() - now);
+        }
+
+
+    let w = [100, 'auto', 20, 20, 20, 20, 20, 'auto' ];
+    function getSpells(className,cls,level) {
+        console.log(spellLevel[cls][2])
+        let list = _spells;
+        let spells = [];
+        spells.push([{text: className, colSpan: 8, alignment: 'center'}, {}, {}, {}, {}, {}, {}, {}]);
+        spells.push([{text: level, colSpan: 2, alignment: 'center'}, {}, {}, {}, {}, {}, {}, {}]);
+        for (let l in list) {
+            let spell = list[l];
+            if (spell.hasOwnProperty('level') && cls in spell.level && spell.level[cls] === level) {
+                let text = spell.hasOwnProperty('text') ? spell.text : '';
+                spells.push([
+                    {text: spell.name, fontSize: 8},
+                    {text: text, fontSize: 7},
+                    {text: '', fontSize: 8},
+                    {text: '', fontSize: 8},
+                    {text: '', fontSize: 8},
+                    {text: '', fontSize: 8},
+                    {text: '', fontSize: 8},
+                    {text: spell.en, fontSize: 7}
+                ])
+            }
+        }
+        return spells;
+    }
+
+    pdfMake.tableLayouts = {
+        spellListLayout: {
+            hLineWidth: function (i, node) {
+                return (i === node.table.headerRows || i === 2 || i === node.table.body.length) ? 1 : 0.5;
+            },
+            vLineWidth: function (i, node) {
+                return i > 1 && i < node.table.widths.length ? 0.3 : 0;
+            },
+            hLineColor: function (i, node) {
+                return i === 1 || i === 2 || i === node.table.body.length ? 'black' : '#999';
+            },
+            vLineColor: function (i) {
+                return '#999';
+            },
+            paddingLeft: function (i) {
+                return i === 0 ? 1 : 2;
+            },
+            paddingRight: function (i, node) {
+                return (i === node.table.widths.length - 1) ? 1 : 2;
+            },
+            paddingTop: function(i) {
+                return 1;
+            },
+            paddingBottom: function(i) {
+                return 1;
+            },
+            fillColor: function (rowIndex, node, columnIndex) {
+                return (rowIndex % 2 === 0) ? '#eee' : null;
+            }
+        }
+    };
+
+    </script>
+<script src="js/contents.js"></script>
+<script src="js/page-content.js"></script>
+<script src="js/main-content.js"></script>
+<script src="js/frames-height.js"></script>
+
+</body>
+</html>

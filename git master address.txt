@@ -1,0 +1,1 @@
+ssh://git@git.enmtech.ru:16869/daliero/dnd3.5.git

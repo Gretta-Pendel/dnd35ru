@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все таблицы < DnD 3.5 PHB</title>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="js/vendor/vue.js"></script>
+    <script src="js/tables.js"></script>
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+</head>
+<body class="page">
+
+<div id="mainContents">
+    <div v-for="table in tables">
+        <p><a :href="'#' + table.id"><b>{{table.id.substr(6)}}</b> {{table.name}}</a></p>
+    </div>
+</div>
+
+<div id="tables"></div>
+<script>
+   document.addEventListener('DOMContentLoaded', () => {
+        for (t in _tables) {
+            let scriptFile = document.createElement('script');
+            scriptFile.setAttribute("src", "js/tables/" + _tables[t].id + ".js");
+            document.head.insertAdjacentElement("beforeend",scriptFile);
+        }
+   })
+   window.addEventListener('load', () => {
+        let tableBox = document.getElementById("tables")
+        for (t in _tables) {
+            let tableDiv = document.createElement('div');
+            tableDiv.setAttribute("id", _tables[t].id)
+            tableDiv.innerHTML = eval(_tables[t].id.replace(/-/g, '_'))
+            let tableName = document.createElement('h3')
+            tableName.innerText = "Таблица " + _tables[t].id.replace("table-","") + ": " +  _tables[t].name
+            tableDiv.insertAdjacentElement("afterbegin",tableName);
+            tableBox.insertAdjacentElement("beforeend",tableDiv);
+        }
+   })
+   var tables = new Vue({
+        el: '#tables',
+        data: {
+            tables: _tables
+        },
+        // beforeMount() {
+        //     for (t in this.tables) {
+        //         let foo = document.createElement('script');
+        //         foo.setAttribute("src", "js/tables/" + this.tables[t].id + ".js");
+        //         this.$el.appendChild(foo);
+        //         console.log(eval(this.tables[t].id.replace(/-/g,'_')))
+        //     }
+        // },
+   });
+   var contents = new Vue({
+        el: '#mainContents',
+        data: {
+            tables: _tables
+        }
+   });
+</script>
+<script src="js/frames-height.js"></script>
+<script src="js/page-content.js"></script>
+
+</body>
+</html>

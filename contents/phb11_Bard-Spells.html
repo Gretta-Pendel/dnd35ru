@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заклинания барда < Глава 11: Заклинания</title>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="../js/vendor/vue.js"></script>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="../js/vendor/vue.js"></script>
+    <link href="../css/index.css" type="text/css" rel="stylesheet">
+    <script src="../js/dictionaries.js"></script>
+    <script src="../js/magic.js"></script>
+    <script src="../js/spells.js"></script>
+</head>
+<body class="frame">
+
+<h1>Заклинания барда</h1>
+
+<div id="class-spell-list">
+    <div v-for="level in levels">
+        <h2 :id="'level' + level" v-if="list(level).length">Заклинания {{level}} уровня</h2>
+        <div v-for="spell in list(level)">
+            <div><b><a :href="'../spell.html?' + spell.id" target="_blank">{{spell.name}} ({{spell.en}})</a></b> {{spell.text}}</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var spell_list = new Vue({
+        el: '#class-spell-list',
+        data: {
+            spells: _spells,
+            levels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+            schools: schools,
+            cls: 'brd'
+        },
+        methods: {
+            list: function (lvl) {
+                let self = this;
+                console.log(lvl)
+                return _spells.filter(function (spell) {
+                    let f_cls = self.cls === "" || spell.hasOwnProperty('level') && self.cls in spell.level && spell.level[self.cls] === lvl;
+                    return f_cls
+            })
+        }
+        }
+    })
+</script>
+
+<script src="../js/contents.js"></script>
+<script src="../js/page-content.js"></script>
+<script src="../js/main-content.js"></script>
+<script src="../js/frames-height.js"></script>
+</body>
+</html>

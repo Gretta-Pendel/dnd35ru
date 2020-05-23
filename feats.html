@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все навыки < DnD 3.5 PHB</title>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="js/vendor/vue.js"></script>
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+    <script src="js/feats.js"></script>
+</head>
+<body class="page">
+
+<div id="mainContents">
+	<div class="table-link"><a href="tables/5-1_Feats.html"><b>All Feats</b></a></div>
+    <div v-for="feat in sortedFeats">
+        <p><a :href="'#' + feat.id.replace(/-/g,'_')"><b>{{feat.en}}</b> ({{feat.name}})</a></p>
+    </div>
+</div>
+
+<div id="skills">
+    <div>
+        <div v-for="feat in feats">
+            <div :id="feat.id.replace(/-/g,'_')" class="insert-feat"></div>
+            <!--            <iframe :id="feat.id" :src="'feats/' + feat.id + '.html'" width="100%" frameborder="0" allowfullscreen></iframe>-->
+        </div>
+    </div>
+</div>
+<script>
+    var contents = new Vue({
+        el: '#skills',
+        data: {
+            feats: _feats
+        }
+    });
+    var contents = new Vue({
+        el: '#mainContents',
+        data: {
+            feats: _feats,
+            sortedFeats: []
+        },
+        beforeMount: function () {
+            this.sortedFeats = this.sorting(this.feats,"en");
+        },
+        methods: {
+            sorting: function (obj, prop) {
+                return obj.length > 1 && prop !=="" ? obj.sort(function (a, b) {
+                    if (a[prop] > b[prop]) {
+                        return 1;
+                    }
+                    if (a[prop] < b[prop]) {
+                        return -1;
+                    }
+                    return 0;
+                }) : obj;
+            },
+        }
+    });
+</script>
+<script src="js/frames-height.js"></script>
+<script src="js/page-content.js"></script>
+
+</body>
+</html>

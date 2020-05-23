@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все умения < DnD 3.5 PHB</title>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="js/vendor/vue.js"></script>
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+    <script src="js/skills.js"></script>
+</head>
+<body class="page">
+
+<div id="mainContents">
+	<div class="table-link"><a href="tables/4-2_Skills.html"><b>All Skills</b></a></div>
+    <div v-for="skill in skills">
+        <p><a :href="'#' + skill.id.replace(/-/g,'_')"><b>{{skill.en}}</b> ({{skill.ability}})<br>({{skill.name}})</a></p>
+    </div>
+</div>
+
+<div id="skills">
+    <div>
+        <div v-for="skill in skills">
+            <div :id="skill.id.replace(/-/g,'_')" class="insert-skill"></div>
+<!--            <iframe :id="skill.id" :src="'skills/' + skill.id + '.html'" width="100%" frameborder="0" allowfullscreen></iframe>-->
+        </div>
+    </div>
+</div>
+<script>
+    var contents = new Vue({
+        el: '#skills',
+        data: {
+            skills: _skills
+        }
+    });
+    var contents = new Vue({
+        el: '#mainContents',
+        data: {
+            skills: _skills
+        }
+    });
+</script>
+<script src="js/frames-height.js"></script>
+<script src="js/page-content.js"></script>
+
+</body>
+</html>
