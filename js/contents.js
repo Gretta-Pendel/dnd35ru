@@ -866,7 +866,7 @@ const _contents = [
             { title: "📜Маг/Волшебник",
                 entitle: "Wizard",
                 url: "phb3_Wizard.html" },
-            { title: "Experience and Levels",
+            { title: "Опыт и уровни",
                 entitle: "Experience and Levels",
                 url: "phb3_Experience-and-Levels.html" },
             { title: "Мультиклассовые персонажи",
