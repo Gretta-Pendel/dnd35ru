@@ -974,7 +974,7 @@ const _contents = [
             { title: "Атака при возможности",
                 entitle:"Attacks of Opportunity",
                 url:"phb8_Attacks-of-Opportunity.html" },
-            { title: "Действия в бою",
+            { title: "🔨Действия в бою",
                 entitle:"Actions in Combat",
                 url:"phb8_Actions-in-Combat.html" },
             { title: "Ранения и смерть",
