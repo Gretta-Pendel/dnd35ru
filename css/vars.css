@@ -1,7 +1,7 @@
 :root {
     --font-family:"Segoe UI", Verdana, sans-serif;
     --body-bg-color: #fefefe;
-    --font-color: #2e3234;
+    --font-color: #343a40;/*#2e3234;*/
     --light-bg-color: #e7e7e7;
     --mid-bg-color: #dedede;
     --light-border-color: #cdcdcd;
@@ -11,6 +11,9 @@
     --link-color: #003399; /*#5500EE;*/ /*#00188B;*/
     --link-visited-color: #003399; /*#5500EE;*/ /*#551A8B;*/ /*#660099;*/
     --focus-border-color: #e3e7e3; /*#E3E3E3*/
+    --enemy-font-color: #cc3333;
+    --ally-font-color: #339933;
+    --pc-font-color: #333399;
 
     --border-width:1px;
 

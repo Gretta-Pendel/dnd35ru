@@ -81,8 +81,26 @@ var _index = [
     { id:"", name:"", en:"",book:"dmg",page:"",reference: "",link:"contents/dmg8_abilities.html#",sub:"" },
     { id:"", name:"", en:"",book:"dmg",page:"",reference: "",link:"contents/dmg8_abilities.html#",sub:"" },
     { id:"", name:"", en:"",book:"dmg",page:"",reference: "",link:"contents/dmg8_abilities.html#",sub:"" },
-    { id:"tremorsense", name:"Чувство вибрации", en:"Tremorsense",book:"dmg",page:"299",reference: "",link:"contents/dmg8_abilities.html#",sub:"" },
+    { id:"tremorsense", name:"Чувство вибрации", en:"Tremorsense",book:"dmg",page:"299",reference: "",link:"contents/dmg8_abilities.html#tremorsense",sub:"" },
     { id:"turn_resistance", name:"Сопротивляемость изгнанию", en:"Turn Resistance",book:"dmg",page:"299",reference: "",link:"contents/dmg8_abilities.html#turn_resistance",sub:"" },
     { id:"vulnerability_to_energy", name:"Уязвимость к энергии", en:"Vulnerability to Energy",book:"dmg",page:"?",reference: "",link:"contents/dmg8_abilities.html#vulnerability_to_energy",sub:"" },
     { id:"coup_de_grace", name:"Добивающий удар", en:"Coup de Grace",book:"dmg",page:"",reference: "",link:"contents/phb8_Combat-Modifiers.html#coup_de_grace",sub:"" },
+
+    { id:"aid_another", name:"Помощь другим", en:"Aid Another",book:"phb",page:"154",reference: "",link:"contents/phb8_Special-Attacks.html#aid_another",sub:"" },
+    { id:"bull_rush", name:"Натиск", en:"Bull rush",book:"phb",page:"154",reference: "",link:"contents/phb8_Special-Attacks.html#bull_rush",sub:"" },
+    { id:"charge", name:"Стремительная атака", en:"Charge",book:"phb",page:"154",reference: "",link:"contents/phb8_Special-Attacks.html#charge",sub:"" },
+    { id:"disarm", name:"Обезоруживание", en:"Disarm",book:"phb",page:"155",reference: "",link:"contents/phb8_Special-Attacks.html#disarm",sub:"" },
+    { id:"feint", name:"Финт", en:"Feint",book:"phb",page:"155",reference: "",link:"contents/phb8_Special-Attacks.html#feint",sub:"" },
+    { id:"grapple", name:"Борьба", en:"Grapple",book:"phb",page:"155",reference: "",link:"contents/phb8_Special-Attacks.html#grapple",sub:"" },
+    { id:"mounted_combat", name:"Верховой бой", en:"Mounted Combat",book:"phb",page:"157",reference: "",link:"contents/phb8_Special-Attacks.html#mounted_combat",sub:"" },
+    { id:"overrun", name:"Прорыв", en:"Overrun",book:"phb",page:"157",reference: "",link:"contents/phb8_Special-Attacks.html#overrun",sub:"" },
+    { id:"sunder", name:"Удар по оружию", en:"Sunder",book:"phb",page:"158",reference: "",link:"contents/phb8_Special-Attacks.html#sunder",sub:"" },
+    { id:"throw_splash_weapon", name:"Метание взрывного оружия", en:"Throw splash weapon",book:"phb",page:"158",reference: "",link:"contents/phb8_Special-Attacks.html#throw_splash_weapon",sub:"" },
+    { id:"trip", name:"Подсечка", en:"Trip",book:"phb",page:"158",reference: "",link:"contents/phb8_Special-Attacks.html#trip",sub:"" },
+    { id:"turn_rebuke_undead", name:"Изгнание или устрашение нежити", en:"Turn (rebuke) undead",book:"phb",page:"159",reference: "",link:"contents/phb8_Special-Attacks.html#turn_rebuke_undead",sub:"" },
+    { id:"two_weapon_fighting", name:"Бой с оружием в обеих руках", en:"Two-weapon fighting",book:"phb",page:"159",reference: "",link:"contents/phb8_Special-Attacks.html#two_weapon_fighting",sub:"" },
+    { id:"", name:"", en:"",book:"dmg",page:"",reference: "",link:"contents/dmg8_abilities.html#",sub:"" },
+    { id:"", name:"", en:"",book:"dmg",page:"",reference: "",link:"contents/dmg8_abilities.html#",sub:"" },
+
+
 ];

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Icons</title>
+</head>
+<body>
+
+<script>
+    const fs = require("fs");
+    const stream = require('stream');
+    const readline = require('readline');
+    let path = './bootstrap-icons';
+    let files;
+    try {
+        files = fs.readdirSync(path)
+    } catch (err) {
+        //return mkdir.mkdirsSync(path)
+    }
+    files.forEach(file => {
+        let filePath = path + '/' + file;
+        let svg = fs.readFileSync(filePath).toString();
+        //var lines = fs.readFileSync(filePath).toString().split("\n");
+        //spellText(file,lines);
+        document.write(svg);
+        document.write("\n");
+    });
+</script>
+
+</body>
+</html>

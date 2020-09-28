@@ -102,55 +102,51 @@ const path = "./js/spells";
 //     output: process.stdout
 // });
 
-let files;
-try {
-    files = fs.readdirSync(path)
-} catch (err) {
-    return mkdir.mkdirsSync(path)
-}
-
-//for(f in files) {
-let sss = [files[0], files[1], files[2], files[3]];
-let print = [];
-
-files.forEach(file => {
-    let filePath = path + '/' + file;
-    var lines = fs.readFileSync(filePath).toString().split("\n");
-    spellText(file,lines);
-});
-for (let p in print) {
-    console.log(p + ": " + print[p])
-}
-
-function spellText(file,arr) {
-    let strings=[];
-    arr.forEach(line => {
-        if(line.indexOf('<b>') == -1 && line.indexOf('let ') == -1 && line.indexOf('<h1>') == -1 && line.length > 1) {
-            strings.push(line);
-        }
-    })
-    if (strings.length === 0) {
-        let spellname = file.substring(0,file.length-3);
-        let spellitem = spells.filter(item => item.id === spellname)[0];
-        if(!spellitem) {
-            console.log("error: " + spellname + " no spellitem");
-            return;
-        }
-        let level = spellitem.level ? spellitem.level : "";
-        let levelstr = "";
-        let flag = false;
-        for (var l in level) {
-            if (level[l] < 4) {
-                flag = true;
-            }
-            //levelstr += level[l];
-        }
-        if (flag) {
-            print.push(file + " " + levelstr);
-            //console.log(c + ": " + file + " " + levelstr);
-        }
-    }
-}
+// let files;
+// try {
+//     files = fs.readdirSync(path)
+// } catch (err) {
+//     return mkdir.mkdirsSync(path)
+// }
+//
+// let print = [];
+//
+// files.forEach(file => {
+//     let filePath = path + '/' + file;
+//     var lines = fs.readFileSync(filePath).toString().split("\n");
+//     spellText(file,lines);
+// });
+// for (let p in print) {
+//     console.log(p + ": " + print[p])
+// }
+//
+// function spellText(file,arr) {
+//     let strings=[];
+//     arr.forEach(line => {
+//         if(line.indexOf('<b>') == -1 && line.indexOf('let ') == -1 && line.indexOf('<h1>') == -1 && line.length > 1) {
+//             strings.push(line);
+//         }
+//     })
+//     if (strings.length === 0) {
+//         let spellname = file.substring(0,file.length-3);
+//         let spellitem = spells.filter(item => item.id === spellname)[0];
+//         if(!spellitem) {
+//             console.log("error: " + spellname + " no spellitem");
+//             return;
+//         }
+//         let level = spellitem.level ? spellitem.level : "";
+//         let levelstr = "";
+//         let flag = false;
+//         for (var l in level) {
+//             if (level[l] < 4) {
+//                 flag = true;
+//             }
+//         }
+//         if (flag) {
+//             print.push(file + " " + levelstr);
+//         }
+//     }
+// }
 
 
 // lines = [1,2,3]

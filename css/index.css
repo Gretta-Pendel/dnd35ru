@@ -1,5 +1,6 @@
 @import "fonts.css";
 @import "vars.css";
+@import "icons.css";
 
 html, body {height:100%;}
 body {font-family: var(--font-family);margin: 0;padding: 0;font-size: var(--body-font-size); background-color: var(--body-bg-color);color: var(--font-color);}
@@ -119,6 +120,13 @@ table td.subheader {text-align:center;border-bottom:1px solid #cdcdcd;}
 .err {color:var(--error-font-color);}
 small {font-size:var(--small-font-size);}
 table ~ p small {display:block;margin-top: -.5em;}
+.smb p, .smb li {margin-bottom: .3em;line-height: 1.2em; }
+.smb ol, .smb ul {padding-left: 1em; margin:0;}
+.smb i {font-style: normal; font-family: sans-serif;font-size: 20px; line-height: .3em;}
+
+.enemy {color:var(--enemy-font-color);}
+.ally {color: var(--ally-font-color);}
+.pc {color: var(--pc-font-color);}
 
 input[type=checkbox] + label {display: inline-block;margin-right: 1em;}
 
