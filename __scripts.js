@@ -243,11 +243,12 @@ const path = "./js/spells";
     //     "</table>\n" + "\n" + "</body>\n" + "</html>"
 
 
-    // fs.writeFile('./skills/'+_skills[f].id+'.html', data, (err) => {
-    //     if (err) throw err;
-    //     console.log('The file has been saved!');
-    // });
+// fs.writeFile('./skills/'+_skills[f].id+'.html', data, (err) => {
+//     if (err) throw err;
+//     console.log('The file has been saved!');
+// });
 //}
+
 
 
 

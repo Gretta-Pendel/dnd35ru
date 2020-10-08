@@ -120,9 +120,12 @@ table td.subheader {text-align:center;border-bottom:1px solid #cdcdcd;}
 .err {color:var(--error-font-color);}
 small {font-size:var(--small-font-size);}
 table ~ p small {display:block;margin-top: -.5em;}
-.smb p, .smb li {margin-bottom: .3em;line-height: 1.2em; }
+.smb {margin-bottom: 2em;}
+.smb p, .smb li {margin-top:0; margin-bottom: .3em;line-height: 1.2em; }
+.smb li::marker {color:var(--li-font-color);font-weight: 500}
+.smb ol li::before {content: counter(li); color: var(--li-font-color);	display: inline-block; width: 1em; margin-left: -1.5em;	margin-right: 0.5em; text-align: right; direction: rtl;font-weight: 500}
+.smb li {counter-increment: li}
 .smb ol, .smb ul {padding-left: 1em; margin:0;}
-.smb i {font-style: normal; font-family: sans-serif;font-size: 20px; line-height: .3em;}
 
 .enemy {color:var(--enemy-font-color);}
 .ally {color: var(--ally-font-color);}
