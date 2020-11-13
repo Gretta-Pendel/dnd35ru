@@ -17,6 +17,14 @@ h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited {color: var(--link-color)
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {text-decoration: none;}
 div {margin:0;padding:0;}
 .page p, .page table, .page li {margin:0 0 0.5em;}
+.clearfix:after {
+	display: block;
+	clear: both;
+	content: "";
+}
+.d-flex {
+	display: flex;
+}
 
 *[id]:before {content: "";display: block;padding-top: 35px;margin-top: -35px;}
 
@@ -66,7 +74,7 @@ overflow-y:auto;margin-bottom:15px;}
 
 
 .page #mainContents {width:var(--left-menu-width);position: fixed; left:0;top:var(--top-menu-height);bottom:0;overflow-y: scroll;}
-.page #topContents, .home #topContents, .frame #topContents {position: fixed;top:0;left:0;right:0;height:var(--top-menu-height);background-color:var(--light-bg-color);border-bottom:1px solid var(--light-border-color);padding:.5em;font-size:var(--small-font-size);}
+.page #topContents, .home #topContents, .frame #topContents {position: fixed;z-index:2;top:0;left:0;right:0;height:var(--top-menu-height);background-color:var(--light-bg-color);border-bottom:1px solid var(--light-border-color);padding:.5em;font-size:var(--small-font-size);}
 .page #topContents a {text-decoration: none;}
 .page #spellFilter {display:flex;position: fixed;top:var(--top-menu-height);left:0;right:0;background-color:var(--light-bg-color);border-bottom:1px solid var(--light-border-color);padding:.5em;font-size:var(--small-font-size);}
 .page #spellFilter select {margin-right: .5em;}
