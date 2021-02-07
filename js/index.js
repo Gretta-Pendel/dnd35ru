@@ -59,6 +59,8 @@ var _index = [
     { id:"constrict", name:"Сжимает", en:"Constrict",book:"dmg",page:"?",reference: "",link:"contents/dmg8_abilities.html#constrict",sub:"" },
     { id:"damage_reduction", name:"Снижение урона", en:"Damage Reduction",book:"dmg",page:"291",reference: "",link:"contents/dmg8_abilities.html#damage_reduction",sub:"" },
     { id:"darkvision", name:"Темновидение", en:"Darkvision",book:"dmg",page:"292",reference: "",link:"contents/dmg8_abilities.html#darkvision",sub:"" },
+    { id:"death_attacks", name:"Смертельная атака", en:"Death Attacks",book:"dmg",page:"292",reference: "",link:"contents/dmg8_abilities.html#death_attacks",sub:"" },
+    { id:"disease", name:"Болезнь", en:"Disease",book:"dmg",page:"292",reference: "",link:"contents/dmg8_abilities.html#disease",sub:"" },
     { id:"etherealness", name:"Эфирность", en:"Etherealness",book:"dmg",page:"293",reference: "",link:"contents/dmg8_abilities.html#etherealness",sub:"" },
     { id:"evasion_improved_evasion", name:"Уклонение И Улучшенное Уклонение", en:"Evasion And Improved Evasion",book:"dmg",page:"293",reference: "",link:"contents/dmg8_abilities.html#evasion_improved_evasion",sub:"" },
     { id:"fast_healing", name:"Быстрое лечение", en:"Fast Healing",book:"dmg",page:"293",reference: "",link:"contents/dmg8_abilities.html#fast_healing",sub:"" },
