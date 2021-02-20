@@ -72,7 +72,7 @@ var _index = [
     { id:"invisibility", name:"Невидимость", en:"Invisibility",book:"dmg",page:"295",reference: "",link:"contents/dmg8_abilities.html#invisibility",sub:"" },
     { id:"level_loss", name:"Потеря уровня", en:"Level Loss",book:"dmg",page:"296",reference: "",link:"contents/dmg8_abilities.html#level_loss",sub:"" },
     { id:"low_light_vision", name:"Ночное зрение", en:"Low-Light Vision",book:"dmg",page:"296",reference: "",link:"contents/dmg8_abilities.html#low_light_vision",sub:"" },
-    { id:"", name:"", en:"",book:"dmg",page:"",reference: "",link:"contents/dmg8_abilities.html#",sub:"" },
+    /*{ id:"", name:"", en:"",book:"dmg",page:"",reference: "",link:"contents/dmg8_abilities.html#",sub:"" },
     { id:"", name:"", en:"",book:"dmg",page:"",reference: "",link:"contents/dmg8_abilities.html#",sub:"" },
     { id:"", name:"", en:"",book:"dmg",page:"",reference: "",link:"contents/dmg8_abilities.html#",sub:"" },
     { id:"pounce", name:"Наброситься", en:"Pounce",book:"dmg",page:"?",reference: "",link:"contents/dmg8_abilities.html#pounce",sub:"" },
@@ -83,6 +83,7 @@ var _index = [
     { id:"", name:"", en:"",book:"dmg",page:"",reference: "",link:"contents/dmg8_abilities.html#",sub:"" },
     { id:"", name:"", en:"",book:"dmg",page:"",reference: "",link:"contents/dmg8_abilities.html#",sub:"" },
     { id:"", name:"", en:"",book:"dmg",page:"",reference: "",link:"contents/dmg8_abilities.html#",sub:"" },
+    */
     { id:"tremorsense", name:"Чувство вибрации", en:"Tremorsense",book:"dmg",page:"299",reference: "",link:"contents/dmg8_abilities.html#tremorsense",sub:"" },
     { id:"turn_resistance", name:"Сопротивляемость изгнанию", en:"Turn Resistance",book:"dmg",page:"299",reference: "",link:"contents/dmg8_abilities.html#turn_resistance",sub:"" },
     { id:"vulnerability_to_energy", name:"Уязвимость к энергии", en:"Vulnerability to Energy",book:"dmg",page:"?",reference: "",link:"contents/dmg8_abilities.html#vulnerability_to_energy",sub:"" },
@@ -101,8 +102,8 @@ var _index = [
     { id:"trip", name:"Подсечка", en:"Trip",book:"phb",page:"158",reference: "",link:"contents/phb8_Special-Attacks.html#trip",sub:"" },
     { id:"turn_rebuke_undead", name:"Изгнание или устрашение нежити", en:"Turn (rebuke) undead",book:"phb",page:"159",reference: "",link:"contents/phb8_Special-Attacks.html#turn_rebuke_undead",sub:"" },
     { id:"two_weapon_fighting", name:"Бой с оружием в обеих руках", en:"Two-weapon fighting",book:"phb",page:"159",reference: "",link:"contents/phb8_Special-Attacks.html#two_weapon_fighting",sub:"" },
+    /*{ id:"", name:"", en:"",book:"dmg",page:"",reference: "",link:"contents/dmg8_abilities.html#",sub:"" },
     { id:"", name:"", en:"",book:"dmg",page:"",reference: "",link:"contents/dmg8_abilities.html#",sub:"" },
-    { id:"", name:"", en:"",book:"dmg",page:"",reference: "",link:"contents/dmg8_abilities.html#",sub:"" },
-
+*/
 
 ];

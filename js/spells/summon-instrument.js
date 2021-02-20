@@ -5,8 +5,8 @@ let summon_instrument = `
 <div><b>Компоненты:</b> В, С</div>
 <div><b>Расстояние:</b> 0 ф.</div>
 <div><b>Эффект:</b> Один музыкальный, удерживаемый в руках инструмент</div>
-<div><b>Длительность:</b> 1 минута/уровень (П)</div>
+<div><b>Длительность:</b> 1 мин/уровень (П)</div>
 <div><b>Спасброски:</b> Нет</div>
 <div><b>Сопротивляемость:</b> Нет</div>
 <div><b>Кратко:</b> Призывает один инструмент по выбору заклинателя.</div>
-<div><p>This spell summons one handheld musical instrument of your choice. This instrument appears in your hands or at your feet (your choice). The instrument is typical for its type. Only one instrument appears per casting, and it will play only for you. You can’t summon an instrument too large to be held in two hands.</p></div>`
+<div><p>Это заклинание призывает один ручной музыкальный инструмент по вашему выбору. Этот инструмент оказывается у вас в руках или у ног (на ваш выбор). Инструмент типичен для своего вида. Заклинание призывает только один инструмент, и он будет играть только для вас. Нельзя вызвать инструмент, слишком большой, чтобы его можно было держать двумя руками.</p></div>`

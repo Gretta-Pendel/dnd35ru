@@ -111,14 +111,14 @@ try {
 
 let print = [];
 
-files.forEach(file => {
-    let filePath = path + '/' + file;
-    var lines = fs.readFileSync(filePath).toString().split("\n");
-    spellText(file,lines);
-});
-for (let p in print) {
-    console.log(p + ": " + print[p])
-}
+// files.forEach(file => {
+//     let filePath = path + '/' + file;
+//     var lines = fs.readFileSync(filePath).toString().split("\n");
+//     spellText(file,lines);
+// });
+// for (let p in print) {
+//     console.log(p + ": " + print[p])
+// }
 
 function spellText(file,arr) {
     let strings=[];
@@ -126,7 +126,7 @@ function spellText(file,arr) {
         //if(line.indexOf('<b>') == -1 && line.indexOf('let ') == -1 && line.indexOf('<h1>') == -1 && line.length > 1) {
             strings.push(line);
         //}
-    })
+    });
     //if (strings.length === 0) {
         let spellname = file.substring(0,file.length-3);
         let spellitem = spells.filter(item => item.id === spellname)[0];
@@ -138,7 +138,7 @@ function spellText(file,arr) {
         let levelstr = "";
         let flag = false;
         for (var l in level) {
-            if (level[l] == 0) {
+            if (level[l] === 1) {
                 flag = true;
             }
         }
@@ -148,13 +148,19 @@ function spellText(file,arr) {
     //}
 }
 
-
-// lines = [1,2,3]
-// lines.push(4);
-// lines.forEach(line => {
-//     console.log("---> "+line);
-// })
-
+//---------------------------------------------------------------------------------------------------
+// all properties
+function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+}
+let props = [];
+spells.forEach( spell => {
+    for (var prop in spell) {
+        props.push(prop);
+    }
+});
+let unique = props.filter(onlyUnique);
+console.log(unique);
 
 // --------------------------------------------------------------------------------------------------
 

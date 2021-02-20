@@ -13,7 +13,7 @@ _spells = [
     components: "В, С, М/БФ",
     casting_time: "1 действие",
     range: "Среднее (100 фт + 10 фт/ уровень)",
-    effect: "Туман 20 ф.  радиус, 20 ф. высотой",
+    effect: "Туман 20 фт  радиус, 20 фт высотой",
     duration: "1 раунд/уровень",
     savings: "Нет",
     resistance: "Да",
@@ -74,7 +74,7 @@ _spells = [
 {
     id: "alarm",
     name: "Тревога",
-    en: "Alarm",
+    en: "Alarm *",
     school: "abjur",
     level: {"brd":1, "rgr":1, "sor":1, "wiz":1},
     components: "В, С, Ф/БФ",
@@ -146,7 +146,7 @@ _spells = [
 {
     id: "animal-messenger",
     name: "Животное-Посланник",
-    en: "Animal Messenger",
+    en: "Animal Messenger *",
     school: "ench",
     subschool: "Compulsion",
     descriptor: "Mind-Affecting",
@@ -245,7 +245,7 @@ _spells = [
 {
     id: "animate-rope",
     name: "Оживить Веревку",
-    en: "Animate Rope",
+    en: "Animate Rope *",
     school: "trans",
     level: {"brd":1,"sor":1, "wiz":1},
     components: "В, С",
@@ -465,7 +465,7 @@ _spells = [
 {
     id: "bane",
     name: "Сглаз",
-    en: "Bane",
+    en: "Bane *",
     school: "ench",
     subschool: "Compulsion",
     descriptor: ["Mind-Affecting","Fear"],
@@ -663,7 +663,7 @@ _spells = [
 {
     id: "bless",
     name:"Благословение",
-    en:"Bless",
+    en:"Bless *",
     school: "ench",
     subschool: "Compulsion",
     descriptor: "Mind-Affecting",
@@ -680,7 +680,7 @@ _spells = [
 {
     id: "bless-water",
     name:"Благословение воды",
-    en:"Bless water",
+    en:"Bless water *",
     school: "trans",
     descriptor: "Good",
     level: {"clr":1,"pal":1},
@@ -696,7 +696,7 @@ _spells = [
 {
     id: "bless-weapon",
     name: "Благословение оружия",
-    en:"Bless weapon",
+    en:"Bless weapon *",
     school: "trans",
     level: {"pal":1},
     components: "В, С",
@@ -813,7 +813,7 @@ _spells = [
 {
     id: "burning-hands",
     name: "Пылающие Руки",
-    en: "Burning Hands",
+    en: "Burning Hands *",
     school: "evoc",
     descriptor: "Fire",
     level: {"sor":1, "wiz":1},
@@ -857,7 +857,7 @@ _spells = [
 {
     id: "calm-animals",
     name: "Успокоить Животное",
-    en: "Calm Animals",
+    en: "Calm Animals *",
     school: "ench",
     subschool: "Compulsion",
     descriptor: "Mind-Affecting",
@@ -918,7 +918,7 @@ _spells = [
 {
     id: "cause-fear",
     name: "Устрашение",
-    en: "Cause Fear",
+    en: "Cause Fear *",
     school: "necro",
     descriptor: ["Fear", "Mind-Affecting"],
     level: {"brd":1, "clr":1, "sor":1, "wiz":1},
@@ -982,7 +982,7 @@ _spells = [
 {
     id: "charm-animal",
     name: "Очаровать Животное",
-    en: "Charm Animal",
+    en: "Charm Animal *",
     school: "ench",
     subschool: "Charm",
     descriptor: "Mind-Affecting",
@@ -1018,7 +1018,7 @@ _spells = [
 {
     id: "charm-person",
     name: "Очаровать Существо",
-    en: "Charm Person",
+    en: "Charm Person *",
     school: "ench",
     subschool: "Charm",
     descriptor: "Mind-Affecting",
@@ -1051,7 +1051,7 @@ _spells = [
 {
     id: "chill-touch",
     name: "Леденящее Прикосновение",
-    en: "Chill Touch",
+    en: "Chill Touch *",
     school: "necro",
     level: {"sor":1, "wiz":1},
     components: "В, С",
@@ -1147,7 +1147,7 @@ _spells = [
 {
     id: "color-spray",
     name: "Цветная Струя",
-    en: "Color Spray",
+    en: "Color Spray *",
     school: "illus",
     subschool: "Pattern",
     descriptor: "Mind-Affecting",
@@ -1164,7 +1164,7 @@ _spells = [
 {
     id: "command",
     name: "Приказ",
-    en: "Command",
+    en: "Command *",
     school: "ench",
     subschool: "Compulsion",
     descriptor: ["Language-Dependent", "Mind-Affecting"],
@@ -1251,7 +1251,7 @@ _spells = [
 {
     id: "comprehend-languages",
     name: "Понимание Языков",
-    en: "Comprehend Languages",
+    en: "Comprehend Languages *",
     school: "div",
     level: {"clr":1, "brd":1, "sor":1, "wiz":1},
     components: "В, С, М/БФ",
@@ -1582,7 +1582,7 @@ _spells = [
 {
     id: "cure-light-wounds",
     name: "Лечение Легких Ран",
-    en: "Cure Light Wounds",
+    en: "Cure Light Wounds *",
     school: "conj",
     subschool: "Healing",
     level: {"brd": 1, "clr": 1, "drd": 1, "pal": 1, "rgr": 2},
@@ -1656,7 +1656,7 @@ _spells = [
 {
     id: "curse-water",
     name: "Проклясть Воду",
-    en: "Curse Water",
+    en: "Curse Water *",
     school: "necro",
     descriptor: "Evil",
     level: {"clr":1},
@@ -1798,7 +1798,7 @@ _spells = [
 {
     id: "deathwatch",
     name: "Вахта смерти",
-    en: "Deathwatch",
+    en: "Deathwatch *",
     school: "necro",
     descriptor: "Evil",
     level: {"clr":1},
@@ -1836,7 +1836,7 @@ _spells = [
 {
     id: "delay-poison",
     name: "Замедление Яда",
-    en: "Delay Poison",
+    en: "Delay Poison *",
     school: "conj",
     subschool: "Healing",
     level: {"brd":2, "clr":2, "drd":2, "pal":2, "rgr":1},
@@ -4461,7 +4461,7 @@ _spells = [
 {
     id: "light",
     name: "Свет",
-    en: "Light",
+    en: "Light *",
     school: "evoc",
     descriptor: "Light",
     level: {"brd":0, "clr":0, "drd":0, "sor":0, "wiz":0},
@@ -4563,7 +4563,7 @@ _spells = [
 {
     id: "lullaby",
     name: "Колыбельная",
-    en: "Lullaby",
+    en: "Lullaby *",
     school: "ench",
     subschool: "Compulsion",
     descriptor: "Mind-Affecting",
@@ -4598,7 +4598,7 @@ _spells = [
 {
     id: "mage-hand",
     name: "Рука Мага",
-    en: "Mage Hand",
+    en: "Mage Hand *",
     school: "trans",
     level: {"brd":0, "sor":0, "wiz":0},
     components: "В, С",
@@ -4896,7 +4896,7 @@ _spells = [
 {
     id: "mending",
     name: "Починка",
-    en: "Mending",
+    en: "Mending *",
     school: "trans",
     level: {"brd":0, "clr":0, "drd":0, "sor":0, "wiz":0},
     components: "В, С",
@@ -4911,7 +4911,7 @@ _spells = [
 {
     id: "message",
     name: "Сообщение",
-    en: "Message",
+    en: "Message *",
     school: "trans",
     descriptor:"Language-Dependent",
     level: {"brd":0, "sor":0, "wiz":0},
@@ -5332,7 +5332,7 @@ _spells = [
 {
     id: "open-close",
     name: "Открыть/Закрыть",
-    en: "Open/Close",
+    en: "Open/Close *",
     school: "trans",
     level: {"brd":0, "sor":0, "wiz":0},
     components: "В, С, Ф",
@@ -5818,7 +5818,7 @@ _spells = [
 {
     id: "prestidigitation",
     name: "Фокусы",
-    en: "Prestidigitation",
+    en: "Prestidigitation *",
     school: "univ",
     level: {"brd":0, "sor":0, "wiz":0},
     components: "В, С",
@@ -6036,7 +6036,7 @@ _spells = [
 {
     id: "purify-food-and-drink",
     name: "Очищение Пищи И Питья",
-    en: "Purify Food And Drink",
+    en: "Purify Food And Drink *",
     school: "trans",
     level: {"clr":0, "drd":0},
     components: "В, С",
@@ -6191,7 +6191,7 @@ _spells = [
 {
     id: "ray-of-frost",
     name: "Луч Холода",
-    en: "Ray Of Frost",
+    en: "Ray Of Frost *",
     school: "evoc",
     descriptor: "Cold",
     level: {"sor":0, "wiz":0},
@@ -6207,7 +6207,7 @@ _spells = [
 {
     id: "read-magic",
     name: "Чтение Магии",
-    en: "Read Magic",
+    en: "Read Magic *",
     school: "div",
     level: {"brd":0, "clr":0, "drd":0, "pal":1, "rgr":1, "sor":0, "wiz":0},
     components: "В, С, Ф",
@@ -6448,7 +6448,7 @@ _spells = [
 {
     id: "resistance",
     name: "Сопротивляемость",
-    en: "Resistance",
+    en: "Resistance *",
     school: "abjur",
     level: {"brd":0, "clr":0, "drd":0, "pal":1, "sor":0, "wiz":0},
     components: "В, С, М/БФ",
@@ -6929,7 +6929,7 @@ _spells = [
     components: "В, С, М/БФ",
     casting_time: "1 действие",
     range: "Близкое (25 фт + 5 фт/2 уровня)",
-    area_or_target: "Распространений 5 фт. радиуса, или один твердый объект или одно кристаллическое существо.",
+    target_or_area: "Распространение 5 фт радиуса, или 1 твердый объект или 1 кристаллическое существо.",
     duration: "Мгновенно",
     savings: "Воля нейтрализует (объект); Воля нейтрализует (объект) или Стойкость наполовину (см. текст)",
     resistance: "Да (объект)",
@@ -7618,12 +7618,12 @@ _spells = [
 {
     id: "summon-instrument",
     name: "Призвать Инструмент",
-    en: "Summon Instrument",
+    en: "Summon Instrument *",
     school: "conj",
     subschool: "Summoning",
     level: {"brd":0},
     components: "В, С",
-    asting_time: "1 полный раунд",
+    casting_time: "1 полный раунд",
     range: "0 ф.",
     effect: "Один музыкальный, удерживаемый в руках инструмент",
     duration: "1 минута/уровень (П)",
@@ -8177,7 +8177,7 @@ _spells = [
 {
     id: "touch-of-fatigue",
     name: "Прикосновение усталости",
-    en: "Touch of Fatigue",
+    en: "Touch of Fatigue *",
     school: "necro",
     level: {"sor":0, "wiz":0},
     components: "В, С, М",
@@ -8474,7 +8474,7 @@ _spells = [
 {
     id: "ventriloquism",
     name: "Чревовещание",
-    en: "Ventriloquism",
+    en: "Ventriloquism *",
     school: "illus",
     subschool: "Figment",
     level: {"brd":1, "sor":1, "wiz":1},
@@ -8490,7 +8490,7 @@ _spells = [
 {
     id: "virtue",
     name: "Добродетель",
-    en: "Virtue",
+    en: "Virtue *",
     school: "trans",
     level: {"clr":0, "drd":0, "pal":1},
     components: "В, С, БФ",

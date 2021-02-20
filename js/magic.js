@@ -39,7 +39,7 @@ var subschools = {
     "Teleportation":"телепортация",
     "Calling":"зов",
 //div
-    "Scrying":"",
+    "Scrying":"предсказание",
 //ench
     "Charm":"очарование",
     "Compulsion":"принуждение",
