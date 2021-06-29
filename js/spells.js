@@ -1923,14 +1923,14 @@ _spells = [
 {
     id: "detect-chaos",
     name: "Обнаружить Хаос",
-    en: "Detect Chaos",
+    en: "Detect Chaos *",
     school: "div",
     level: {"clr":1},
     text: "Находит существ, заклинания или объекты хаотического мировоззрения."
 },
 {
     id: "detect-evil",
-    name: "Обнаружить Зло",
+    name: "Обнаружить Зло *",
     en: "Detect Evil",
     school: "div",
     level: {"clr":1},
@@ -1946,14 +1946,14 @@ _spells = [
 {
     id: "detect-good",
     name: "Обнаружить Добро",
-    en: "Detect Good",
+    en: "Detect Good *",
     school: "div",
     level: {"clr":1},
     text: "Находит существ, заклинания или объекты доброго мировоззрения."
 },
 {
     id: "detect-law",
-    name: "Обнаружить Закон",
+    name: "Обнаружить Закон *",
     en: "Detect Law",
     school: "div",
     level: {"clr":1},
