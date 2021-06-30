@@ -458,7 +458,7 @@ let _tables = [
         name: "Награждение в очках опыта (одно чудовище)",
         en: "Experience Point Awards (Single Monster)"
     },
-
+/*
     {
         id: "table-dmg-3–1",
         name: "Число столкновений",
@@ -903,22 +903,24 @@ let _tables = [
         id: "table-dmg-7–33",
         name: "Оценка стоимости магического предмета",
         en: "Estimating Magic Item Gold Piece Values"},
-{
-        id: "table-dmg-8–1",
+*/{
+        id: "table-dmg-8-1",
         name: "Типы спецспособностей",
         en: "Special Ability Types"},
-{
+/*{
         id: "table-dmg-8–2",
         name: "Болезни",
         en: "Diseases"},
-{
-        id: "table-dmg-8–3",
+*/{
+        id: "table-dmg-8-3",
         name: "Яды",
-        en: "Poisons"},
-{
+        en: "Poisons",
+        //link: "tables/1-1_Ability-Modifiers-and-Bonus-Spells.html"
+},
+/*{
         id: "table-dmg-8–4",
         name: "Урон от падающих объектов",
         en: "Damage from Falling Objects"}
-
+*/
 ];
 //module.exports = _tables;
