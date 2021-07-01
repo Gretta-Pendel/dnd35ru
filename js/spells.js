@@ -2007,7 +2007,7 @@ _spells = [
 {
     id: "detect-secret-doors",
     name: "Обнаружить Секретные Двери",
-    en: "Detect Secret Doors",
+    en: "Detect Secret Doors *",
     school: "div",
     level: {"brd":1, "sor":1, "wiz":1},
     domen: {"Knowledge":1},
@@ -2023,7 +2023,7 @@ _spells = [
 {
     id: "detect-snares-and-pits",
     name: "Обнаружить Ловушки И Ямы",
-    en: "Detect Snares And Pits",
+    en: "Detect Snares And Pits *",
     school: "div",
     level: {"drd":1, "rgr":1},
     components: "В, С",
@@ -2055,7 +2055,7 @@ _spells = [
 {
     id: "detect-undead",
     name: "Обнаружить Нежить",
-    en: "Detect Undead",
+    en: "Detect Undead *",
     school: "div",
     level: {"clr":1, "pal":1, "sor":1, "wiz":1},
     components: "В, С, М/БФ",
