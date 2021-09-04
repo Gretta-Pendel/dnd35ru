@@ -1923,14 +1923,14 @@ _spells = [
 {
     id: "detect-chaos",
     name: "Обнаружить Хаос",
-    en: "Detect Chaos",
+    en: "Detect Chaos *",
     school: "div",
     level: {"clr":1},
     text: "Находит существ, заклинания или объекты хаотического мировоззрения."
 },
 {
     id: "detect-evil",
-    name: "Обнаружить Зло",
+    name: "Обнаружить Зло *",
     en: "Detect Evil",
     school: "div",
     level: {"clr":1},
@@ -1946,14 +1946,14 @@ _spells = [
 {
     id: "detect-good",
     name: "Обнаружить Добро",
-    en: "Detect Good",
+    en: "Detect Good *",
     school: "div",
     level: {"clr":1},
     text: "Находит существ, заклинания или объекты доброго мировоззрения."
 },
 {
     id: "detect-law",
-    name: "Обнаружить Закон",
+    name: "Обнаружить Закон *",
     en: "Detect Law",
     school: "div",
     level: {"clr":1},
@@ -2007,7 +2007,7 @@ _spells = [
 {
     id: "detect-secret-doors",
     name: "Обнаружить Секретные Двери",
-    en: "Detect Secret Doors",
+    en: "Detect Secret Doors *",
     school: "div",
     level: {"brd":1, "sor":1, "wiz":1},
     domen: {"Knowledge":1},
@@ -2023,7 +2023,7 @@ _spells = [
 {
     id: "detect-snares-and-pits",
     name: "Обнаружить Ловушки И Ямы",
-    en: "Detect Snares And Pits",
+    en: "Detect Snares And Pits *",
     school: "div",
     level: {"drd":1, "rgr":1},
     components: "В, С",
@@ -2055,7 +2055,7 @@ _spells = [
 {
     id: "detect-undead",
     name: "Обнаружить Нежить",
-    en: "Detect Undead",
+    en: "Detect Undead *",
     school: "div",
     level: {"clr":1, "pal":1, "sor":1, "wiz":1},
     components: "В, С, М/БФ",
