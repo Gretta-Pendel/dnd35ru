@@ -1908,7 +1908,7 @@ _spells = [
 {
     id: "detect-animals-or-plants",
     name: "Обнаружить Животных Или Растения",
-    en: "Detect Animals Or Plants",
+    en: "Detect Animals Or Plants *",
     school: "div",
     level: {"drd":1, "rgr":1},
     components: "В, С",
@@ -1953,8 +1953,8 @@ _spells = [
 },
 {
     id: "detect-law",
-    name: "Обнаружить Закон *",
-    en: "Detect Law",
+    name: "Обнаружить Закон",
+    en: "Detect Law *",
     school: "div",
     level: {"clr":1},
     text: "Находит существ, заклинания или объекты законного мировоззрения."
@@ -2178,7 +2178,7 @@ _spells = [
 {
     id: "disguise-self",
     name: "Загримироваться",
-    en: "Disguise Self",
+    en: "Disguise Self *",
     school: "illus",
     subschool: "Glamer",
     level: {"sor":1, "wiz":1, "brd":1},
@@ -2355,7 +2355,7 @@ _spells = [
 {
     id: "divine-favor",
     name: "Божественное покровительство",
-    en: "Divine Favor",
+    en: "Divine Favor *",
     school: "evoc",
     level: {"clr": 1, "pal": 1},
     components: "В, С, БФ",
@@ -2428,7 +2428,7 @@ _spells = [
 {
     id: "doom",
     name: "Рок",
-    en: "Doom",
+    en: "Doom *",
     school: "necro",
     descriptor: ["Fear", "Mind-Affecting"],
     level: {"clr":1},
