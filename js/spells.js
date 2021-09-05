@@ -2536,7 +2536,7 @@ _spells = [
 {
     id: "endure-elements",
     name: "Устойчивость К Стихиям",
-    en: "Endure Elements",
+    en: "Endure Elements *",
     school: "abjur",
     level: {"clr":1, "drd":1, "pal":1, "rgr":1, "sor":1, "wiz":1},
     domen: {"Sun" :1},
@@ -2576,7 +2576,7 @@ _spells = [
 {
     id: "enlarge-person",
     name: "Увеличить Существо",
-    en: "Enlarge Person",
+    en: "Enlarge Person *",
     school: "trans",
     domen: {"Strength":1},
     level: {"sor":1, "wiz":1},
@@ -2601,7 +2601,7 @@ _spells = [
 {
     id: "entangle",
     name: "Опутывание",
-    en: "Entangle",
+    en: "Entangle *",
     school: "trans",
     level: {"drd":1, "rgr":1},
     domen: {"Plant":1},
@@ -2634,7 +2634,7 @@ _spells = [
 {
     id: "entropic-shield",
     name: "Щит Энтропии",
-    en: "Entropic Shield",
+    en: "Entropic Shield *",
     school: "abjur",
     level: {"clr":1},
     domen: {"Luck": 1},
@@ -2648,7 +2648,7 @@ _spells = [
 {
     id: "erase",
     name: "Стирание",
-    en: "Erase",
+    en: "Erase *",
     school: "trans",
     level: {"brd":1, "sor":1, "wiz":1},
     components: "В, С",
@@ -2704,7 +2704,7 @@ _spells = [
 { 
     id: "expeditious-retreat",
     name: "Поспешное Отступление",
-    en: "Expeditious Retreat",
+    en: "Expeditious Retreat *",
     school: "trans",
     level: {"brd":1, "sor":1, "wiz":1},
     components: "В, С",

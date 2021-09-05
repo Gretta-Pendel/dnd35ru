@@ -14,39 +14,42 @@
 </head>
 <body class="page">
 <div id="all-spells" style="padding:50px">
+    <p>На каждой странице заклинания одного уровня. Отсортированы по английским названиям (даны справа).</p>
+    <p><b>Предполагаемое использование.</b> Лист рассчитан на 5 дней (меморайзов). Запомненные заклинания отмечаются кружками, при использовании зачеркиваются.</p>
+    <hr style="margin:30px 0">
     <select id="filterByClass" v-model="cls">
         <option value="">Класс персонажа</option>
         <option v-for="(v,k) in classes" :value="k">{{v[1]}}</option>
-    </select>
+    </select> &nbsp;
     <select id="classLevel" v-model="clvl">
         <option value="">Уровень персонажа</option>
         <option v-for="l in 20" :value="l">{{l}}</option>
     </select>
-    <select v-if="cls == 'wiz' || cls == 'sor' || cls == 'brd'" id="filterBySchool" v-model="sch">
-        <option value="">Школы</option>
-        <option v-for="(v,k) in schools" :value="k">{{v[1]}} ({{k}})</option>
-    </select>
-    <select v-if="cls == 'clr'" id="filterByDomen" v-model="dom">
-        <option value="">Домены</option>
-        <option v-for="(v,k) in domens" :value="k">{{v[0]}} ({{k}})</option>
-    </select>
+<!--    <select v-if="cls == 'wiz' || cls == 'sor' || cls == 'brd'" id="filterBySchool" v-model="sch">-->
+<!--        <option value="">Школы</option>-->
+<!--        <option v-for="(v,k) in schools" :value="k">{{v[1]}} ({{k}})</option>-->
+<!--    </select>-->
+<!--    <select v-if="cls == 'clr'" id="filterByDomen" v-model="dom">-->
+<!--        <option value="">Домены</option>-->
+<!--        <option v-for="(v,k) in domens" :value="k">{{v[0]}} ({{k}})</option>-->
+<!--    </select>-->
     <br><br>
-    <div>
-        <template v-show="cls != '' || dom != ''" v-for="level in levels">
-            <input :id="'level' + level" :name="'level' + level" type="checkbox" :value="level" v-model="lvl">
-            <label :for="'level' + level">{{level}}</label>
-        </template>
+<!--    <div v-show="cls !== '' || dom !== ''">-->
+<!--        <template v-for="level in levels">-->
+<!--            <input :id="'level' + level" :name="'level' + level" type="checkbox" :value="level" v-model="lvl">-->
+<!--            <label :for="'level' + level">{{level}}</label>-->
+<!--        </template>-->
+<!--    </div>-->
+
+    <div class="values" v-if="cls !== '' && clvl !== ''">
+        Создаем список заклинаний для класса
+        <b>{{classes[cls][1]}}</b>, максимальный уровень заклинания
+        <b>{{spellLevel[cls][clvl-1]}}</b>.
+<!--        <b v-if="sch !== ''">- {{schools[sch][1]}} -</b>-->
+<!--        <b v-if="dom !== ''">- {{domens[dom][0]}} -</b>-->
     </div>
     <br><br>
     <button @click="createPDF">Создать PDF с заклинаниями</button>
-
-    <div class="values">
-        <b v-if="cls !== ''">- {{classes[cls][1]}} -</b>
-        <b v-if="cls !== '' && clvl !== ''">- {{spellLevel[cls][clvl-1]}} -</b>
-<!--        <b v-if="lvl !== ''">- {{lvl}} -</b>-->
-        <b v-if="sch !== ''">- {{schools[sch][1]}} -</b>
-        <b v-if="dom !== ''">- {{domens[dom][0]}} -</b>
-    </div>
 </div>
 
     <script>
@@ -67,23 +70,27 @@
                 spellLevel: spellLevel,
                 schools: schools,
                 domens: domens,
-                clvl:'', cls:'', lvl:[],sch:'', dom:''
+                clvl:'', cls:'', lvl:[], slvl: 0, sch:'', dom:''
                 //filteredSpells: []
             },
+            // beforeMount() {
+            //     this.slvl = this.spellLevel[this.cls][this.clvl-1];
+            // },
             methods: {
                 getSchool: function(str) { return schools[str] ? schools[str][1] : null},
                 getClass: function (str) { return classes[str] ? classes[str][1] : null},
                 createPDF: function () {
                     let self = this;
+                    let slvl = self.spellLevel[self.cls][self.clvl-1]
                     //renderTables(self.getClass(self.cls),self.cls,self.lvl);
-                    renderTables(self.getClass(self.cls),self.cls,self.clvl);
+                    renderTables(self.getClass(self.cls),self.cls,slvl);
                 }
             }
         });
 
         function renderTables(className,cls,lvl) {
             let bodies = [];
-            for (let i = 0; i < lvl; i ++) {
+            for (let i = 0; i < lvl + 1; i ++) {
                 bodies.push(
                     {
                         table: {

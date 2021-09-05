@@ -95,7 +95,8 @@ var filters = new Vue({
         filterSpells: function() {
             let self = this;
             let f_spells = [];
-            let _cls = this.cls, _lvl = this.lvl.toString(), _sch = this.sch, _dom = this.dom;
+            let _cls = this.cls, _lvl = this.cls !== '' || this.dom !== '' ? this.lvl.toString() : '', _sch = this.sch, _dom = this.dom;
+            this.lvl = this.cls === '' && this.dom === '' ? '' : this.lvl;
             if(_cls === "" && _lvl === "" && _sch === "" && _dom === "")
                 f_spells = _spells;
             else {
@@ -117,7 +118,12 @@ var filters = new Vue({
 
         addParamToUrl: function (param, value) {
             const params = new URL(location.href).searchParams;
-            params.set(param,value);
+            if(param === 'class' || param === 'domen' && this.cls ==='' && this.dom === '') {
+                params.set(param, value);
+                params.set('level', '');
+            }
+            else
+                params.set(param,value);
             var newUrl = window.location.protocol + "//" + window.location.host
                 + window.location.pathname + '?' + params.toString();
             window.history.pushState({path: newUrl}, '', newUrl);
