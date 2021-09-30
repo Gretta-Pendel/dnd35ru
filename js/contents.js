@@ -145,8 +145,8 @@ const _dmgcontents = [
                 level3: [
                     {
                         title: "Строгость или статус кво",
-                        entitle: "Tailored os Status Quo",
-                        url: "dmg3_.html"
+                        entitle: "Tailored or Status Quo",
+                        url: "dmg3_tailored-or-status-quo.html"
                     },
                     {
                         title: "Серьезность вызова и уровни столкновения",
