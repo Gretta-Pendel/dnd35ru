@@ -151,9 +151,9 @@ const _dmgcontents = [
                     {
                         title: "Серьезность вызова и уровни столкновения",
                         entitle: "Challenge Rating and Encounter Levels",
-                        url: "dmg3_.html"
+                        url: "dmg3_challenge_rating_and_encounter_levels.html"
                     },
-                    {
+                    /*{
                         title: "Сложность",
                         entitle: "Difficulty",
                         url: "dmg3_.html"
@@ -172,10 +172,10 @@ const _dmgcontents = [
                         title: "Вознагражнеие и поведение",
                         entitle: "Rewards and Behavior",
                         url: "dmg3_.html"
-                    }
+                    }*/
                 ],
             },
-            { title: "Сокровище",
+            /*{ title: "Сокровище",
                 entitle:"Treasure",
                 level3: [
                     {
@@ -199,13 +199,13 @@ const _dmgcontents = [
                         url: "dmg3_.html"
                     },
                 ]
-            },
-            { title: "Сведение приключений воедино",
+            },*/
+            /*{ title: "Сведение приключений воедино",
                 entitle:"Bringing Adventures Together",
                 url:"dmg3_.html" },
             { title: "Подземелья",
                 entitle:"The Dungeon",
-                url:"dmg3_.html" },
+                url:"dmg3_Dungeon.html" },
             { title: "Местность подземелий",
                 entitle:"Dungeon Terrain",
                 level3: [
@@ -303,7 +303,7 @@ const _dmgcontents = [
             },
             { title: "Пример приключения",
                 entitle:"A Sample Adventure",
-                url:"dmg3_.html" },
+                url:"dmg3_sample-adventure.html" },
             { title: "Блоки статистик",
                 entitle:"Statistics Blocks",
                 url:"dmg3_.html" },
@@ -381,43 +381,43 @@ const _dmgcontents = [
                         url: "dmg3_.html"
                     }
                 ]
-            },
+            },*/
         ]
     },
     {
-        title: "4: ",
+        title: "4: Неигровые персонажи",
         entitle:"4: Nonplayer Characters",
         level2: [
-            { title: "",
+            { title: "Каждый в этом мире",
                 entitle:"Everyone in the World",
-                url:"dmg4_.html" },
+                url:"dmg4_everyone-in-the-world.html" },
             { title: "",
                 entitle:"NPC Classes",
                 level3: [
                     {
-                        title: "",
+                        title: "Адепт",
                         entitle: "Adept",
-                        url: "dmg3_.html"
+                        url: "dmg3_adept.html"
                     },
                     {
                         title: "",
                         entitle: "Aristocrat",
-                        url: "dmg3_.html"
+                        url: "dmg3_aristocrat.html"
                     },
                     {
                         title: "",
                         entitle: "Commoner",
-                        url: "dmg3_.html"
+                        url: "dmg3_commoner.html"
                     },
                     {
                         title: "",
                         entitle: "Expert",
-                        url: "dmg3_.html"
+                        url: "dmg3_expert.html"
                     },
                     {
                         title: "",
                         entitle: "Warrior",
-                        url: "dmg3_.html"
+                        url: "dmg3_warrior.html"
                     },
                 ]
             },
@@ -453,7 +453,7 @@ const _dmgcontents = [
                 url:"dmg5_.html" },
             { title: "",
                 entitle:"World-Building",
-                url:"dmg5_.html" },
+                url:"dmg5_world-building.html" },
             { title: "",
                 entitle:"Building a Different World",
                 url:"dmg5_.html" },
