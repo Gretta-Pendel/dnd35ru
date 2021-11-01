@@ -2765,7 +2765,7 @@ _spells = [
 {
     id: "faerie-fire",
     name: "Огонь Фей",
-    en: "Faerie Fire",
+    en: "Faerie Fire*",
     school: "evoc",
     descriptor:"Light",
     level: {"drd":1},
@@ -2827,7 +2827,7 @@ _spells = [
 {
     id: "feather-fall",
     name: "Падение Пера",
-    en: "Feather Fall",
+    en: "Feather Fall*",
     school: "trans",
     level: {"brd":1, "sor":1, "wiz":1},
     components: "В",
@@ -3418,7 +3418,7 @@ _spells = [
 {
     id: "goodberry",
     name: "Добряника",
-    en: "Goodberry",
+    en: "Goodberry*",
     school: "trans",
     level: {"drd":1},
     components: "В, С, БФ",
@@ -3447,7 +3447,7 @@ _spells = [
 {
     id: "grease",
     name: "Жир",
-    en: "Grease",
+    en: "Grease*",
     school: "conj",
     subschool: "Creation",
     level: {"brd":1, "sor":1, "wiz":1},
@@ -8896,7 +8896,7 @@ _spells = [
 },
 ];
 
-module.exports = _spells
+//module.exports = _spells
 
 /*{
     id: "charm-monster-mass",

@@ -80,7 +80,7 @@ var filters = new Vue({
     data: {
         spells: _spells,
         classes: magic_classes,
-        levels: [0,1,2,3,4,5,6,7,8,9],
+        levels: [0,1,2,3,4,5],
         schools: schools,
         domens: domens,
         cls:'', lvl:'',sch:'', dom:'',
@@ -97,8 +97,9 @@ var filters = new Vue({
             let f_spells = [];
             let _cls = this.cls, _lvl = this.cls !== '' || this.dom !== '' ? this.lvl.toString() : '', _sch = this.sch, _dom = this.dom;
             this.lvl = this.cls === '' && this.dom === '' ? '' : this.lvl;
-            if(_cls === "" && _lvl === "" && _sch === "" && _dom === "")
+            if(_cls === "" && _lvl === "" && _sch === "" && _dom === "") {
                 f_spells = _spells;
+            }
             else {
                 f_spells = _spells.filter(function(spell) {
                     let f_cls = _cls === "" || _lvl === "" && spell.hasOwnProperty('level') && _cls in spell.level
