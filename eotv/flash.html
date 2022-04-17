@@ -13,8 +13,8 @@
                 grid-template-areas: "head head" "aside main" "foot foot";
             }
             header {grid-area: head;}
-            nav {grid-area: aside; background-color: beige;padding: 1rem 2rem 1rem 0;}
-            nav > ul {position: fixed;}
+            nav {grid-area: aside; background-color: beige;padding: 1rem 2rem 1rem 0;min-width: 250px;}
+            nav > ul {position: fixed; max-width: calc(250px - 2rem);}
             main {grid-area: main;padding: 1rem 2rem;}
             footer {grid-area: foot;}
             .inset {margin:1rem; padding:0 1rem .5rem;background-color:#ddd;float:right;max-width: 30%;}
