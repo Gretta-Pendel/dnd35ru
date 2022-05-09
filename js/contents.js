@@ -205,7 +205,7 @@ const _dmgcontents = [
                 url:"dmg3_.html" },
             { title: "Подземелья",
                 entitle:"The Dungeon",
-                url:"dmg3_.html" },
+                url:"dmg3_dungeon.html" },
             { title: "Местность подземелий",
                 entitle:"Dungeon Terrain",
                 level3: [
