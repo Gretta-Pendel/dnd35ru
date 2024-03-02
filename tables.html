@@ -26,13 +26,13 @@
         }
    })
    window.addEventListener('load', () => {
-        let tableBox = document.getElementById("tables")
+        let tableBox = document.getElementById("tables");
         for (t in _tables) {
             let tableDiv = document.createElement('div');
-            tableDiv.setAttribute("id", _tables[t].id)
-            tableDiv.innerHTML = eval(_tables[t].id.replace(/-/g, '_'))
-            let tableName = document.createElement('h3')
-            tableName.innerText = "Таблица " + _tables[t].id.replace("table-","") + ": " +  _tables[t].name
+            tableDiv.setAttribute("id", _tables[t].id);
+            tableDiv.innerHTML = eval(_tables[t].id.replace(/-/g, '_'));
+            let tableName = document.createElement('h3');
+            tableName.innerText = "Таблица " + _tables[t].id.replace("table-","") + ": " +  _tables[t].name;
             tableDiv.insertAdjacentElement("afterbegin",tableName);
             tableBox.insertAdjacentElement("beforeend",tableDiv);
         }

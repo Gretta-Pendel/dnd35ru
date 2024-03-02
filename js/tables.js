@@ -460,465 +460,467 @@ let _tables = [
     },
 
     {
-        id: "table-dmg-3–1",
+        id: "table-dmg-3-1",
         name: "Число столкновений",
         en: "Encounter Numbers"},
-    {
-        id: "table-dmg-3–2",
+/*    {
+        id: "table-dmg-3-2",
         name: "Сложность столкновений",
         en: "Encounter Difficulty"},
     {
-        id: "table-dmg-3–3",
+        id: "table-dmg-3-3",
         name: "Стоимость сокровища за столкновение",
         en: "Treasure Values per Encounter"},
     {
-        id: "table-dmg-3–4",
+        id: "table-dmg-3-4",
         name: "Средние результаты сокровищ",
         en: "Average Treasure Results"},
     {
-        id: "table-dmg-3–5",
+        id: "table-dmg-3-5",
         name: "Сокровище",
         en: "Treasure"},
     {
-        id: "table-dmg-3–6",
+        id: "table-dmg-3-6",
         name: "Драгоценные камни",
         en: "Gems"},
     {
-        id: "table-dmg-3–7",
+        id: "table-dmg-3-7",
         name: "Предметы искусства",
         en: "Art Objects"},
     {
-        id: "table-dmg-3–8",
+        id: "table-dmg-3-8",
         name: "Обычные предметы",
         en: "Mundane Items"},
     {
-        id: "table-dmg-3–9",
+        id: "table-dmg-3-9",
         name: "Стены",
         en: "Walls"},
     {
-        id: "table-dmg-3–10",
+        id: "table-dmg-3-10",
         name: "Двери",
         en: "Doors"},
     {
-        id: "table-dmg-3–11",
+        id: "table-dmg-3-11",
         name: "Большие признаки и обстановка",
         en: "Major Features and Furnishings"},
     {
-        id: "table-dmg-3–12",
+        id: "table-dmg-3-12",
         name: "Мелкие признаки и обстановка",
         en: "Minor Features and Furnishings"},
     {
-        id: "table-dmg-3–13",
+        id: "table-dmg-3-13",
         name: "Модификаторы СВ для Механических ловушек",
         en: "CR Modifiers for Mechanical Traps"},
     {
-        id: "table-dmg-3–14",
+        id: "table-dmg-3-14",
         name: "Модификаторы СВ для Магических ловушек",
         en: "CR Modifiers for Magic Traps"},
     {
-        id: "table-dmg-3–15",
+        id: "table-dmg-3-15",
         name: "Модификаторы цены для Механических ловушек",
         en: "Cost Modifiers for Mechanical Traps"},
     {
-        id: "table-dmg-3–16",
+        id: "table-dmg-3-16",
         name: "Модификаторы цены для Магических ловушек",
         en: "Cost Modifiers for Magic Device Traps"},
     {
-        id: "table-dmg-3–17",
+        id: "table-dmg-3-17",
         name: "Случайные типы дверей",
         en: "Random Door Types"},
     {
-        id: "table-dmg-3–18",
+        id: "table-dmg-3-18",
         name: "Случайное содержимое комнат",
         en: "Random Room Contents"},
     {
-        id: "table-dmg-3–19",
+        id: "table-dmg-3-19",
         name: "Случайные ловушки СВ 1-3",
-        en: "Random Traps CR 1–3"},
+        en: "Random Traps CR 1-3"},
     {
-        id: "table-dmg-3–20",
-        name: "Случайные ловушки СВ 4–6",
-        en: "Random Traps CR 4–6"},
+        id: "table-dmg-3-20",
+        name: "Случайные ловушки СВ 4-6",
+        en: "Random Traps CR 4-6"},
     {
-        id: "table-dmg-3–21",
-        name: "Случайные ловушки СВ 7–10",
-        en: "Random Traps CR 7–10"},
+        id: "table-dmg-3-21",
+        name: "Случайные ловушки СВ 7-10",
+        en: "Random Traps CR 7-10"},
     {
-        id: "table-dmg-3–22",
+        id: "table-dmg-3-22",
         name: "Модификаторы боя под водой",
         en: "Combat Adjustments Underwater"},
     {
-        id: "table-dmg-3–23",
+        id: "table-dmg-3-23",
         name: "Случайная погода",
         en: "Random Weather"},
     {
-        id: "table-dmg-3–24",
+        id: "table-dmg-3-24",
         name: "Эффекты от ветра",
         en: "Wind Effects"},
     {
-        id: "table-dmg-3–25",
+        id: "table-dmg-3-25",
         name: "Список чудовищ для столкновений в Дикой Местности",
         en: "Wilderness Encounter Lists"},
     {
-        id: "table-dmg-3–26",
+        id: "table-dmg-3-26",
         name: "Осадные механизмы",
         en: "Siege Engines"},
     {
-        id: "table-dmg-3–27",
+        id: "table-dmg-3-27",
         name: "Здания",
         en: "Buildings"},
     {
-        id: "table-dmg-3–28",
+        id: "table-dmg-3-28",
         name: "Столкновения в городе",
-        en: "Urban Encounters"},
+        en: "Urban Encounters"},*/
     {
-        id: "table-dmg-4–1",
+        id: "table-dmg-4-1",
         name: "Цены на услуги наемных рабочих",
         en: "Prices for Hireling Services"},
     {
-        id: "table-dmg-4–2",
+        id: "table-dmg-4-2",
         name: "Адепт",
         en: "The Adept"},
     {
-        id: "table-dmg-4–3",
+        id: "table-dmg-4-3",
         name: "Аристократ",
         en: "The Aristocrat"},
     {
-        id: "table-dmg-4–4",
+        id: "table-dmg-4-4",
         name: "Обыватель",
         en: "The Commoner"},
     {
-        id: "table-dmg-4–5",
+        id: "table-dmg-4-5",
         name: "Экперт",
         en: "The Expert"},
     {
-        id: "table-dmg-4–6",
+        id: "table-dmg-4-6",
         name: "Воитель",
         en: "The Warrior"},
-    {
-        id: "table-dmg-4–7",
+    /*{
+        id: "table-dmg-4-7",
         name: "Случайное мировоззрение НИП",
         en: "Random NPC Alignment"},
     {
-        id: "table-dmg-4–8",
+        id: "table-dmg-4-8",
         name: "Случайный класс НИП",
         en: "Random NPC Class"},
     {
-        id: "table-dmg-4–9",
+        id: "table-dmg-4-9",
         name: "Добрый НИП (Раса или Вид)",
         en: "Good NPC Race or Kind"},
     {
-        id: "table-dmg-4–10",
+        id: "table-dmg-4-10",
         name: "Нейтральный НИП (Раса или Вид)",
         en: "Neutral NPC Race or Kind"},
     {
-        id: "table-dmg-4–11",
+        id: "table-dmg-4-11",
         name: "Злой НИП (Раса или Вид)",
         en: "Evil NPC Race or Kind"},
     {
-        id: "table-dmg-4–12",
+        id: "table-dmg-4-12",
         name: "НИП Варвар",
         en: "NPC Barbarian"},
     {
-        id: "table-dmg-4–13",
+        id: "table-dmg-4-13",
         name: "НИП Бард",
         en: "NPC Bard"},
     {
-        id: "table-dmg-4–14",
+        id: "table-dmg-4-14",
         name: "НИП Жрец",
         en: "NPC Cleric"},
     {
-        id: "table-dmg-4–15",
+        id: "table-dmg-4-15",
         name: "НИП Друид",
         en: "NPC Druid"},
     {
-        id: "table-dmg-4–16",
+        id: "table-dmg-4-16",
         name: "НИП Воин",
         en: "NPC Fighter"},
     {
-        id: "table-dmg-4–17",
+        id: "table-dmg-4-17",
         name: "НИП Монах",
         en: "NPC Monk"},
     {
-        id: "table-dmg-4–18",
+        id: "table-dmg-4-18",
         name: "НИП Паладин",
         en: "NPC Paladin"},
     {
-        id: "table-dmg-4–19",
+        id: "table-dmg-4-19",
         name: "НИП Рейнджер",
         en: "NPC Ranger"},
     {
-        id: "table-dmg-4–20",
+        id: "table-dmg-4-20",
         name: "НИП Вор",
         en: "NPC Rogue"},
     {
-        id: "table-dmg-4–21",
+        id: "table-dmg-4-21",
         name: "НИП Чародей",
         en: "NPC Sorcerer"},
     {
-        id: "table-dmg-4–22",
+        id: "table-dmg-4-22",
         name: "НИП Маг",
         en: "NPC Wizard"},
     {
-        id: "table-dmg-4–23",
+        id: "table-dmg-4-23",
         name: "Цена снаряжения НИП",
         en: "NPC Gear Value"},
     {
-        id: "table-dmg-4–24",
+        id: "table-dmg-4-24",
         name: "100 признаков",
         en: "One Hundred Traits"},
     {
-        id: "table-dmg-5–1",
+        id: "table-dmg-5-1",
         name: "Богатство персонажа по уровням",
         en: "Character Wealth by Level"},
     {
-        id: "table-dmg-5–2",
+        id: "table-dmg-5-2",
         name: "Создание случайного города",
         en: "Random Town Generation"},
     {
-        id: "table-dmg-5–3",
+        id: "table-dmg-5-3",
         name: "Азиатское оружие",
         en: "Asian Weapons"},
     {
-        id: "table-dmg-5–4",
+        id: "table-dmg-5-4",
         name: "Оружие эпохи Возрожения",
         en: "Renaissance Weapons"},
 {
-        id: "table-dmg-5–5",
+        id: "table-dmg-5-5",
         name: "Современное оружие",
         en: "Modern Era Weapons"},
 {
-        id: "table-dmg-5–6",
+        id: "table-dmg-5-6",
         name: "Оружие будущего",
         en: "Futuristic Weapons"},
 {
-        id: "table-dmg-5–7",
+        id: "table-dmg-5-7",
         name: "Случайные планы назначения",
         en: "Random Planar Destinations"},
 {
-        id: "table-dmg-6–1",
+        id: "table-dmg-6-1",
         name: "Мистический лучник",
         en: "The Arcane Archer"},
 {
-        id: "table-dmg-6–2",
+        id: "table-dmg-6-2",
         name: "Загадочный ловкач",
         en: "The Arcane Trickster"},
 {
-        id: "table-dmg-6–3",
+        id: "table-dmg-6-3",
         name: "Архимаг",
         en: "The Archmage"},
 {
-        id: "table-dmg-6–4",
+        id: "table-dmg-6-4",
         name: "Наемный убийца",
         en: "The Assassin"},
 {
-        id: "table-dmg-6–5",
+        id: "table-dmg-6-5",
         name: "Знаемые наемным убийцей заклинания",
         en: "Assassin Spells Known"},
 {
-        id: "table-dmg-6–6",
+        id: "table-dmg-6-6",
         name: "Темный страж",
         en: "The Blackguard"},
 {
-        id: "table-dmg-6–7",
+        id: "table-dmg-6-7",
         name: "Потомок дракона",
         en: "The Dragon Disciple"},
 {
-        id: "table-dmg-6–8",
+        id: "table-dmg-6-8",
         name: "Дуэлянт",
         en: "The Duelist"},
 {
-        id: "table-dmg-6–9",
+        id: "table-dmg-6-9",
         name: "Защитник дворфов",
         en: "The Dwarven Defender"},
 {
-        id: "table-dmg-6–10",
+        id: "table-dmg-6-10",
         name: "Сверхъестественный рыцарь",
         en: "The Eldritch Knight"},
 {
-        id: "table-dmg-6–11",
+        id: "table-dmg-6-11",
         name: "Иерофант",
         en: "The Hierophant"},
 {
-        id: "table-dmg-6–12",
+        id: "table-dmg-6-12",
         name: "Странник горизонтов",
         en: "The Horizon Walker"},
 {
-        id: "table-dmg-6–13",
+        id: "table-dmg-6-13",
         name: "Повелитель знаний",
         en: "The Loremaster"},
 {
-        id: "table-dmg-6–14",
+        id: "table-dmg-6-14",
         name: "Таинственный теург",
         en: "The Mystic Theurge"},
 {
-        id: "table-dmg-6–15",
+        id: "table-dmg-6-15",
         name: "Красный маг",
         en: "The Red Wizard"},
 {
-        id: "table-dmg-6–16",
+        id: "table-dmg-6-16",
         name: "Теневой танцор",
         en: "The Shadowdancer"},
 {
-        id: "table-dmg-6–17",
+        id: "table-dmg-6-17",
         name: "Чудотворец",
         en: "The Thaumaturgist"},
 {
-        id: "table-dmg-6–18",
+        id: "table-dmg-6-18",
         name: "Эпические бонусы спасбросков и атак",
         en: "Epic Save and Epic Attack Bonuses"},
 {
-        id: "table-dmg-6–19",
+        id: "table-dmg-6-19",
         name: "Эпические очки опыта и преимущества, зависящие от уровня",
         en: "Epic Experience and Level-Dependent Benefits"},
 {
-        id: "table-dmg-7–1",
+        id: "table-dmg-7-1",
         name: "Создание случайных волшебных предметов",
         en: "Random Magic Item Generation"},
 {
-        id: "table-dmg-7–2",
+        id: "table-dmg-7-2",
         name: "Доспехи и щиты",
         en: "Armor and Shields"},
 {
-        id: "table-dmg-7–3",
+        id: "table-dmg-7-3",
         name: "Случайный тип доспехов",
         en: "Random Armor Type"},
 {
-        id: "table-dmg-7–4",
+        id: "table-dmg-7-4",
         name: "Случайный тип щитов",
         en: "Random Shield Type"},
 {
-        id: "table-dmg-7–5",
+        id: "table-dmg-7-5",
         name: "Специальные способности доспехов",
         en: "Armor Special Abilities"},
 {
-        id: "table-dmg-7–6",
+        id: "table-dmg-7-6",
         name: "Специальные способности щитов",
         en: "Shield Special Abilities"},
 {
-        id: "table-dmg-7–7",
+        id: "table-dmg-7-7",
         name: "Особые доспехи",
         en: "Specific Armors"},
 {
-        id: "table-dmg-7–8",
+        id: "table-dmg-7-8",
         name: "Особые щиты",
         en: "Specific Shields"},
 {
-        id: "table-dmg-7–9",
+        id: "table-dmg-7-9",
         name: "Оружие",
         en: "Weapons"},
 {
-        id: "table-dmg-7–10",
+        id: "table-dmg-7-10",
         name: "Определение вида оружия",
         en: "Weapon Type Determination"},
 {
-        id: "table-dmg-7–11",
+        id: "table-dmg-7-11",
         name: "Обычное рукопашное оружие",
         en: "Common Melee Weapons"},
 {
-        id: "table-dmg-7–12",
+        id: "table-dmg-7-12",
         name: "Необычное оружие",
         en: "Uncommon Weapons"},
 {
-        id: "table-dmg-7–13",
+        id: "table-dmg-7-13",
         name: "Обычное стрелковое оружие",
         en: "Common Ranged Weapons"},
 {
-        id: "table-dmg-7–14",
+        id: "table-dmg-7-14",
         name: "Особые свойства рукопашного оружия",
         en: "Melee Weapon Special Abilities"},
 {
-        id: "table-dmg-7–15",
+        id: "table-dmg-7-15",
         name: "Особые свойства стрелкового оружия",
         en: "Ranged Weapon Special Abilities"},
 {
-        id: "table-dmg-7–16",
+        id: "table-dmg-7-16",
         name: "Особое оружие",
         en: "Specific Weapons"},
 {
-        id: "table-dmg-7–17",
+        id: "table-dmg-7-17",
         name: "Снадобья и масла",
         en: "Potions and Oils"},
 {
-        id: "table-dmg-7–18",
+        id: "table-dmg-7-18",
         name: "Кольца",
         en: "Rings"},
 {
-        id: "table-dmg-7–19",
+        id: "table-dmg-7-19",
         name: "Жезлы",
         en: "Rods"},
 {
-        id: "table-dmg-7–20",
+        id: "table-dmg-7-20",
         name: "Виды свитков",
         en: "Scroll Types"},
 {
-        id: "table-dmg-7–21",
+        id: "table-dmg-7-21",
         name: "Количество заклинаний в свитке",
         en: "Number of Spells on a Scroll"},
 {
-        id: "table-dmg-7–22",
+        id: "table-dmg-7-22",
         name: "Уровни заклинаний в свитке",
         en: "Scroll Spell Levels"},
 {
-        id: "table-dmg-7–23",
+        id: "table-dmg-7-23",
         name: "Свитки с заклинаниями таинства",
         en: "Arcane Spell Scrolls"},
 {
-        id: "table-dmg-7–24",
+        id: "table-dmg-7-24",
         name: "Свитки с божественными заклинаниями",
         en: "Divine Spell Scrolls"},
 {
-        id: "table-dmg-7–25",
+        id: "table-dmg-7-25",
         name: "Посохи",
         en: "Staffs"},
 {
-        id: "table-dmg-7–26",
+        id: "table-dmg-7-26",
         name: "Палочки",
         en: "Wands"},
 {
-        id: "table-dmg-7–27",
+        id: "table-dmg-7-27",
         name: "Младшие необычные предметы",
         en: "Minor Wondrous Items"},
 {
-        id: "table-dmg-7–28",
+        id: "table-dmg-7-28",
         name: "Средние необычные предметы",
         en: "Medium Wondrous Items"},
 {
-        id: "table-dmg-7–29",
+        id: "table-dmg-7-29",
         name: "Старшие необычные предметы",
         en: "Major Wondrous Items"},
 {
-        id: "table-dmg-7–30",
+        id: "table-dmg-7-30",
         name: "Интеллект, Мудрость, Обаяние и способности предмета",
         en: "Item Intelligence, Wisdom, Charisma, and Capabilities"},
 {
-        id: "table-dmg-7–31",
+        id: "table-dmg-7-31",
         name: "Особые проклятые предметы",
         en: "Specific Cursed Items"},
 {
-        id: "table-dmg-7–32",
+        id: "table-dmg-7-32",
         name: "Подсчет цены созданного магического предмета",
         en: "Summary of Magic Item Creation Costs"},
 {
-        id: "table-dmg-7–33",
+        id: "table-dmg-7-33",
         name: "Оценка стоимости магического предмета",
         en: "Estimating Magic Item Gold Piece Values"},
-{
-        id: "table-dmg-8–1",
+*/{
+        id: "table-dmg-8-1",
         name: "Типы спецспособностей",
         en: "Special Ability Types"},
-{
-        id: "table-dmg-8–2",
+/*{
+        id: "table-dmg-8-2",
         name: "Болезни",
         en: "Diseases"},
-{
-        id: "table-dmg-8–3",
+*/{
+        id: "table-dmg-8-3",
         name: "Яды",
-        en: "Poisons"},
-{
-        id: "table-dmg-8–4",
+        en: "Poisons",
+        //link: "tables/1-1_Ability-Modifiers-and-Bonus-Spells.html"
+},
+/*{
+        id: "table-dmg-8-4",
         name: "Урон от падающих объектов",
         en: "Damage from Falling Objects"}
-
+*/
 ];
 //module.exports = _tables;

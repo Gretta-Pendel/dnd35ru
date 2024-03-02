@@ -16,17 +16,21 @@
         <button @click="toEng">sort ENG</button>
     </div>
     <div v-for="i in index">
-        <div><a :href="i.link">{{i.name}} ({{i.en}})</a></div>
+        <div>
+            <a :href="i.link" v-if="sort=='eng'">{{i.en}} [{{i.name}}]</a>
+            <a :href="i.link" v-else>{{i.name}} [{{i.en}}]</a>
+        </div>
     </div>
 </div>
 <script>
     var contents = new Vue({
         el: '#index',
         data: {
-            index: _index
+            index: _index,
+            sort: 'eng'
         },
         beforeMount: function () {
-            this.index = this.sorting(this.index,"name");
+            this.index = this.sorting(this.index,"en");
         },
         methods: {
             sorting: function (obj, prop) {
@@ -42,9 +46,11 @@
             },
             toRus: function () {
                 this.index = this.sorting(this.index,"name");
+                this.sort = 'rus'
             },
             toEng: function () {
                 this.index = this.sorting(this.index,"en");
+                this.sort = 'eng'
             }
         }
     });

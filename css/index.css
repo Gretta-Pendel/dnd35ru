@@ -7,8 +7,9 @@ body {font-family: var(--font-family);margin: 0;padding: 0;font-size: var(--body
 body, div, p, li, h1, h2, h3, h4 {box-sizing: border-box;}
 h1 {font-size:var(--h1-font-size); font-weight: 500; text-transform: uppercase; border-bottom:1px solid var(--font-color);}
 h2 {font-size:var(--h2-font-size); font-weight: 500; margin:1em 0 .5em;}
-h3 {font-size:var(--h3-font-size); margin:0 0 .75em;}
+h3 {font-size:var(--h3-font-size); margin:1em 0 .75em;}
 h4 {font-size:var(--h4-font-size); font-weight: 600;margin:0;}
+p {margin-block-start: 1em; margin-block-end: 1em}
 a {color: var(--link-color);}
 a:visited {color: var(--link-visited-color);}
 b {font-weight: 600;}
@@ -16,15 +17,10 @@ h1 a, h2 a, h3 a, h4 a {text-decoration: none;}
 h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited {color: var(--link-color);}
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {text-decoration: none;}
 div {margin:0;padding:0;}
+.insert-table h3 {font-size:var(--smaller-font-size); font-weight: 600;}
 .page p, .page table, .page li {margin:0 0 0.5em;}
-.clearfix:after {
-	display: block;
-	clear: both;
-	content: "";
-}
-.d-flex {
-	display: flex;
-}
+.clearfix:after {display: block;clear: both;content: "";}
+.d-flex {display: flex;}
 
 *[id]:before {content: "";display: block;padding-top: 35px;margin-top: -35px;}
 
@@ -45,11 +41,7 @@ overflow-y:auto;margin-bottom:15px;}
 #mainContents {max-height:calc(100% - var(--top-menu-height));}
 #pageContents {max-height:calc(100% - var(--top-menu-height) - 30px);margin-top:15px;padding:.5em;}
 
-#mainContents a, #pageContents a, #mainContents span, #pageContents span {
-	display: block;
-	text-decoration: none;
-	font-weight: 400;
-}
+#mainContents a, #pageContents a, #mainContents span, #pageContents span {display: block;text-decoration: none;font-weight: 400;}
 
 #mainContents .h1, #pageContents .h1 {font-weight: 500;}
 #mainContents .h2 {font-weight: 600;background-color:var(--light-bg-color);padding:.3em .5em;}
@@ -68,8 +60,6 @@ overflow-y:auto;margin-bottom:15px;}
 #pageContents .h2:before {float:left; display:block;content: '•';margin-left: -.7em;}
 #pageContents .h3 {padding-left: 1.6em;}
 #pageContents .h3:before {float:left; display:block;content: '•';margin-left: -.7em;}
-
-
 #pageContents {right:0;border-width: 1px 0 1px 1px;}
 
 
