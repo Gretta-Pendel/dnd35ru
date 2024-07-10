@@ -1,2 +1,2 @@
 # dnd35ru
-DnD 3.5 (ru)
+RPG Dungeons and Dragons v 3.5 rules in Russian
