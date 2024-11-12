@@ -13,7 +13,7 @@ header {
 nav {
   grid-area: aside;
   background-color: #333;
-  padding: 1rem 2rem 1rem 0;
+  padding: 0 1rem 1rem 0;
   min-width: 250px;
   font-size: medium;
   color: #eee;
@@ -27,7 +27,8 @@ nav a:hover {
 }
 nav > ul {
   position: fixed;
-  max-width: calc(250px - 2rem);
+  max-width: calc(250px - 1rem);
+  padding-left: 1rem;
 }
 nav > ul {
   list-style: none;
@@ -68,4 +69,14 @@ i {
 span {
   border-bottom: 1px dotted #000;
   font-weight: 600;
+}
+.img {
+  margin: 0 1rem 1rem 0;
+  padding: 0;
+  float: left;
+  max-width: 30%;
+  font-size: medium;
+}
+img {
+  max-width: 100%;
 }
